@@ -12,6 +12,28 @@ PMTween is an elegant and flexible tweening library for iOS. It offers sensible 
 
 PMTweenUnit is the base-level tweening class, PMTweenGroup groups multiple tweens together, and PMTweenSequence plays tweens in sequence. Because all of these classes adopt the PMTweening protocol, you can add any of these classes into a PMTweenGroup or PMTweenSequence. They can be nested as many levels deep as you'd like, and PMTweenGroup and PMTweenSequence respect the tweening properties of their children. This also makes it easy to add your own custom tweening classes. Just conform to the PMTweening protocol and your custom class will work with any of the default PMTween tweening classes. However, PMTweenUnit offers such modularity that in most cases you can just replace the parts you need with your own implementation.
 
+**In other words, this code:**
+
+``` objective-c
+PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
+PMTweenEasingBlock easing2 = [PMTweenEasingCircular easingInOut];
+
+PMTweenUnit *tween1 = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x endingValue:110 duration:1.5 options:PMTweenOptionNone easingBlock:easing];
+PMTweenUnit *tween2 = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"backgroundColor.blue" startingValue:0.30 endingValue:1.0 duration:1.2 options:PMTweenOptionNone easingBlock:easing];
+PMTweenUnit *tween3 = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.size.width" startingValue:self.tweenView.frame.size.width endingValue:120 duration:0.9 options:PMTweenOptionNone easingBlock:easing2];
+PMTweenUnit *tween4 = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.origin.y" startingValue:self.tweenView.frame.origin.y endingValue:100 duration:1.0 options:PMTweenOptionNone easingBlock:easing];
+
+PMTweenGroup *group = [[PMTweenGroup alloc] initWithTweens:@[tween1, tween2] options:PMTweenOptionNone];
+
+PMTweenSequence *sequence = [[PMTweenSequence alloc] initWithSequenceSteps:@[group, tween3, tween4] options:PMTweenOptionReverse|PMTweenOptionRepeat];
+sequence.reversingMode = PMTweenSequenceReversingContiguous;
+[sequence startTween];
+```
+
+**produces this animation:**
+
+![sequence](http://poetmountain.github.io/PMTween/screenshots/sequence.gif)
+
 
 ## Getting Started
 
