@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" 
+	"http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>--input</key>
+	<array>
+		<string>Classes/</string>
+	</array>
+	<key>--output</key>
+	<array>
+		<string>docs_build/</string>
+	</array>
+	<key>--project-name</key>
+	<string>PMTween</string>
+	<key>--project-company</key>
+	<string>Poet &amp; Mountain, LLC</string>
+	<key>--company-id</key>
+	<string>com.poetmountain</string>
+	<key>--create-docset</key>
+	<true/>
+	<key>--install-docset</key>
+	<false/>
+	<key>--repeat-first-par</key>
+	<false/>
+	<key>--verbose</key>
+	<integer>4</integer>
+	<key>--logformat</key>
+	<integer>1</integer>
+  <key>--docset-platform-family</key>
+  <string>iphoneos</string>
+</dict>
+</plist>
