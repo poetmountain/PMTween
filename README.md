@@ -97,7 +97,7 @@ See the included [demo project](https://github.com/poetmountain/PMTween/tree/mas
 <table>
   <tr><th colspan="2" style="text-align:center;">Tween Classes</th></tr>
   <tr>
-    <td><a href="https://poetmountain.github.io/PMTween/Classes/PMValidationUnit.html">PMTweenUnit</a></td>
+    <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenUnit.html">PMTweenUnit</a></td>
     <td>PMTweenUnit handles a single tween operation on an NSValue, interpolating between specified starting and ending values.</td>
   </tr>
   <tr>
@@ -191,4 +191,4 @@ PMTween was created by [Brett Walker](https://twitter.com/petsound) of [Poet & M
 
 ## License
 
-PMValidation is licensed under the MIT License. I'd love to know if you use PMTween in your app!
+PMTween is licensed under the MIT License. I'd love to know if you use PMTween in your app!
