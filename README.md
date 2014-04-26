@@ -14,7 +14,7 @@ PMTweenUnit is the base-level tweening class, PMTweenGroup groups multiple tween
 
 **In other words, this code:**
 
-``` objective-c
+``` objc
 PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
 PMTweenEasingBlock easing2 = [PMTweenEasingCircular easingInOut];
 
@@ -40,7 +40,7 @@ sequence.reversingMode = PMTweenSequenceReversingContiguous;
 ### Installation with CocoaPods
 
 #### Podfile
-``` ruby
+```ruby
 pod "PMTween", "~> 1.0.0"
 ```
 
@@ -50,7 +50,7 @@ pod "PMTween", "~> 1.0.0"
 
 Here's the most basic type of tween, which just tweens an arbitrary data structure directly. PMTweenUnit is the workhorse tweening class in PMTween; it handles all the actual property updating. Note that nil is passed in for the easingBlock, which means it will use the default PMTweenEasingLinear easing type.
 
-``` objective-c
+```objc
 PMTweenUnit *tween = [[PMTweenUnit alloc] initWithProperty:@(0) startingValue:0 endingValue:100 duration:1.0 options:PMTweenOptionNone easingBlock:nil];
 [tween startTween];
 ```
@@ -59,7 +59,7 @@ Here's another basic example. Notice that this time we've passed an options bitm
 
 We've also defined a completeBlock, which will be called when the tween has completed all repeat cycles. Notice that the block's parameter specifies "NSObject<PMTweening>", and not PMTweenUnit. It denotes that this could be any object that conforms to the PMTweening protocol, and PMTweenUnit (like all PMTween tweening classes) does adopt it. If you want to access specific properties from your tweening class that are not specified by the PMTweening protocol, you will need to cast the 'tween' object to your specific class type first.
 
-``` objective-c
+```objc
 PMTweenUnit *tween = [[PMTweenUnit alloc] initWithProperty:@(0) startingValue:0 endingValue:100 duration:1.0 options:PMTweenOptionRepeat|PMTweenOptionReverse easingBlock:nil];
 tween.completeBlock = ^void(NSObject<PMTweening> *tween) {
     NSLog(@"tween complete!");
@@ -74,7 +74,7 @@ A more common need is to tween an object property, such as the x position of a U
 
 Notice also that we've defined an easingBlock this time. You can also assign a different easing block to use when reversing a tween by setting a PMTweenUnit's reverseEasingBlock property. PMTween includes all the standard Robert Penner easing types, but you can also easily make your own easing classes and pass them in. Maybe you want to modify the easing by applying a Perlin noise filter or shifting the value with gyroscope data. Who knows? I don't. That's why PMTween makes it easy for you to do your own thing.
 
-``` objective-c
+```objc
 PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
 PMTweenUnit *tween = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x endingValue:200 duration:1.0 options:PMTweenOptionNone easingBlock:easing];
 [tween startTween];
@@ -86,7 +86,7 @@ PMTweenGroup manages multiple class instances. It's handy for controlling and sy
 
 Notice in this example that a tempo object is being set on the PMTweenGroup. What is that? Well it provides the tempo for the tween, or in other words the rate at which the tween should update its easing calculations. This is only an example and not necessary to set – all PMTween tweening classes create their own tempo objects internally by default. But if you do want to use your own custom tempo, keep in mind that a group collection will set all child tween object tempos to nil to avoid having hundreds of CADisplayLink timers running. So if you've got a lot of tween objects, put them in a group (or assign them to a PMTweenBeat!), and set your custom tempo on the top-most tween collection object.
 
-``` objective-c
+```objc
 PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
 PMTweenUnit *tween = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.size.width" startingValue:self.tweenView.frame.size.width endingValue:200 duration:1.0 options:PMTweenOptionNone easingBlock:easing];
 PMTweenUnit *tween2 = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.size.height" startingValue:self.tweenView.frame.size.height endingValue:300 duration:2.0 options:PMTweenOptionNone easingBlock:easing];
@@ -102,7 +102,7 @@ PMTweenSequence plays a collection of tweens in order, chaining tweens together 
 
 When a PMTweenSequence is set to reverse, by default it will play as discrete elements when reversing (in other words, each child tween would just play forwards, but in reverse order). But by setting the sequence's reversingMode to PMTweenSequenceReversingContiguous you can set the whole sequence to play in reverse seamlessly, as if it was one contiguous tween. This is really great for complex animations.
 
-``` objective-c
+```objc
 PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
 PMTweenUnit *tween = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x endingValue:200 duration:1.0 options:PMTweenOptionNone easingBlock:easing];
 PMTweenUnit *tween2 = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.size.height" startingValue:self.tweenView.frame.size.height endingValue:300 duration:2.0 options:PMTweenOptionNone easingBlock:easing];
