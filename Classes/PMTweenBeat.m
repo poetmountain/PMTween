@@ -8,7 +8,7 @@
 
 #import "PMTweenBeat.h"
 #import "PMTweenEasing.h"
-
+#import "PMTweenCATempo.h"
 
 @interface PMTweenBeat ()
 
@@ -23,6 +23,10 @@
     
     if (self = [super init]) {
         _tweens = [NSMutableArray array];
+        
+        _tempo = [PMTweenCATempo tempo];
+        _tempo.delegate = self;
+
     }
     
     return self;
@@ -45,12 +49,15 @@
     if (_tempo) {
         _tempo.delegate = nil;
     }
+    _tweens = nil;
 }
 
 
 - (void)addTween:(NSObject<PMTweening> *)tween {
     if ([tween conformsToProtocol:@protocol(PMTweening)]) {
         [_tweens addObject:tween];
+        // remove tween's own tempo object
+        tween.tempo = nil;
     } else {
         NSAssert(0, @"NSObject class does not conform to PMTweening protocol.");
     }

@@ -64,7 +64,7 @@
         _tweenDirection = PMTweenDirectionForward;
         _syncTweensWhenReversing = YES;
         
-        _tempo = [PMTweenCATempo tempo];
+        self.tempo = [PMTweenCATempo tempo];
 
     }
     
