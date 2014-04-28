@@ -204,7 +204,7 @@ PMTween is tested using [Specta](https://github.com/specta/specta)/[Expecta](htt
 		
 ## Credits
 
-PMTween was created by [Brett Walker](https://twitter.com/petsound) of [Poet & Mountain](https://poetmountain.com).
+PMTween was created by [Brett Walker](https://twitter.com/petsound) of [Poet & Mountain](http://poetmountain.com).
 
 ## Compatibility
 
