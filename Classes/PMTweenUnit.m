@@ -532,7 +532,7 @@
 }
 
 - (void)setNumberOfRepeats:(NSUInteger)numberOfRepeats {
-    _numberOfRepeats = (numberOfRepeats > 0) ? numberOfRepeats : 0; // clamps negative values to 0
+    _numberOfRepeats = numberOfRepeats;
 }
 
 - (BOOL)isReversing {
