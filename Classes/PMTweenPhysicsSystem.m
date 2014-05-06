@@ -49,7 +49,7 @@
 
 - (double)solveForPosition:(double)position currentTime:(NSTimeInterval)elapsedTime {
     
-    double new_position;
+    double new_position = 0.0;
     
     if (!_paused) {
         if (_lastTimestamp == 0) { self.lastTimestamp = elapsedTime; }
