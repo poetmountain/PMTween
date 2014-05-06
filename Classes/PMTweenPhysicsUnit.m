@@ -1,17 +1,17 @@
 //
-//  PMTweenUnit.m
+//  PMTweenPhysicsUnit.m
 //  PMTween
 //
-//  Created by Brett Walker on 3/29/14.
+//  Created by Brett Walker on 5/1/14.
 //  Copyright (c) 2014 Poet & Mountain, LLC. All rights reserved.
 //
 
-#import "PMTweenUnit.h"
-#import "PMTweenEasingLinear.h"
-#import "PMTweenObjectUpdater.h"
+#import "PMTweenPhysicsUnit.h"
 #import "PMTweenCATempo.h"
 
-@interface PMTweenUnit ()
+double static const PMTWEEN_DECAY_LIMIT = 0.1;
+
+@interface PMTweenPhysicsUnit ()
 
 // The starting time of the current tween operation. A value of 0 means that no tween is currently in progress.
 @property (nonatomic, assign) NSTimeInterval startTime;
@@ -19,7 +19,7 @@
 // The most recent update timestamp, as sent by `updateWithTimeInterval:currentTime:`.
 @property (nonatomic, assign) NSTimeInterval currentTime;
 
-// The ending time of the tween, which is determined by adding the tween duration to the starting time.
+// The ending time of the delay, which is determined by adding the delay to the starting time.
 @property (nonatomic, assign) NSTimeInterval endTime;
 
 // Key path for property on target. Only used when class is created with initWithTarget.
@@ -43,15 +43,17 @@
 // Timestamp when `pauseTween` method is called, to track amount of time paused.
 @property (nonatomic, assign) NSTimeInterval pauseTimestamp;
 
+// The last initial velocity set.
+@property (nonatomic, assign) double initialVelocity;
+
 // Cache of the getter selector for the property.
 @property (nonatomic, assign) SEL propertyGetter;
 
 // Cache of the setter selector for the property.
 @property (nonatomic, assign) SEL propertySetter;
 
-
 // Initializes values in preparation for a tween operation.
-- (void)setupTweenForProperty:(NSObject *)property startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock;
+- (void)setupTweenForProperty:(NSObject *)property startingValue:(double)startingValue velocity:(double)velocity friction:(double)friction options:(PMTweenOptions)options;
 
 // Updates the target property with a new tween value.
 - (void)updatePropertyValue;
@@ -70,25 +72,25 @@
 
 @end
 
+@implementation PMTweenPhysicsUnit
 
-@implementation PMTweenUnit
 
 #pragma mark - Lifecycle methods
 
-- (id)initWithProperty:(NSValue *)property startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock {
+- (id)initWithProperty:(NSValue *)property startingValue:(double)startingValue velocity:(double)velocity friction:(double)friction options:(PMTweenOptions)options {
     
     if (self = [super init]) {
         
         _structValueUpdater = [PMTweenObjectUpdater updater];
         
-        [self setupTweenForProperty:property startingValue:startingValue endingValue:endingValue duration:duration options:options easingBlock:easingBlock];
+        [self setupTweenForProperty:property startingValue:startingValue velocity:(double)velocity friction:(double)friction options:options];
     }
     
     return self;
 }
 
 
-- (id)initWithObject:(NSObject *)object propertyKeyPath:(NSString *)propertyKeyPath startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock {
+- (id)initWithObject:(NSObject *)object propertyKeyPath:(NSString *)propertyKeyPath startingValue:(double)startingValue velocity:(double)velocity friction:(double)friction options:(PMTweenOptions)options {
     
     if (self = [super init]) {
         
@@ -129,7 +131,7 @@
                         strong_self.parentKeyPath = [parent_path copy];
                         strong_self.propertyGetter = [PMTween getterForPropertyName:[parent_keys lastObject]];
                         strong_self.propertySetter = [PMTween setterForPropertyName:[parent_keys lastObject]];
-
+                        
                         *stop = YES;
                     } else if ([parent_keys count] > 1) {
                         previous_parent_path = parent_path;
@@ -151,15 +153,15 @@
             if (self.targetObject && [_structValueUpdater replaceObject:self.targetObject newPropertyValue:1 propertyKeyPath:propertyKeyPath]) {
                 is_value_supported = YES;
             }
-
+            
             if (self.targetObject &&  is_value_supported) {
                 _targetProperty = self.targetObject;
             }
         }
         
-
         
-        [self setupTweenForProperty:_targetProperty startingValue:startingValue endingValue:endingValue duration:duration options:options easingBlock:easingBlock];        
+        
+        [self setupTweenForProperty:_targetProperty startingValue:startingValue velocity:(double)velocity friction:(double)friction options:options];
         
     }
     
@@ -167,20 +169,12 @@
     
 }
 
-
-- (void)dealloc {
-    if (_tempo) {
-        _tempo.delegate = nil;
-    }
-}
-
-
 #pragma mark - Initialization methods
 
-- (void)setupTweenForProperty:(NSObject *)property startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock {
+- (void)setupTweenForProperty:(NSObject *)property startingValue:(double)startingValue velocity:(double)velocity friction:(double)friction options:(PMTweenOptions)options {
     
     _targetProperty = property;
-
+    
     _tweenState = PMTweenStateStopped;
     _cyclesCompletedCount = 0;
     
@@ -188,15 +182,16 @@
     _startingTargetProperty = property;
     _startingValue = startingValue;
     _currentValue = startingValue;
-    _endingValue = endingValue;
     _tweenDirection = PMTweenDirectionForward;
     _tweenProgress = 0.0;
     _cycleProgress = 0.0;
     _reversing = NO;
     _repeating = NO;
     _resetObjectStateOnRepeat = NO;
-
-    _duration = (duration > 0.0) ? duration : 0.0; // if value passed is negative, clamp it to 0
+    
+    self.physicsSystem = [[PMTweenPhysicsSystem alloc] initWithVelocity:velocity friction:friction];
+    self.initialVelocity = velocity;
+    
     if (options & PMTweenOptionRepeat) {
         _repeating = YES;
     }
@@ -207,17 +202,19 @@
         _resetObjectStateOnRepeat = YES;
         _startingParentProperty = property;
     }
-    (easingBlock) ? (_easingBlock = easingBlock) : (_easingBlock = [PMTweenEasingLinear easingNone]);
     
     _startTime = 0;
     _currentTime = 0;
     
+    _velocityDecayLimit = PMTWEEN_DECAY_LIMIT;
+    
     self.tempo = [PMTweenCATempo tempo];
-        
+    
 }
 
 
 #pragma mark - Tween methods
+
 
 - (void)updatePropertyValue {
     
@@ -226,14 +223,13 @@
         
     } else {
         self.targetProperty = _targetProperty;
-
+        
     }
 }
 
 
 
 - (void)tweenCompleted {
-    
     self.tweenState = PMTweenStateStopped;
     _tweenProgress = 1.0;
     _cycleProgress = 1.0;
@@ -250,7 +246,7 @@
         __weak typeof(self) block_self = self;
         self.completeBlock(block_self);
     }
-        
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:PMTweenDidCompleteNotification object:self userInfo:nil];
     
 }
@@ -260,22 +256,25 @@
 - (void)nextRepeatCycle {
     
     if (++self.cyclesCompletedCount - 1 < _numberOfRepeats) {
-
+        
         // reset for next cycle
         self.currentValue = _startingValue;
         self.tweenState = PMTweenStateTweening;
         _cycleProgress = 0.0;
         _tweenProgress = 0.0;
-
+        
+        
         if (self.resetObjectStateOnRepeat) {
             [self.targetObject setValue:_startingParentProperty forKeyPath:_parentKeyPath];
         }
-
+        
         // setting startTime to 0 causes tweenUpdate method to re-init the tween
         self.startTime = 0;
         
         if (self.reversing) {
             [self reverseTweenDirection];
+        } else {
+            [self.physicsSystem resetSystem];
         }
         
         // call cycle block
@@ -287,17 +286,18 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:PMTweenDidRepeatNotification object:self userInfo:nil];
         
-
+        
         
     } else {
         [self tweenCompleted];
     }
-
+    
     
 }
 
 
 - (void)reverseTweenDirection {
+
     if (_tweenDirection == PMTweenDirectionForward) {
         self.tweenDirection = PMTweenDirectionReverse;
         
@@ -307,8 +307,11 @@
     
     // reset the times to get ready for the new reverse tween
     self.startTime = 0;
-
+    
     _tweenProgress = 0.0;
+    
+    [self.physicsSystem reverseDirection];
+    [self.physicsSystem resetSystem];
     
     // call reverse block
     if (_reverseBlock) {
@@ -323,7 +326,7 @@
         
         if (_cyclesCompletedCount == half_complete) {
             [[NSNotificationCenter defaultCenter] postNotificationName:PMTweenHalfCompletedNotification object:self userInfo:nil];
-
+            
         }
     }
     
@@ -336,9 +339,10 @@
     self.tweenDirection = PMTweenDirectionForward;
     if (self.resetObjectStateOnRepeat) {
         [self.targetObject setValue:_startingParentProperty forKeyPath:_parentKeyPath];
-
+        
     }
-    
+    [self.physicsSystem resetSystem];
+
     self.cyclesCompletedCount = 0;
     _cycleProgress = 0.0;
     _tweenProgress = 0.0;
@@ -347,19 +351,6 @@
     self.startTime = 0;
 }
 
-
-// TODO: test more thoroughly before surfacing this method in the public API, possibly add to other classes and PMTweening protocol.
-- (void)jumpToPosition:(CGFloat)position {
-    
-    if (_tweenState == PMTweenStateTweening) {
-        self.cycleProgress = position;
-        
-        self.currentTime = ((_endTime - _startTime) * position) + _startTime;
-        double value_delta = _endingValue - _startingValue;
-        self.currentValue = (value_delta * position) + _startingValue;
-    }
-    
-}
 
 
 #pragma mark - Getter/setters
@@ -384,12 +375,12 @@
 
 - (void)setCycleProgress:(CGFloat)cycleProgress {
     _cycleProgress = cycleProgress;
-
+    
     if (self.reversing) {
         CGFloat new_progress = _cycleProgress * 2;
         if (_cycleProgress >= 0.5) { new_progress -= 1; }
         _tweenProgress = new_progress;
-
+        
     } else {
         _tweenProgress = _cycleProgress;
     }
@@ -439,11 +430,11 @@
 
 - (void)setTargetProperty:(NSObject *)targetProperty {
     
-
+    
     _targetProperty = targetProperty;
-
+    
     if (self.targetObject) {
-
+        
         if ([_targetProperty isKindOfClass:[NSValue class]]) {
             if (!_replaceParentProperty) {
                 [self.targetObject setValue:_targetProperty forKeyPath:_propertyKeyPath];
@@ -482,7 +473,7 @@
                 NSLog(@"Unknown selector! %@", exception);
             }
         }
-
+        
     }
     
     
@@ -544,6 +535,23 @@
     _reversing = reversing;
 }
 
+- (double)velocity {
+    return self.physicsSystem.velocity;
+}
+
+- (void)setVelocity:(double)velocity {
+    self.physicsSystem.velocity = velocity;
+    _initialVelocity = velocity;
+}
+
+- (double)friction {
+    return self.physicsSystem.friction;
+}
+
+- (void)setFriction:(double)friction {
+    self.physicsSystem.friction = friction;
+}
+
 
 #pragma mark - PMTweenTempoDelegate methods
 
@@ -560,55 +568,11 @@
 - (void)updateWithTimeInterval:(NSTimeInterval)currentTime {
     
     if (_tweenState == PMTweenStateTweening) {
+        
+        // update physics system
+        self.currentValue = [self.physicsSystem solveForPosition:_currentValue currentTime:currentTime];
 
-        CGFloat adjusted_duration = _duration;
-        if (self.reversing) { adjusted_duration *= 0.5; }
-        
-        if (_pauseTimestamp != 0 && _startTime != 0) {
-            // we just resumed from a pause, so adjust the times to account for paused length
-            NSTimeInterval pause_delta = currentTime - self.pauseTimestamp;
-            self.startTime += pause_delta;
-            self.endTime += pause_delta;
-            // reset pause timestamp
-            self.pauseTimestamp = 0;
-        }
-        
-        if (_startTime == 0) {
-            // a start time of 0 means we need to initialize the tween times
-            self.startTime = currentTime;
-            self.endTime = _startTime + adjusted_duration;
-            if (_pauseTimestamp != 0) {
-                self.pauseTimestamp = 0;
-            }
-        }
-        
-        
-        self.currentTime = MIN(currentTime, self.endTime); // don't let currentTime go over endTime or it'll produce wrong easing values
-        
-        NSTimeInterval elapsed_time = self.currentTime - self.startTime;
-        
-        double new_value;
-        CGFloat progress;
-        double value_delta = _endingValue - _startingValue;
-        
-        if (_tweenDirection == PMTweenDirectionForward) {
-            new_value = self.easingBlock(elapsed_time, _startingValue, value_delta, adjusted_duration);
-            progress = fabsf((_currentValue - _startingValue) / value_delta);
-
-        } else {
-            
-            if (self.reverseEasingBlock) {
-                new_value = self.reverseEasingBlock(elapsed_time, _endingValue, -value_delta, adjusted_duration);
-            } else {
-                new_value = self.easingBlock(elapsed_time, _endingValue, -value_delta, adjusted_duration);
-            }
-            progress = fabsf((_currentValue - _endingValue) / value_delta);
-
-        }
-
-        self.currentValue = new_value;
-        self.tweenProgress = progress;
-        
+        self.tweenProgress = (_initialVelocity - fabs(self.physicsSystem.velocity)) / _initialVelocity;
         
         // call update block
         if (_updateBlock) {
@@ -616,10 +580,10 @@
             self.updateBlock(block_self);
         }
         
-
-        if (_currentTime < _endTime) {
+        
+        if (fabs(self.physicsSystem.velocity) > _velocityDecayLimit) {
             [self updatePropertyValue];
-
+            
         } else {
             // tween has completed
             
@@ -634,7 +598,7 @@
                 } else if (_reversing && _tweenState == PMTweenStateTweening) {
                     [self reverseTweenDirection];
                 }
-
+                
             } else {
                 // not reversing or repeating
                 [self tweenCompleted];
@@ -642,7 +606,7 @@
         }
         
     } else if (_tweenState == PMTweenStateDelayed) {
-     
+        
         _currentTime = currentTime;
         
         if (_startTime == 0) {
@@ -666,7 +630,7 @@
         }
         
     }
-
+    
     
 }
 
@@ -676,7 +640,7 @@
         
         if (_delay == 0) {
             self.tweenState = PMTweenStateTweening;
-
+            
             // call start block
             if (_startBlock) {
                 __weak typeof(self) block_self = self;
@@ -715,6 +679,8 @@
         // saves current time so we can determine length of pause time
         self.pauseTimestamp = _currentTime;
         
+        [self.physicsSystem pauseSystem];
+        
         // call pause block
         if (_pauseBlock) {
             __weak typeof(self) block_self = self;
@@ -723,13 +689,15 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:PMTweenDidPauseNotification object:self userInfo:nil];
     }
-
+    
 }
 
 - (void)resumeTween {
-
+    
     if (_tweenState == PMTweenStatePaused) {
         self.tweenState = PMTweenStateTweening;
+        
+        [self.physicsSystem resumeSystem];
         
         // call resume block
         if (_resumeBlock) {
@@ -739,7 +707,7 @@
         
         [[NSNotificationCenter defaultCenter] postNotificationName:PMTweenDidResumeNotification object:self userInfo:nil];
     }
-
+    
 }
 
 

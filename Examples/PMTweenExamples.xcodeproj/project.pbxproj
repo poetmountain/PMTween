@@ -41,6 +41,10 @@
 		8B8207BC190890F900D8FD13 /* MassTweensVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8207BB190890F900D8FD13 /* MassTweensVC.m */; };
 		8BBB27C31907859C0012EF4A /* SequenceNoncontiguousVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBB27C21907859C0012EF4A /* SequenceNoncontiguousVC.m */; };
 		8BCB5F04190B389C006D50EF /* PMTweenObjectUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB5F03190B389C006D50EF /* PMTweenObjectUpdater.m */; };
+		8BF8F79C191809790028261E /* BasicPhysicsTweenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F79B191809790028261E /* BasicPhysicsTweenVC.m */; };
+		8BF8F7A11918098B0028261E /* PMTweenPhysicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F79E1918098B0028261E /* PMTweenPhysicsSystem.m */; };
+		8BF8F7A21918098B0028261E /* PMTweenPhysicsUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F7A01918098B0028261E /* PMTweenPhysicsUnit.m */; };
+		8BF8F7A51918441C0028261E /* DynamicTweenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F7A41918441C0028261E /* DynamicTweenVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +114,14 @@
 		8BBB27C21907859C0012EF4A /* SequenceNoncontiguousVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SequenceNoncontiguousVC.m; path = Classes/SequenceNoncontiguousVC.m; sourceTree = "<group>"; };
 		8BCB5F02190B389C006D50EF /* PMTweenObjectUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenObjectUpdater.h; path = ../../Classes/PMTweenObjectUpdater.h; sourceTree = "<group>"; };
 		8BCB5F03190B389C006D50EF /* PMTweenObjectUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenObjectUpdater.m; path = ../../Classes/PMTweenObjectUpdater.m; sourceTree = "<group>"; };
+		8BF8F79A191809790028261E /* BasicPhysicsTweenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicPhysicsTweenVC.h; path = Classes/BasicPhysicsTweenVC.h; sourceTree = "<group>"; };
+		8BF8F79B191809790028261E /* BasicPhysicsTweenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicPhysicsTweenVC.m; path = Classes/BasicPhysicsTweenVC.m; sourceTree = "<group>"; };
+		8BF8F79D1918098B0028261E /* PMTweenPhysicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenPhysicsSystem.h; path = ../../Classes/PMTweenPhysicsSystem.h; sourceTree = "<group>"; };
+		8BF8F79E1918098B0028261E /* PMTweenPhysicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsSystem.m; path = ../../Classes/PMTweenPhysicsSystem.m; sourceTree = "<group>"; };
+		8BF8F79F1918098B0028261E /* PMTweenPhysicsUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenPhysicsUnit.h; path = ../../Classes/PMTweenPhysicsUnit.h; sourceTree = "<group>"; };
+		8BF8F7A01918098B0028261E /* PMTweenPhysicsUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsUnit.m; path = ../../Classes/PMTweenPhysicsUnit.m; sourceTree = "<group>"; };
+		8BF8F7A31918441C0028261E /* DynamicTweenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicTweenVC.h; path = Classes/DynamicTweenVC.h; sourceTree = "<group>"; };
+		8BF8F7A41918441C0028261E /* DynamicTweenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicTweenVC.m; path = Classes/DynamicTweenVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +217,10 @@
 				8B7235EF1907A3AD00D40E7D /* Transform3DVC.m */,
 				8B8207BA190890F900D8FD13 /* MassTweensVC.h */,
 				8B8207BB190890F900D8FD13 /* MassTweensVC.m */,
+				8BF8F79A191809790028261E /* BasicPhysicsTweenVC.h */,
+				8BF8F79B191809790028261E /* BasicPhysicsTweenVC.m */,
+				8BF8F7A31918441C0028261E /* DynamicTweenVC.h */,
+				8BF8F7A41918441C0028261E /* DynamicTweenVC.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -212,6 +228,10 @@
 		8B36D73B190747DF00771A81 /* PMTween */ = {
 			isa = PBXGroup;
 			children = (
+				8BF8F79D1918098B0028261E /* PMTweenPhysicsSystem.h */,
+				8BF8F79E1918098B0028261E /* PMTweenPhysicsSystem.m */,
+				8BF8F79F1918098B0028261E /* PMTweenPhysicsUnit.h */,
+				8BF8F7A01918098B0028261E /* PMTweenPhysicsUnit.m */,
 				8B36D73C190747F500771A81 /* EasingTypes */,
 				8B36D754190747F500771A81 /* PMTween.h */,
 				8B36D755190747F500771A81 /* PMTween.m */,
@@ -343,9 +363,12 @@
 				8B36D73019072EA900771A81 /* TableViewController.m in Sources */,
 				8B36D77919075C6300771A81 /* GroupTweenVC.m in Sources */,
 				8B36D76B190747F500771A81 /* PMTweenEasingQuintic.m in Sources */,
+				8BF8F7A11918098B0028261E /* PMTweenPhysicsSystem.m in Sources */,
 				8B36D771190747F500771A81 /* PMTweenSequence.m in Sources */,
 				8B36D76D190747F500771A81 /* PMTween.m in Sources */,
+				8BF8F79C191809790028261E /* BasicPhysicsTweenVC.m in Sources */,
 				8B36D770190747F500771A81 /* PMTweenGroup.m in Sources */,
+				8BF8F7A51918441C0028261E /* DynamicTweenVC.m in Sources */,
 				8B36D772190747F500771A81 /* PMTweenTempo.m in Sources */,
 				8B36D764190747F500771A81 /* PMTweenEasingCircular.m in Sources */,
 				8B36D7021907253700771A81 /* main.m in Sources */,
@@ -357,6 +380,7 @@
 				8B36D77C190765AD00771A81 /* SequenceTweenVC.m in Sources */,
 				8B36D769190747F500771A81 /* PMTweenEasingQuadratic.m in Sources */,
 				8BBB27C31907859C0012EF4A /* SequenceNoncontiguousVC.m in Sources */,
+				8BF8F7A21918098B0028261E /* PMTweenPhysicsUnit.m in Sources */,
 				8B36D76A190747F500771A81 /* PMTweenEasingQuartic.m in Sources */,
 				8B36D763190747F500771A81 /* PMTweenEasingBounce.m in Sources */,
 				8B36D73519073AF600771A81 /* BasicTweenVC.m in Sources */,

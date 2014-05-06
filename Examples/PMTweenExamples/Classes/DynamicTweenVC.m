@@ -1,21 +1,23 @@
 //
-//  BasicTweenVC.m
+//  DynamicTweenVC.m
 //  PMTweenExamples
 //
-//  Created by Brett Walker on 4/22/14.
+//  Created by Brett Walker on 5/5/14.
 //  Copyright (c) 2014 Poet & Mountain, LLC. All rights reserved.
 //
 
-#import "BasicTweenVC.h"
-#import "PMTweenEasingCubic.h"
-#import "PMTweenUnit.h"
+#import "DynamicTweenVC.h"
+#import "PMTweenPhysicsUnit.h"
+#import "PMTweenGroup.h"
 
-
-@interface BasicTweenVC ()
+@interface DynamicTweenVC ()
 
 @property (nonatomic, assign) BOOL createdUI;
 @property (nonatomic, strong) UIView *tweenView;
-@property (nonatomic, strong) PMTweenUnit *tween;
+@property (nonatomic, strong) PMTweenPhysicsUnit *tweenx;
+@property (nonatomic, strong) PMTweenPhysicsUnit *tweeny;
+@property (nonatomic, strong) PMTweenGroup *group;
+@property (nonatomic, strong) UITapGestureRecognizer *tapRecognizer;
 
 - (void)setupUI;
 - (void)setupEasing;
@@ -23,10 +25,11 @@
 - (void)stopTouchedHandler:(id)sender;
 - (void)pauseTouchedHandler:(id)sender;
 - (void)resumeTouchedHandler:(id)sender;
+- (void)viewTappedHandler:(UIGestureRecognizer *)gesture;
 
 @end
 
-@implementation BasicTweenVC
+@implementation DynamicTweenVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,13 +43,17 @@
     
     if (!self.createdUI) {
         [self setupUI];
+        
+        self.tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTappedHandler:)];
+        [self.view addGestureRecognizer:self.tapRecognizer];
     }
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [self.tween stopTween];
+    [self.group stopTween];
 }
 
 - (void)viewDidLayoutSubviews {
@@ -57,7 +64,7 @@
             content_top = self.topLayoutGuide.length;
         }
         self.tweenView.frame = CGRectMake(20, content_top+20, 50, 50);
-
+        
         [self setupEasing];
         
         self.createdUI = YES;
@@ -65,6 +72,15 @@
 }
 
 - (void)setupUI {
+    
+    UILabel *instruct = [[UILabel alloc] initWithFrame:CGRectMake(80, 80, 200, 40)];
+    instruct.font = [UIFont systemFontOfSize:12];
+    instruct.textColor = [UIColor blackColor];
+    instruct.backgroundColor = [UIColor whiteColor];
+    instruct.userInteractionEnabled = NO;
+    instruct.numberOfLines = 2;
+    [instruct setText:@"Tap on background to redirect the tween's path."];
+    [self.view addSubview:instruct];
     
     self.tweenView = [[UIView alloc] initWithFrame:CGRectMake(20, 20, 50, 50)];
     self.tweenView.backgroundColor = [UIColor redColor];
@@ -108,26 +124,53 @@
 
 
 - (void)setupEasing {
-    PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
     
-    self.tween = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x endingValue:200 duration:1.2 options:PMTweenOptionNone easingBlock:easing];
+    self.tweenx = [[PMTweenPhysicsUnit alloc] initWithObject:self.tweenView propertyKeyPath:@"center.x" startingValue:self.tweenView.center.x velocity:4 friction:0.5 options:PMTweenOptionNone];
+    self.tweeny = [[PMTweenPhysicsUnit alloc] initWithObject:self.tweenView propertyKeyPath:@"center.y" startingValue:self.tweenView.center.y velocity:4 friction:0.5 options:PMTweenOptionNone];
+    
+    self.group = [[PMTweenGroup alloc] initWithTweens:@[self.tweenx, self.tweeny] options:PMTweenOptionNone];
+    self.group.completeBlock = ^void(NSObject<PMTweening> *tween) {
+        NSLog(@"tween complete!");
+    };
+}
+
+
+- (void)viewTappedHandler:(UIGestureRecognizer *)gesture {
+    
+    if (gesture.state != UIGestureRecognizerStateEnded) {
+        return;
+    }
+    
+    CGPoint point = [gesture locationInView:self.view];
+    CGFloat slope_x = (point.x - self.tweenView.center.x) / self.view.frame.size.width;
+    CGFloat slope_y = (point.y - self.tweenView.center.y) / self.view.frame.size.height;
+    
+    [self.group stopTween];
+
+    self.tweenx.startingValue = self.tweenView.center.x;
+    self.tweeny.startingValue = self.tweenView.center.y;
+    self.tweenx.velocity = 8 * slope_x;
+    self.tweeny.velocity = 8 * slope_y;
+    
+    [self.group startTween];
+    
 }
 
 
 - (void)startTouchedHandler:(id)sender {
-    [self.tween startTween];
+    [self.group startTween];
 }
 
 - (void)stopTouchedHandler:(id)sender {
-    [self.tween stopTween];
+    [self.group stopTween];
 }
 
 - (void)pauseTouchedHandler:(id)sender {
-    [self.tween pauseTween];
+    [self.group pauseTween];
 }
 
 - (void)resumeTouchedHandler:(id)sender {
-    [self.tween resumeTween];
+    [self.group resumeTween];
 }
 
 @end

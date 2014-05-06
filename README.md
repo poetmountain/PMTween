@@ -1,16 +1,15 @@
 PMTween is an elegant and flexible tweening library for iOS. It offers sensible default functionality that abstracts most of the hard work away, allowing you to focus on your animations and other tween tasks. But PMTween also makes it easy to dive in and modify for your own needs, whether that be custom tweening classes, supporting custom object types, or new easing equations.
 
-## Features
-
-* Powerful – PMTween makes both simple and complex tweening tasks easy and elegant.
-* Flexible – Tweens can be grouped, sequenced, and nested in most any configuration you might need.
-* Extensible - PMTween was built to easily support custom value types, easing equations, and functionality.
-* PMTween supports notifications and blocks for many kinds of status events.
-
 
 ## Overview
 
-PMTweenUnit is the base-level tweening class, PMTweenGroup groups multiple tweens together, and PMTweenSequence plays tweens in sequence. Because all of these classes adopt the PMTweening protocol, you can add any of these classes into a PMTweenGroup or PMTweenSequence. They can be nested as many levels deep as you'd like, and PMTweenGroup and PMTweenSequence respect the tweening properties of their children. This also makes it easy to add your own custom tweening classes. Just conform to the PMTweening protocol and your custom class will work with any of the default PMTween tweening classes. However, PMTweenUnit offers such modularity that in most cases you can just replace the parts you need with your own implementation.
+* PMTween makes both simple and complex tweening tasks easy to create.
+* Tweens can be grouped, sequenced, and nested in most any configuration you might need.
+* Includes both static and physics-based tween classes.
+* PMTween was built to easily support custom value types, easing equations, and functionality.
+* Provides notifications and blocks for many kinds of status events.
+
+All of the base tweening classes in PMTween adopt the PMTweening protocol, and you can add any of these classes to a PMTweenGroup or PMTweenSequence instance. They can be nested as many levels deep as you'd like, and PMTweenGroup and PMTweenSequence respect the tweening properties of their children. If you want to use your own custom tween classes, simply adopt the protocol. However, PMTweenUnit offers such modularity that in most cases you can just replace the parts you need with your own implementation.
 
 **In other words, this code:**
 
@@ -35,14 +34,26 @@ sequence.reversingMode = PMTweenSequenceReversingContiguous;
 ![sequence](http://poetmountain.github.io/PMTween/screenshots/sequence.gif)
 
 
+### New in 1.1.0
+
+New in the 1.1.0 release is PMTweenPhysicsUnit, which provides dynamic, physics-based tweening. (Thanks to [Pop](https://github.com/facebook/pop) lib for the inspiration!) Since it adopts the PMTweening protocol, you can combine it with the other PMTween classes as you see fit.
+
+For more information, see the included [examples](https://github.com/poetmountain/PMTween/tree/master/Examples) of PMTween usage, and peruse the [documentation](https://poetmountain.github.io/PMTween/).
+
+
 ## Getting Started
 
-### Installation with CocoaPods
+### Installation
+
+If you use CocoaPods:
 
 #### Podfile
 ```ruby
-pod "PMTween", "~> 1.0.0"
+pod "PMTween", "~> 1.1.0"
 ```
+
+Or add the Classes directory to your project.
+
 
 ### Examples
 
@@ -70,7 +81,7 @@ tween.numberOfRepeats = 2;
 
 #### Tweening an object's property
 
-A more common need is to tween an object property, such as the x position of a UIView. Let's see how that looks. Notice that this method requires a key path. This is the object hierarchy from the object down to the property you want to tween. Even though the 'x' value can't be set directly on a frame's origin, PMTween is smart enough to handle this updating for you. PMTween handles most common UIKit properties; see the docs or the code for exactly what it supports, and let me know what it's missing.
+A more common need is to tween an object property, such as the x position of a UIView. Check the example below. Notice that this method requires a key path. This is the object hierarchy from the object down to the property you want to tween. Even though the 'x' value can't be set directly on a frame's origin, PMTween is smart enough to handle this updating for you. PMTween handles most common UIKit properties; see the docs or the code for exactly what it supports, and let me know what it's missing.
 
 Notice also that we've defined an easingBlock this time. You can also assign a different easing block to use when reversing a tween by setting a PMTweenUnit's reverseEasingBlock property. PMTween includes all the standard Robert Penner easing types, but you can also easily use your own easing classes. Maybe you want to modify the easing by applying a Perlin noise filter or shifting the value with gyroscope data. Who knows? I don't. That's why PMTween makes it easy for you to do your own thing.
 
@@ -84,7 +95,7 @@ PMTweenUnit *tween = [[PMTweenUnit alloc] initWithObject:self.tweenView  propert
 
 PMTweenGroup manages multiple class instances. It's handy for controlling and synchronizing multiple tween objects. You can of course have groups within other groups.
 
-Notice in this example that a tempo object is being set on the PMTweenGroup. It provides a tempo, or in other words a rate at which the tween should update its easing calculations. This is not necessary to set unless you want to use your own custom tempo object – all PMTween tweening classes create their own tempo objects internally by default. But if you do want to use your own tempo, keep in mind that a group collection will set all child tween object tempos to nil to avoid having hundreds of CADisplayLink timers running. So if you've got a lot of tween objects, put them in a group (or assign them to a PMTweenBeat!), and set your custom tempo on the top-most tween collection object.
+Notice in this example that a tempo object is being set on the PMTweenGroup. It provides a tempo, or in other words a rate at which the tween should update its easing calculations. This is not necessary to set unless you want to use your own custom tempo object – all PMTween tweening classes by default create their own tempo objects internally.
 
 ```objc
 PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
@@ -111,16 +122,18 @@ PMTweenSequence *sequence = [[PMTweenSequence alloc] initWithSequenceSteps:@[twe
 [sequence startTween];
 ```
 
-For more information, see the included [examples](https://github.com/poetmountain/PMTween/tree/master/Examples) of PMTween usage, and peruse the [documentation](https://poetmountain.github.io/PMTween/).
 
-
-### Class reference
+## Class reference
 
 <table>
   <tr><th colspan="2" style="text-align:center;">Tween Classes</th></tr>
   <tr>
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenUnit.html">PMTweenUnit</a></td>
     <td>PMTweenUnit handles a single tween operation on an NSValue, interpolating between specified starting and ending values.</td>
+  </tr>
+  <tr>
+    <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenPhysicsUnit.html">PMTweenPhysicsUnit</a></td>
+    <td>PMTweenUnit handles a single tween operation on an NSValue, using a physics system to update a value with decaying velocity.</td>
   </tr>
   <tr>
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenGroup.html">PMTweenGroup</a></td>
@@ -130,16 +143,8 @@ For more information, see the included [examples](https://github.com/poetmountai
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenSequence.html">PMTweenSequence</a></td>
     <td>PMTweenSequence allows objects which conform to the PMTweening protocol to be chained together in a sequential series of tween steps.</td>
   </tr>
-  <tr>
-    <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenObjectUpdater.html">PMTweenObjectUpdater</a></td>
-    <td>PMTweenObjectUpdater is used internally by PMTweenUnit to update elements of data structures and objects while tweening. You can implement your own handling of object updating by setting a PMTweenUnit's structValueUpdater property with a class conforming to the PMTweenObjectUpdating protocol.</td>
-  </tr>
   
   <tr><th colspan="2" style="text-align:center;">Tempo Classes</th></tr>
-  <tr>
-    <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenTempo.html">PMTweenTempo</a></td>
-    <td>PMTweenTempo is an abstract class that provides a basic structure for sending a tempo by which to update tween interpolations.</td>
-  </tr>
   <tr>
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenCATempo.html">PMTweenCATempo</a></td>
     <td>PMTweenCATempo is a concrete subclass of PMTweenTempo, and uses a CADisplayLink object to send out tempo updates that are synchronized with the refresh rate of the display.</td>

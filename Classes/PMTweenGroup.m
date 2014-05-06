@@ -345,14 +345,16 @@
 }
 
 - (void)tweenHalfCompleteNotification:(NSNotification *)notification {
-    
-    if (++_tweenReverseCount >= [_tweens count] && self.syncTweensWhenReversing) {
-        [self reverseTweenDirection];
-        
-    } else if (self.syncTweensWhenReversing) {
-        // pause this tween until all of the group's tweens are ready to reverse
-        NSObject<PMTweening> *tween = notification.object;
-        [tween pauseTween];
+
+    if (self.reversing) {
+        if (++_tweenReverseCount >= [_tweens count] && self.syncTweensWhenReversing) {
+            [self reverseTweenDirection];
+            
+        } else if (self.syncTweensWhenReversing) {
+            // pause this tween until all of the group's tweens are ready to reverse
+            NSObject<PMTweening> *tween = notification.object;
+            [tween pauseTween];
+        }
     }
     
 }
@@ -451,7 +453,7 @@
 }
 
 - (void)stopTween {
-    if (_tweenState == PMTweenStateTweening || _tweenState == PMTweenStatePaused) {
+    if (_tweenState == PMTweenStateTweening || _tweenState == PMTweenStatePaused || _tweenState == PMTweenStateDelayed) {
         self.tweenState = PMTweenStateStopped;
         
         for (NSObject<PMTweening> *tween in _tweens) {

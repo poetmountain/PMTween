@@ -41,6 +41,11 @@
  */
 @interface PMTweenObjectUpdater : NSObject <PMTweenObjectUpdating>
 
+/**
+ *  Convenience method that returns a new instance of this class.
+ *
+ *  @return A new instance of this class.
+ */
 + (instancetype)updater;
 
 @end

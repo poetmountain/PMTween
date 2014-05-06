@@ -37,6 +37,9 @@
 		8BEFDF3518FBCACB004ACD85 /* PMTweenEasingQuartic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEFDF2A18FBCACB004ACD85 /* PMTweenEasingQuartic.m */; };
 		8BEFDF3618FBCACB004ACD85 /* PMTweenEasingQuintic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEFDF2C18FBCACB004ACD85 /* PMTweenEasingQuintic.m */; };
 		8BEFDF3718FBCACB004ACD85 /* PMTweenEasingSine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BEFDF2E18FBCACB004ACD85 /* PMTweenEasingSine.m */; };
+		8BF8F7931916FB860028261E /* PMTweenPhysicsUnitSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F7921916FB860028261E /* PMTweenPhysicsUnitSpec.m */; };
+		8BF8F7981916FBB50028261E /* PMTweenPhysicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F7951916FBB50028261E /* PMTweenPhysicsSystem.m */; };
+		8BF8F7991916FBB50028261E /* PMTweenPhysicsUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F7971916FBB50028261E /* PMTweenPhysicsUnit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +97,11 @@
 		8BEFDF2C18FBCACB004ACD85 /* PMTweenEasingQuintic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenEasingQuintic.m; path = ../../Classes/EasingTypes/PMTweenEasingQuintic.m; sourceTree = "<group>"; };
 		8BEFDF2D18FBCACB004ACD85 /* PMTweenEasingSine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenEasingSine.h; path = ../../Classes/EasingTypes/PMTweenEasingSine.h; sourceTree = "<group>"; };
 		8BEFDF2E18FBCACB004ACD85 /* PMTweenEasingSine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenEasingSine.m; path = ../../Classes/EasingTypes/PMTweenEasingSine.m; sourceTree = "<group>"; };
+		8BF8F7921916FB860028261E /* PMTweenPhysicsUnitSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsUnitSpec.m; path = PMTweenTests/Specs/PMTweenPhysicsUnitSpec.m; sourceTree = "<group>"; };
+		8BF8F7941916FBB50028261E /* PMTweenPhysicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenPhysicsSystem.h; path = ../../Classes/PMTweenPhysicsSystem.h; sourceTree = "<group>"; };
+		8BF8F7951916FBB50028261E /* PMTweenPhysicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsSystem.m; path = ../../Classes/PMTweenPhysicsSystem.m; sourceTree = "<group>"; };
+		8BF8F7961916FBB50028261E /* PMTweenPhysicsUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenPhysicsUnit.h; path = ../../Classes/PMTweenPhysicsUnit.h; sourceTree = "<group>"; };
+		8BF8F7971916FBB50028261E /* PMTweenPhysicsUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsUnit.m; path = ../../Classes/PMTweenPhysicsUnit.m; sourceTree = "<group>"; };
 		FAD88554FF8E4015A15B4FA4 /* libPods-PMTweenTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PMTweenTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -179,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				8BCE196318EE3FCA0062B01A /* PMTweenUnitSpec.m */,
+				8BF8F7921916FB860028261E /* PMTweenPhysicsUnitSpec.m */,
 				8BEBBF6318F5155E008D54F2 /* PMTweenBeatSpec.m */,
 				8B9E609518F52A07002B553F /* PMTweenGroupSpec.m */,
 				8BEFDEFB18F8F2EB004ACD85 /* PMTweenSequenceSpec.m */,
@@ -199,6 +208,10 @@
 				8B9E609818F52AE8002B553F /* PMTweenGroup.m */,
 				8BCB5EFB190A580A006D50EF /* PMTweenObjectUpdater.h */,
 				8BCB5EFC190A580A006D50EF /* PMTweenObjectUpdater.m */,
+				8BF8F7941916FBB50028261E /* PMTweenPhysicsSystem.h */,
+				8BF8F7951916FBB50028261E /* PMTweenPhysicsSystem.m */,
+				8BF8F7961916FBB50028261E /* PMTweenPhysicsUnit.h */,
+				8BF8F7971916FBB50028261E /* PMTweenPhysicsUnit.m */,
 				8BEFDEFD18F8F2FA004ACD85 /* PMTweenSequence.h */,
 				8BEFDEFE18F8F2FA004ACD85 /* PMTweenSequence.m */,
 				8BCE197118EE421E0062B01A /* PMTweenUnit.h */,
@@ -340,7 +353,9 @@
 				8BEFDF3318FBCACB004ACD85 /* PMTweenEasingElastic.m in Sources */,
 				8B8901DF18FE17C4000507D9 /* PMTweenCATempo.m in Sources */,
 				8BCB5EFD190A580A006D50EF /* PMTweenObjectUpdater.m in Sources */,
+				8BF8F7991916FBB50028261E /* PMTweenPhysicsUnit.m in Sources */,
 				8BCE196418EE3FCA0062B01A /* PMTweenUnitSpec.m in Sources */,
+				8BF8F7931916FB860028261E /* PMTweenPhysicsUnitSpec.m in Sources */,
 				8BEFDF3018FBCACB004ACD85 /* PMTweenEasingBounce.m in Sources */,
 				8BEFDF3418FBCACB004ACD85 /* PMTweenEasingExpo.m in Sources */,
 				8BCB5EFF190AE89A006D50EF /* PMTweenObjectUpdaterSpec.m in Sources */,
@@ -358,6 +373,7 @@
 				8B9E609918F52AE8002B553F /* PMTweenGroup.m in Sources */,
 				8BCE197C18EE42360062B01A /* PMTweenEasingLinear.m in Sources */,
 				8BC570AD18F77B8D0002B7AF /* PMTween.m in Sources */,
+				8BF8F7981916FBB50028261E /* PMTweenPhysicsSystem.m in Sources */,
 				8BEFDF2F18FBCACB004ACD85 /* PMTweenEasingBack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

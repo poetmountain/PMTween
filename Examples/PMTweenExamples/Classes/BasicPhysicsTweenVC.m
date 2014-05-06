@@ -1,21 +1,19 @@
 //
-//  BasicTweenVC.m
+//  BasicPhysicsTweenVC.m
 //  PMTweenExamples
 //
-//  Created by Brett Walker on 4/22/14.
+//  Created by Brett Walker on 5/5/14.
 //  Copyright (c) 2014 Poet & Mountain, LLC. All rights reserved.
 //
 
-#import "BasicTweenVC.h"
-#import "PMTweenEasingCubic.h"
-#import "PMTweenUnit.h"
+#import "BasicPhysicsTweenVC.h"
+#import "PMTweenPhysicsUnit.h"
 
-
-@interface BasicTweenVC ()
+@interface BasicPhysicsTweenVC ()
 
 @property (nonatomic, assign) BOOL createdUI;
 @property (nonatomic, strong) UIView *tweenView;
-@property (nonatomic, strong) PMTweenUnit *tween;
+@property (nonatomic, strong) PMTweenPhysicsUnit *tween;
 
 - (void)setupUI;
 - (void)setupEasing;
@@ -26,7 +24,7 @@
 
 @end
 
-@implementation BasicTweenVC
+@implementation BasicPhysicsTweenVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,7 +55,7 @@
             content_top = self.topLayoutGuide.length;
         }
         self.tweenView.frame = CGRectMake(20, content_top+20, 50, 50);
-
+        
         [self setupEasing];
         
         self.createdUI = YES;
@@ -108,9 +106,8 @@
 
 
 - (void)setupEasing {
-    PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
     
-    self.tween = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x endingValue:200 duration:1.2 options:PMTweenOptionNone easingBlock:easing];
+    self.tween = [[PMTweenPhysicsUnit alloc] initWithObject:self.tweenView propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x velocity:4 friction:0.4 options:PMTweenOptionNone];
 }
 
 
