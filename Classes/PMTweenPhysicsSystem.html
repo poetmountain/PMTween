@@ -1,0 +1,844 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>PMTweenPhysicsSystem Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">PMTween </a></h1>
+				<a id="developerHome" href="../index.html">Poet &amp; Mountain, LLC</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">PMTweenPhysicsSystem Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/system">&nbsp;&nbsp;&nbsp;&nbsp;+ system</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/friction">&nbsp;&nbsp;&nbsp;&nbsp;- friction</option>
+	
+	<option value="//api/name/initWithVelocity:friction:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithVelocity:friction:</option>
+	
+	<option value="//api/name/pauseSystem">&nbsp;&nbsp;&nbsp;&nbsp;- pauseSystem</option>
+	
+	<option value="//api/name/resetSystem">&nbsp;&nbsp;&nbsp;&nbsp;- resetSystem</option>
+	
+	<option value="//api/name/resumeSystem">&nbsp;&nbsp;&nbsp;&nbsp;- resumeSystem</option>
+	
+	<option value="//api/name/reverseDirection">&nbsp;&nbsp;&nbsp;&nbsp;- reverseDirection</option>
+	
+	<option value="//api/name/setFriction:">&nbsp;&nbsp;&nbsp;&nbsp;- setFriction:</option>
+	
+	<option value="//api/name/setVelocity:">&nbsp;&nbsp;&nbsp;&nbsp;- setVelocity:</option>
+	
+	<option value="//api/name/solveForPosition:currentTime:">&nbsp;&nbsp;&nbsp;&nbsp;- solveForPosition:currentTime:</option>
+	
+	<option value="//api/name/velocity">&nbsp;&nbsp;&nbsp;&nbsp;- velocity</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/system">system</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/friction">friction</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithVelocity:friction:">initWithVelocity:friction:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pauseSystem">pauseSystem</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resetSystem">resetSystem</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resumeSystem">resumeSystem</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reverseDirection">reverseDirection</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setFriction:">setFriction:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setVelocity:">setVelocity:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/solveForPosition:currentTime:">solveForPosition:currentTime:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/velocity">velocity</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="PMTweenPhysicsSystem Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">PMTweenPhysicsSystem Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/PMTweenPhysicsSolving.html">PMTweenPhysicsSolving</a></td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">PMTweenPhysicsSystem.h<br />PMTweenPhysicsSystem.m</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>PMTweenPhysicsSystem is the default class used by <a href="../Classes/PMTweenPhysicsUnit.html"><code>PMTweenPhysicsUnit</code></a> to update values.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/system">+&nbsp;system</a></code>
+		<span class="tooltip"><p>Convenience method that returns a new instance of this class.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithVelocity:friction:">&ndash;&nbsp;initWithVelocity:friction:</a></code>
+		<span class="tooltip"><p>Initializes a new PMTweenPhysicsSystem object, setting up the physics <a href="#//api/name/system">system</a> with initial values for <a href="#//api/name/velocity">velocity</a> and <a href="#//api/name/friction">friction</a>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						
+						<h3 class="subsubtitle task-title">Other Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/solveForPosition:currentTime:">&ndash;&nbsp;solveForPosition:currentTime:</a></code>
+		<span class="tooltip"><p>This method updates a 1D position using physics calculations.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reverseDirection">&ndash;&nbsp;reverseDirection</a></code>
+		<span class="tooltip"><p>This method should reverse the direction of the <a href="../Protocols/PMTweenPhysicsSolving.html#//api/name/velocity">velocity</a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resetSystem">&ndash;&nbsp;resetSystem</a></code>
+		<span class="tooltip"><p>This method should reset the physics system to its initial <a href="../Protocols/PMTweenPhysicsSolving.html#//api/name/velocity">velocity</a> and clear the timestamp used to calculate the current step.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/pauseSystem">&ndash;&nbsp;pauseSystem</a></code>
+		<span class="tooltip"><p>This method should pause the physics system, preventing any new calculations.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resumeSystem">&ndash;&nbsp;resumeSystem</a></code>
+		<span class="tooltip"><p>This method should resume the physics system.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/velocity">&ndash;&nbsp;velocity</a></code>
+		<span class="tooltip"><p>The velocity value to use in physics calculations.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setVelocity:">&ndash;&nbsp;setVelocity:</a></code>
+		<span class="tooltip"><p>The velocity value to use in physics calculations.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/friction">&ndash;&nbsp;friction</a></code>
+		<span class="tooltip"><p>The friction value to be applied in physics calculations.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setFriction:">&ndash;&nbsp;setFriction:</a></code>
+		<span class="tooltip"><p>The friction value to be applied in physics calculations.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/system" title="system"></a>
+	<h3 class="subsubtitle method-title">system</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Convenience method that returns a new instance of this class.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>+ (instancetype)system</code></div>
+
+    
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new instance of this class.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/friction" title="friction"></a>
+	<h3 class="subsubtitle method-title">friction</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The friction value to be applied in physics calculations.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (double)friction</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithVelocity:friction:" title="initWithVelocity:friction:"></a>
+	<h3 class="subsubtitle method-title">initWithVelocity:friction:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializes a new PMTweenPhysicsSystem object, setting up the physics <a href="#//api/name/system">system</a> with initial values for <a href="#//api/name/velocity">velocity</a> and <a href="#//api/name/friction">friction</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithVelocity:(double)<em>velocity</em> friction:(double)<em>friction</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>velocity</em></dt>
+			<dd><p>The initial <a href="#//api/name/velocity">velocity</a> to use.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>friction</em></dt>
+			<dd><p>The <a href="#//api/name/friction">friction</a> coefficient to use.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new instance of this class.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/pauseSystem" title="pauseSystem"></a>
+	<h3 class="subsubtitle method-title">pauseSystem</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method should pause the physics system, preventing any new calculations.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)pauseSystem</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resetSystem" title="resetSystem"></a>
+	<h3 class="subsubtitle method-title">resetSystem</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method should reset the physics system to its initial <a href="../Protocols/PMTweenPhysicsSolving.html#//api/name/velocity">velocity</a> and clear the timestamp used to calculate the current step.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)resetSystem</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resumeSystem" title="resumeSystem"></a>
+	<h3 class="subsubtitle method-title">resumeSystem</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method should resume the physics system.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)resumeSystem</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reverseDirection" title="reverseDirection"></a>
+	<h3 class="subsubtitle method-title">reverseDirection</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method should reverse the direction of the <a href="../Protocols/PMTweenPhysicsSolving.html#//api/name/velocity">velocity</a>.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)reverseDirection</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setFriction:" title="setFriction:"></a>
+	<h3 class="subsubtitle method-title">setFriction:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The friction value to be applied in physics calculations.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setFriction:(double)<em>friction</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setVelocity:" title="setVelocity:"></a>
+	<h3 class="subsubtitle method-title">setVelocity:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The velocity value to use in physics calculations.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (void)setVelocity:(double)<em>velocity</em></code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/solveForPosition:currentTime:" title="solveForPosition:currentTime:"></a>
+	<h3 class="subsubtitle method-title">solveForPosition:currentTime:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This method updates a 1D position using physics calculations.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (double)solveForPosition:(double)<em>position</em> currentTime:(NSTimeInterval)<em>elapsedTime</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>position</em></dt>
+			<dd><p>The current position of the physics object being modeled.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>currentTime</em></dt>
+			<dd><p>The current timestamp.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>An updated position.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/velocity" title="velocity"></a>
+	<h3 class="subsubtitle method-title">velocity</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The velocity value to use in physics calculations.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (double)velocity</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsSystem.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2014 Poet &amp; Mountain, LLC. All rights reserved. (Last updated: 2014-05-06)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

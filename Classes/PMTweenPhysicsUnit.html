@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>PMTweenSequence Class Reference</title>
+		<title>PMTweenPhysicsUnit Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">PMTweenSequence Class Reference</h1>
+				<h1 class="hideInXcode">PMTweenPhysicsUnit Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -42,13 +42,21 @@
 	
 	<option value="//api/name/completeBlock">&nbsp;&nbsp;&nbsp;&nbsp;completeBlock</option>
 	
+	<option value="//api/name/currentValue">&nbsp;&nbsp;&nbsp;&nbsp;currentValue</option>
+	
+	<option value="//api/name/cycleProgress">&nbsp;&nbsp;&nbsp;&nbsp;cycleProgress</option>
+	
 	<option value="//api/name/cyclesCompletedCount">&nbsp;&nbsp;&nbsp;&nbsp;cyclesCompletedCount</option>
 	
 	<option value="//api/name/delay">&nbsp;&nbsp;&nbsp;&nbsp;delay</option>
 	
+	<option value="//api/name/friction">&nbsp;&nbsp;&nbsp;&nbsp;friction</option>
+	
 	<option value="//api/name/numberOfRepeats">&nbsp;&nbsp;&nbsp;&nbsp;numberOfRepeats</option>
 	
 	<option value="//api/name/pauseBlock">&nbsp;&nbsp;&nbsp;&nbsp;pauseBlock</option>
+	
+	<option value="//api/name/physicsSystem">&nbsp;&nbsp;&nbsp;&nbsp;physicsSystem</option>
 	
 	<option value="//api/name/repeatCycleBlock">&nbsp;&nbsp;&nbsp;&nbsp;repeatCycleBlock</option>
 	
@@ -58,21 +66,29 @@
 	
 	<option value="//api/name/reverseBlock">&nbsp;&nbsp;&nbsp;&nbsp;reverseBlock</option>
 	
-	<option value="//api/name/reversingMode">&nbsp;&nbsp;&nbsp;&nbsp;reversingMode</option>
-	
-	<option value="//api/name/sequenceSteps">&nbsp;&nbsp;&nbsp;&nbsp;sequenceSteps</option>
-	
 	<option value="//api/name/startBlock">&nbsp;&nbsp;&nbsp;&nbsp;startBlock</option>
 	
-	<option value="//api/name/stepBlock">&nbsp;&nbsp;&nbsp;&nbsp;stepBlock</option>
+	<option value="//api/name/startingValue">&nbsp;&nbsp;&nbsp;&nbsp;startingValue</option>
 	
 	<option value="//api/name/stopBlock">&nbsp;&nbsp;&nbsp;&nbsp;stopBlock</option>
 	
+	<option value="//api/name/structValueUpdater">&nbsp;&nbsp;&nbsp;&nbsp;structValueUpdater</option>
+	
+	<option value="//api/name/targetObject">&nbsp;&nbsp;&nbsp;&nbsp;targetObject</option>
+	
+	<option value="//api/name/targetProperty">&nbsp;&nbsp;&nbsp;&nbsp;targetProperty</option>
+	
 	<option value="//api/name/tweenDirection">&nbsp;&nbsp;&nbsp;&nbsp;tweenDirection</option>
+	
+	<option value="//api/name/tweenProgress">&nbsp;&nbsp;&nbsp;&nbsp;tweenProgress</option>
 	
 	<option value="//api/name/tweenState">&nbsp;&nbsp;&nbsp;&nbsp;tweenState</option>
 	
 	<option value="//api/name/updateBlock">&nbsp;&nbsp;&nbsp;&nbsp;updateBlock</option>
+	
+	<option value="//api/name/velocity">&nbsp;&nbsp;&nbsp;&nbsp;velocity</option>
+	
+	<option value="//api/name/velocityDecayLimit">&nbsp;&nbsp;&nbsp;&nbsp;velocityDecayLimit</option>
 	
 	
 	
@@ -81,17 +97,13 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/addSequenceStep:useTweenTempo:">&nbsp;&nbsp;&nbsp;&nbsp;- addSequenceStep:useTweenTempo:</option>
+	<option value="//api/name/initWithObject:propertyKeyPath:startingValue:velocity:friction:options:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithObject:propertyKeyPath:startingValue:velocity:friction:options:</option>
 	
-	<option value="//api/name/currentSequenceStep">&nbsp;&nbsp;&nbsp;&nbsp;- currentSequenceStep</option>
-	
-	<option value="//api/name/initWithSequenceSteps:options:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithSequenceSteps:options:</option>
+	<option value="//api/name/initWithProperty:startingValue:velocity:friction:options:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithProperty:startingValue:velocity:friction:options:</option>
 	
 	<option value="//api/name/isReversing">&nbsp;&nbsp;&nbsp;&nbsp;- isReversing</option>
 	
 	<option value="//api/name/pauseTween">&nbsp;&nbsp;&nbsp;&nbsp;- pauseTween</option>
-	
-	<option value="//api/name/removeSequenceStep:">&nbsp;&nbsp;&nbsp;&nbsp;- removeSequenceStep:</option>
 	
 	<option value="//api/name/resumeTween">&nbsp;&nbsp;&nbsp;&nbsp;- resumeTween</option>
 	
@@ -127,7 +139,7 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creating an Instance">Creating an Instance</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Setting Up a Sequence">Setting Up a Sequence</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Setting Up a Tween">Setting Up a Tween</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Tween State">Tween State</a></span></li>
 	
@@ -145,13 +157,21 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/completeBlock">completeBlock</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentValue">currentValue</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cycleProgress">cycleProgress</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cyclesCompletedCount">cyclesCompletedCount</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delay">delay</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/friction">friction</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/numberOfRepeats">numberOfRepeats</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pauseBlock">pauseBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/physicsSystem">physicsSystem</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/repeatCycleBlock">repeatCycleBlock</a></span></li>
 	
@@ -161,21 +181,29 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reverseBlock">reverseBlock</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reversingMode">reversingMode</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sequenceSteps">sequenceSteps</a></span></li>
-	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startBlock">startBlock</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stepBlock">stepBlock</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/startingValue">startingValue</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/stopBlock">stopBlock</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/structValueUpdater">structValueUpdater</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/targetObject">targetObject</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/targetProperty">targetProperty</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tweenDirection">tweenDirection</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tweenProgress">tweenProgress</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/tweenState">tweenState</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateBlock">updateBlock</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/velocity">velocity</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/velocityDecayLimit">velocityDecayLimit</a></span></li>
 	
 </ul></li>
 
@@ -185,17 +213,13 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addSequenceStep:useTweenTempo:">addSequenceStep:useTweenTempo:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithObject:propertyKeyPath:startingValue:velocity:friction:options:">initWithObject:propertyKeyPath:startingValue:velocity:friction:options:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentSequenceStep">currentSequenceStep</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSequenceSteps:options:">initWithSequenceSteps:options:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithProperty:startingValue:velocity:friction:options:">initWithProperty:startingValue:velocity:friction:options:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isReversing">isReversing</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/pauseTween">pauseTween</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeSequenceStep:">removeSequenceStep:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resumeTween">resumeTween</a></span></li>
 	
@@ -220,7 +244,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="PMTweenSequence Class Reference" name="top"></a>
+				<a title="PMTweenPhysicsUnit Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -229,7 +253,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">PMTweenSequence Class Reference</h1>
+						<h1 class="title title-header">PMTweenPhysicsUnit Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -243,7 +267,7 @@
 	<td class="specification-value"><a href="../Protocols/PMTweenTempoDelegate.html">PMTweenTempoDelegate</a><br /><a href="../Protocols/PMTweening.html">PMTweening</a></td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">PMTweenSequence.h<br />PMTweenSequence.m</td>
+	<td class="specification-value">PMTweenPhysicsUnit.h<br />PMTweenPhysicsUnit.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -253,7 +277,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>PMTweenSequence allows objects which conform to the <a href="../Protocols/PMTweening.html"><code>PMTweening</code></a> protocol to be chained together in a sequential series of tween steps.</p>
+						<p>PMTweenPhysicsUnit handles a single tween operation on an NSValue property, using a physics system to update a value with decaying <a href="#//api/name/velocity">velocity</a>.</p>
 					</div>
 					
 					
@@ -271,8 +295,15 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/initWithSequenceSteps:options:">&ndash;&nbsp;initWithSequenceSteps:options:</a></code>
-		<span class="tooltip"><p>Initializes a new PMTweenSequence object, and uses the provided array of tween objects as its sequence steps.</p></span>
+		<code><a href="#//api/name/initWithProperty:startingValue:velocity:friction:options:">&ndash;&nbsp;initWithProperty:startingValue:velocity:friction:options:</a></code>
+		<span class="tooltip"><p>Initializes a new PMTweenPhysicsUnit object, passing in a property and values for the tween operation.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithObject:propertyKeyPath:startingValue:velocity:friction:options:">&ndash;&nbsp;initWithObject:propertyKeyPath:startingValue:velocity:friction:options:</a></code>
+		<span class="tooltip"><p>Initalizes a new PMTweenPhysicsUnit object, passing in a target object, its property, and values for the tween operation.</p></span>
 	</span>
 	
 	
@@ -280,35 +311,14 @@
 						</ul>
 						
 						
-						<a title="Setting Up a Sequence" name="task_Setting Up a Sequence"></a>
-						<h3 class="subsubtitle task-title">Setting Up a Sequence</h3>
+						<a title="Setting Up a Tween" name="task_Setting Up a Tween"></a>
+						<h3 class="subsubtitle task-title">Setting Up a Tween</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/addSequenceStep:useTweenTempo:">&ndash;&nbsp;addSequenceStep:useTweenTempo:</a></code>
-		<span class="tooltip"><p>Adds a sequence step to the end of the sequence.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/removeSequenceStep:">&ndash;&nbsp;removeSequenceStep:</a></code>
-		<span class="tooltip"><p>Removes the specified object from the sequence.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/currentSequenceStep">&ndash;&nbsp;currentSequenceStep</a></code>
-		<span class="tooltip"><p>The sequence step which is currently tweening, or the first sequence step if this instance&rsquo;s <a href="#//api/name/tweenState"><code>tweenState</code></a> is <code>PMTweenStateStopped</code>.</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/delay">&nbsp;&nbsp;delay</a></code>
-		<span class="tooltip"><p>The delay, in seconds, before a sequence begins.</p></span>
+		<span class="tooltip"><p>The delay, in seconds, before a tween operation begins.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -322,14 +332,42 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/numberOfRepeats">&nbsp;&nbsp;numberOfRepeats</a></code>
-		<span class="tooltip"><p>The number of tween cycle operations to repeat.</p></span>
+		<span class="tooltip"><p>The number of tween cycle operations to repeat. The default value is 0.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/reversingMode">&nbsp;&nbsp;reversingMode</a></code>
-		<span class="tooltip"><p>The mode which defines a sequence&rsquo;s behavior when its <code>reversing</code> property is set to <code>YES</code>.</p></span>
+		<code><a href="#//api/name/structValueUpdater">&nbsp;&nbsp;structValueUpdater</a></code>
+		<span class="tooltip"><p>An object conforming to the <a href="../Protocols/PMTweenObjectUpdating.html"><code>PMTweenObjectUpdating</code></a> protocol which handles the updating of properties on objects and structs.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/physicsSystem">&nbsp;&nbsp;physicsSystem</a></code>
+		<span class="tooltip"><p>An object conforming to the <a href="../Protocols/PMTweenPhysicsSolving.html"><code>PMTweenPhysicsSolving</code></a> protocol which solves position calculation updates.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/velocity">&nbsp;&nbsp;velocity</a></code>
+		<span class="tooltip"><p>The current velocity used by the physics system to calculate tween values.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/friction">&nbsp;&nbsp;friction</a></code>
+		<span class="tooltip"><p>The current friction coefficient used by the physics system.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/velocityDecayLimit">&nbsp;&nbsp;velocityDecayLimit</a></code>
+		<span class="tooltip"><p>This float value is used to determine whether the object modeled by the physics system has come to rest due to deceleration.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -343,8 +381,15 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sequenceSteps">&nbsp;&nbsp;sequenceSteps</a></code>
-		<span class="tooltip"><p>An array comprising tween objects which are controlled by this PMTweenSequence object. (read-only)</p></span>
+		<code><a href="#//api/name/targetProperty">&nbsp;&nbsp;targetProperty</a></code>
+		<span class="tooltip"><p>The property to be tweened.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/targetObject">&nbsp;&nbsp;targetObject</a></code>
+		<span class="tooltip"><p>The target object whose property should be tweened, applicable if this instance was initiated with the initWithProperty:&hellip; method.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -364,8 +409,36 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/startingValue">&nbsp;&nbsp;startingValue</a></code>
+		<span class="tooltip"><p>The starting value of the tween operation.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/currentValue">&nbsp;&nbsp;currentValue</a></code>
+		<span class="tooltip"><p>The current value of the tween operation. (read-only)</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/tweenProgress">&nbsp;&nbsp;tweenProgress</a></code>
+		<span class="tooltip"><p>A float value between 0.0 and 1.0, which represents the current progress of a physics deceleration, calculated as the difference between the starting <a href="#//api/name/velocity">velocity</a> and the current <a href="#//api/name/velocity">velocity</a>. (read-only)</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cycleProgress">&nbsp;&nbsp;cycleProgress</a></code>
+		<span class="tooltip"><p>A float value between 0.0 and 1.0, which represents the current progress of a tween cycle. (read-only)</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/cyclesCompletedCount">&nbsp;&nbsp;cyclesCompletedCount</a></code>
-		<span class="tooltip"><p>The number of completed tween cycles. (read-only)</p></span>
+		<span class="tooltip"><p>The amount of completed tween cycles. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -401,7 +474,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/repeatCycleBlock">&nbsp;&nbsp;repeatCycleBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when a tween cycle has completed.</p></span>
+		<span class="tooltip"><p>This notification block is executed when a tween cycle has repeated.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -430,13 +503,6 @@
 	<span class="tooltip">
 		<code><a href="#//api/name/completeBlock">&nbsp;&nbsp;completeBlock</a></code>
 		<span class="tooltip"><p>This notification block is executed when a tween operation has completed (or when all tween cycles have completed, if <a href="#//api/name/repeating"><code>repeating</code></a> is set to <code>YES</code>).</p></span>
-	</span>
-	<span class="task-item-suffix">property</span>
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/stepBlock">&nbsp;&nbsp;stepBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when playback has advanced to the next sequence step.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -561,7 +627,98 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/currentValue" title="currentValue"></a>
+	<h3 class="subsubtitle method-title">currentValue</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current value of the tween operation. (read-only)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, assign) double currentValue</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@remarks Note that for non-numeric properties like structs this may affect multiple values, such as the x and y properties of CGPoint.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/startingValue">@property startingValue</a>, endingvalue</p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/cycleProgress" title="cycleProgress"></a>
+	<h3 class="subsubtitle method-title">cycleProgress</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A float value between 0.0 and 1.0, which represents the current progress of a tween cycle. (read-only)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, assign) CGFloat cycleProgress</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@remarks This progress could represent one tween or two, depending on whether <code>reversing</code> is set to <code>YES</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -574,7 +731,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The number of completed tween cycles. (read-only)</p>
+		<p>The amount of completed tween cycles. (read-only)</p>
 	</div>		
 	
     
@@ -591,27 +748,18 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>@remarks A cycle represents the total length of tweening operation.</p>
+		<p>@remarks A cycle represents the total length of tweening operation. If <code>reversing</code> is set to <code>YES</code>, a cycle comprises two separate tweens; otherwise a cycle is the length of one tween.</p>
 	</div>
 	
 	
 	
 	
-	
-	<div class="method-subsection see-also-section">
-		<h4 class="method-subtitle">See Also</h4>
-		<ul>
-			
-			<li><code><p><a href="#//api/name/repeating">@property repeating</a></p></code></li>
-			
-		</ul>
-	</div>
 	
 	
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -624,7 +772,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The delay, in seconds, before a sequence begins.</p>
+		<p>The delay, in seconds, before a tween operation begins.</p>
 	</div>		
 	
     
@@ -641,7 +789,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<div class="warning"><p><strong>Warning:</strong> Setting this parameter after a sequence has begun has no effect.</p></div>
+		<div class="warning"><p><strong>Warning:</strong> Setting this parameter after a tween operation has begun has no effect.</p></div>
 	</div>
 	
 	
@@ -652,7 +800,48 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/friction" title="friction"></a>
+	<h3 class="subsubtitle method-title">friction</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current friction coefficient used by the physics system.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) double friction</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@remarks The usable value range is between 0 and 1, with 1 representing very high friction and 0 representing almost no friction. Setting this property to 0.0 will actually set it a bit fractionally higher than 0 to avoid divide-by-zero errors during calculations.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -665,7 +854,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The number of tween cycle operations to repeat.</p>
+		<p>The number of tween cycle operations to repeat. The default value is 0.</p>
 	</div>		
 	
     
@@ -682,7 +871,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>@remarks This property is only used when the sequence&rsquo;s <a href="#//api/name/repeating"><code>repeating</code></a> property is set to <code>YES</code>. Negative values are clamped to 0. The default value is 0.</p>
+		<p>@remarks This property is only used when <a href="#//api/name/repeating"><code>repeating</code></a> is set to <code>YES</code>. The default value is 0.</p>
 	</div>
 	
 	
@@ -702,7 +891,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -747,7 +936,48 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/physicsSystem" title="physicsSystem"></a>
+	<h3 class="subsubtitle method-title">physicsSystem</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An object conforming to the <a href="../Protocols/PMTweenPhysicsSolving.html"><code>PMTweenPhysicsSolving</code></a> protocol which solves position calculation updates.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSObject&lt;PMTweenPhysicsSolving&gt; *physicsSystem</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@remarks By default, PMTweenPhysicsUnit will assign an instance of <a href="../Classes/PMTweenPhysicsSystem.html"><code>PMTweenPhysicsSystem</code></a> to this property, but you can override this with your own custom classes in order to supply a different physics model.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -760,7 +990,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>This notification block is executed when a tween cycle has completed.</p>
+		<p>This notification block is executed when a tween cycle has repeated.</p>
 	</div>		
 	
     
@@ -792,7 +1022,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -842,7 +1072,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -887,7 +1117,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -932,89 +1162,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/reversingMode" title="reversingMode"></a>
-	<h3 class="subsubtitle method-title">reversingMode</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The mode which defines a sequence&rsquo;s behavior when its <code>reversing</code> property is set to <code>YES</code>.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) PMTweenSequenceReversingMode reversingMode</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>@remarks The default value is <code>PMTweenSequenceReversingNoncontiguous</code>.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/sequenceSteps" title="sequenceSteps"></a>
-	<h3 class="subsubtitle method-title">sequenceSteps</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>An array comprising tween objects which are controlled by this PMTweenSequence object. (read-only)</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, strong) NSArray *sequenceSteps</code></div>
-
-    
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>@remarks The order of objects in this array represents the sequence order in which each will be tweened.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -1059,25 +1207,25 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/stepBlock" title="stepBlock"></a>
-	<h3 class="subsubtitle method-title">stepBlock</h3>
+	<a name="//api/name/startingValue" title="startingValue"></a>
+	<h3 class="subsubtitle method-title">startingValue</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>This notification block is executed when playback has advanced to the next sequence step.</p>
+		<p>The starting value of the tween operation.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>@property (nonatomic, copy) PMTweenDidStepBlock stepBlock</code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) double startingValue</code></div>
 
     
 	
@@ -1087,15 +1235,29 @@
 	
 	
 	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@remarks Note that for non-numeric properties like structs this may affect multiple values, such as the x and y properties of CGPoint.</p>
+	</div>
 	
 	
 	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/currentValue">@property currentValue</a>, endingvalue</p></code></li>
+			
+		</ul>
+	</div>
 	
 	
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -1140,7 +1302,120 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/structValueUpdater" title="structValueUpdater"></a>
+	<h3 class="subsubtitle method-title">structValueUpdater</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>An object conforming to the <a href="../Protocols/PMTweenObjectUpdating.html"><code>PMTweenObjectUpdating</code></a> protocol which handles the updating of properties on objects and structs.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, strong) NSObject&lt;PMTweenObjectUpdating&gt; *structValueUpdater</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@remarks By default, PMTweenPhysicsUnit will assign an instance of <a href="../Classes/PMTweenObjectUpdater.html"><code>PMTweenObjectUpdater</code></a> to this property, but you can override this with your own custom classes if, for instance, you need to tween a value in an object or struct which <a href="../Classes/PMTweenObjectUpdater.html"><code>PMTweenObjectUpdater</code></a> doesn&rsquo;t handle.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/targetObject" title="targetObject"></a>
+	<h3 class="subsubtitle method-title">targetObject</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The target object whose property should be tweened, applicable if this instance was initiated with the initWithProperty:&hellip; method.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, strong) NSObject *targetObject</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/targetProperty" title="targetProperty"></a>
+	<h3 class="subsubtitle method-title">targetProperty</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The property to be tweened.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, strong) NSObject *targetProperty</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -1176,7 +1451,43 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/tweenProgress" title="tweenProgress"></a>
+	<h3 class="subsubtitle method-title">tweenProgress</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>A float value between 0.0 and 1.0, which represents the current progress of a physics deceleration, calculated as the difference between the starting <a href="#//api/name/velocity">velocity</a> and the current <a href="#//api/name/velocity">velocity</a>. (read-only)</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, assign) CGFloat tweenProgress</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -1212,7 +1523,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -1248,7 +1559,89 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/velocity" title="velocity"></a>
+	<h3 class="subsubtitle method-title">velocity</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The current velocity used by the physics system to calculate tween values.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) double velocity</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@remarks If you wish to change the velocity after initially setting it via one of the init methods, use this setter. If you change the velocity directly on the <a href="#//api/name/physicsSystem"><code>physicsSystem</code></a> object, the <a href="#//api/name/tweenProgress"><code>tweenProgress</code></a> property won&rsquo;t be accurate.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/velocityDecayLimit" title="velocityDecayLimit"></a>
+	<h3 class="subsubtitle method-title">velocityDecayLimit</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>This float value is used to determine whether the object modeled by the physics system has come to rest due to deceleration.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign) CGFloat velocityDecayLimit</code></div>
+
+    
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>@remarks The way <a href="../Classes/PMTweenPhysicsSystem.html">PMTweenPhysicsSystem</a> applies <a href="#//api/name/friction">friction</a> means that as <a href="#//api/name/velocity">velocity</a> approaches 0, it will be assigned smaller and smaller fractional numbers, so we need a reasonable cutoff that approximates the <a href="#//api/name/velocity">velocity</a> coming to rest. The default value is the internal constant PMTWEEN_DECAY_LIMIT, which is fine for display properties, but you may prefer other values for your purposes.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -1265,18 +1658,18 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/addSequenceStep:useTweenTempo:" title="addSequenceStep:useTweenTempo:"></a>
-	<h3 class="subsubtitle method-title">addSequenceStep:useTweenTempo:</h3>
+	<a name="//api/name/initWithObject:propertyKeyPath:startingValue:velocity:friction:options:" title="initWithObject:propertyKeyPath:startingValue:velocity:friction:options:"></a>
+	<h3 class="subsubtitle method-title">initWithObject:propertyKeyPath:startingValue:velocity:friction:options:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Adds a sequence step to the end of the sequence.</p>
+		<p>Initalizes a new PMTweenPhysicsUnit object, passing in a target object, its property, and values for the tween operation.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>- (void)addSequenceStep:(NSObject&lt;PMTweening&gt; *)<em>sequenceStep</em> useTweenTempo:(BOOL)<em>useTweenTempo</em></code></div>
+	<div class="method-subsection method-declaration"><code>- (id)initWithObject:(NSObject *)<em>object</em> propertyKeyPath:(NSString *)<em>propertyKeyPath</em> startingValue:(double)<em>startingValue</em> velocity:(double)<em>velocity</em> friction:(double)<em>friction</em> options:(PMTweenOptions)<em>options</em></code></div>
 
     
 	
@@ -1284,110 +1677,33 @@
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>sequenceStep</em></dt>
-			<dd><p>An object which conforms to the <a href="../Protocols/PMTweening.html"><code>PMTweening</code></a> protocol.</p></dd>
+			<dt><em>object</em></dt>
+			<dd><p>An object whose property should be tweened.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>useTweenTempo</em></dt>
-			<dd><p>When <code>YES</code>, the tween object should use its own <a href="#//api/name/tempo">tempo</a> to update its tween progress, and thus the <code>updateWithTimeInterval:currentTime:</code> method will not be called on the object by the PMTweenSequence instance.</p></dd>
+			<dt><em>propertyKeyPath</em></dt>
+			<dd><p>A string keyPath that points to a NSValue property of the target object to be tweened. Supported properties include several NSValue-encoded structs such as NSNumber, CGPoint, CGSize, CGRect, CGAffineTransform, and CATransform3D.</p></dd>
 		</dl>
 		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<div class="warning"><p><strong>Warning:</strong> A NSInternalInconsistencyException will be raised if the provided object does not adopt the <a href="../Protocols/PMTweening.html"><code>PMTweening</code></a> protocol.</p></div>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/currentSequenceStep" title="currentSequenceStep"></a>
-	<h3 class="subsubtitle method-title">currentSequenceStep</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>The sequence step which is currently tweening, or the first sequence step if this instance&rsquo;s <a href="#//api/name/tweenState"><code>tweenState</code></a> is <code>PMTweenStateStopped</code>.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (NSObject&lt;PMTweening&gt; *)currentSequenceStep</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>The current tween object.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/initWithSequenceSteps:options:" title="initWithSequenceSteps:options:"></a>
-	<h3 class="subsubtitle method-title">initWithSequenceSteps:options:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Initializes a new PMTweenSequence object, and uses the provided array of tween objects as its sequence steps.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (id)initWithSequenceSteps:(NSArray *)<em>sequenceSteps</em> options:(PMTweenOptions)<em>options</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		<dl class="argument-def parameter-def">
+			<dt><em>startingValue</em></dt>
+			<dd><p>The property&rsquo;s starting value for the tween operation.</p></dd>
+		</dl>
 		
 		<dl class="argument-def parameter-def">
-			<dt><em>sequenceSteps</em></dt>
-			<dd><p>An array of objects which should conform to the <a href="../Protocols/PMTweening.html"><code>PMTweening</code></a> protocol.</p></dd>
+			<dt><em>velocity</em></dt>
+			<dd><p>The <a href="#//api/name/velocity">velocity</a> value to use in the physics calculations. Values from 0-10 are good for updating x/y positions.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>friction</em></dt>
+			<dd><p>The <a href="#//api/name/friction">friction</a> value between 0 and 1 to use in the physics calculations, with 1 representing very high <a href="#//api/name/friction">friction</a> and 0 representing almost no <a href="#//api/name/friction">friction</a>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>options</em></dt>
-			<dd><p>A bitmask of <code>PMTweenOptions</code> configuration values.</p></dd>
+			<dd><p>A bitmask of <code>PMTweenOptions</code> configuration values. Defaults to <code>PMTweenOptionNone</code>.</p></dd>
 		</dl>
 		
 	</div>
@@ -1398,17 +1714,94 @@
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
 		<p>A new instance of this class.</p>
 
-<p>@remarks The sequence in which the objects are tweened is defined by their order in the provided array.</p>
+<p>@remarks If you need to update the property of an object such as a UIView, use this method. PMTweenPhysicsUnit will handle updating the object&rsquo;s property automatically if you have provided a valid keyPath to the property. For a keyPath to be valid, all objects or NSValue types must be supported. By supplying a custom class to <a href="#//api/name/structValueUpdater"><code>structValueUpdater</code></a>, you can handle structs that PMTweenPhysicsUnit doesn&rsquo;t support by default.</p>
 	</div>
 	
 	
 	
 	
 	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<div class="warning"><p><strong>Warning:</strong> A NSInternalInconsistencyException will be raised if the provided array contains an object which does not adopt the <a href="../Protocols/PMTweening.html"><code>PMTweening</code></a> protocol.</p></div>
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p>initWithProperty:startingValue:endingValue:duration:options:easingBlock:, <a href="#//api/name/structValueUpdater">@property structValueUpdater</a></p></code></li>
+			
+		</ul>
 	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithProperty:startingValue:velocity:friction:options:" title="initWithProperty:startingValue:velocity:friction:options:"></a>
+	<h3 class="subsubtitle method-title">initWithProperty:startingValue:velocity:friction:options:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initializes a new PMTweenPhysicsUnit object, passing in a property and values for the tween operation.</p>
+	</div>		
+	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithProperty:(NSValue *)<em>property</em> startingValue:(double)<em>startingValue</em> velocity:(double)<em>velocity</em> friction:(double)<em>friction</em> options:(PMTweenOptions)<em>options</em></code></div>
+
+    
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>property</em></dt>
+			<dd><p>An NSValue property to be tweened. Supported properties include several NSValue-encoded structs such as NSNumber, CGPoint, CGSize, CGRect, CGAffineTransform, and CATransform3D.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>startingValue</em></dt>
+			<dd><p>The property&rsquo;s starting value for the tween operation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>velocity</em></dt>
+			<dd><p>The <a href="#//api/name/velocity">velocity</a> value to use in the physics calculations.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>friction</em></dt>
+			<dd><p>The <a href="#//api/name/friction">friction</a> value between 0 and 1 to use in the physics calculations, with 1 representing very high <a href="#//api/name/friction">friction</a> and 0 representing almost no <a href="#//api/name/friction">friction</a>.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>options</em></dt>
+			<dd><p>A bitmask of <code>PMTweenOptions</code> configuration values. Defaults to <code>PMTweenOptionNone</code>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A new instance of this class.</p>
+
+<p>@remarks If you need to tween an NSValue directly, without needing to update an object such as a UIView instance, using this method is adequate.</p>
+	</div>
+	
+	
+	
+	
 	
 	
 	
@@ -1418,7 +1811,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
+		<code class="declared-in-ref">PMTweenPhysicsUnit.h</code><br />
 	</div>				
 	
 	
@@ -1501,52 +1894,6 @@
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
 		<code class="declared-in-ref">PMTween.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/removeSequenceStep:" title="removeSequenceStep:"></a>
-	<h3 class="subsubtitle method-title">removeSequenceStep:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Removes the specified object from the sequence.</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>- (void)removeSequenceStep:(NSObject&lt;PMTweening&gt; *)<em>sequenceStep</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>sequenceStep</em></dt>
-			<dd><p>The sequence step to remove.</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenSequence.h</code><br />
 	</div>				
 	
 	
