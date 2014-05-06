@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'PMTween'
-  s.version = '1.0.0'
+  s.version = '1.1.0'
   s.license = { :type => 'MIT' }
   s.summary = 'An elegant and flexible tweening library for iOS.'
   s.platform = :ios
