@@ -216,9 +216,6 @@
     _currentTime = 0;
     
     self.tempo = [PMTweenCATempo tempo];
-    
-    // set initial value
-    [self updatePropertyValue];
         
 }
 

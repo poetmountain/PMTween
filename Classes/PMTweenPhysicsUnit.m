@@ -215,9 +215,6 @@ double static const PMTWEEN_DECAY_LIMIT = 0.1;
     
     self.tempo = [PMTweenCATempo tempo];
     
-    // set initial value
-    [self updatePropertyValue];
-    
 }
 
 
