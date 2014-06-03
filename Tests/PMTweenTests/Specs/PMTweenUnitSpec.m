@@ -12,7 +12,7 @@
 
 #import "PMTweenUnit.h"
 #import "PMTweenEasingLinear.h"
-
+#import "TestObject.h"
 
 SpecBegin(PMTweenUnit)
 
@@ -69,23 +69,78 @@ describe(@"PMTweenUnit", ^{
             
             describe(@"using initWithObject:...", ^{
                 __block UIView *view;
+                
+                
+                describe(@"single-level property", ^{
+                    
+                    describe(@", has initial value", ^{
+                        before(^{
+                            view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+                            unit = [[PMTweenUnit alloc] initWithObject:view propertyKeyPath:@"alpha" startingValue:0.0 endingValue:1.0 duration:0.5 options:PMTweenOptionNone easingBlock:nil];
+                        });
+                        
+                        it(@"should end on specified ending value", ^AsyncBlock{
+                            unit.updateBlock = ^void(NSObject<PMTweening> *tween) {
+                                __strong PMTweenUnit *tween_unit = (PMTweenUnit *)tween;
+                                
+                                if (tween_unit.tweenProgress >= 0.5) {
+                                    expect(view.alpha).to.equal(tween_unit.tweenProgress);
+                                    done();
+                                }
+                                
+                            };
+                            [unit startTween];
+                            
+                        });
+                    });
+                    
+                    
+                    describe(@", has a nil value", ^{
+                        __block TestObject *testObject;
+                        
+                        before(^{
+                            testObject = [[TestObject alloc] init];
+                            unit = [[PMTweenUnit alloc] initWithObject:testObject propertyKeyPath:@"testProp" startingValue:0.0 endingValue:1.0 duration:0.5 options:PMTweenOptionNone easingBlock:nil];
+                        });
+                        
+                        it(@"value should match the tween's currentValue", ^AsyncBlock{
+                            unit.updateBlock = ^void(NSObject<PMTweening> *tween) {
+                                __strong PMTweenUnit *tween_unit = (PMTweenUnit *)tween;
+                                
+                                if (tween_unit.tweenProgress >= 0.5) {
+                                    expect(testObject.testProp).to.equal(tween_unit.tweenProgress);
+                                    done();
+                                }
+                                
+                            };
+                            [unit startTween];
+                            
+                        });
+                    });
 
-                before(^{
-                    view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-                    unit = [[PMTweenUnit alloc] initWithObject:view propertyKeyPath:@"frame.origin.x" startingValue:0 endingValue:10 duration:0.2 options:PMTweenOptionNone easingBlock:nil];
                 });
                 
-                it(@"should end on specified ending value", ^AsyncBlock{
-                    unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                        __strong PMTweenUnit *tween_unit = (PMTweenUnit *)tween;
-                        expect(tween_unit.currentValue).to.equal(tween_unit.endingValue);
-                        expect(tween_unit.tweenProgress).to.equal(1.0);
-                        expect(view.frame.origin.x).to.equal(10);
-                        done();
-                    };
-                    [unit startTween];
+                describe(@"nested struct", ^{
+                    before(^{
+                        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+                        unit = [[PMTweenUnit alloc] initWithObject:view propertyKeyPath:@"frame.origin.x" startingValue:0 endingValue:10 duration:0.2 options:PMTweenOptionNone easingBlock:nil];
+                    });
                     
+                    it(@"should end on specified ending value", ^AsyncBlock{
+                        unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                            __strong PMTweenUnit *tween_unit = (PMTweenUnit *)tween;
+                            expect(tween_unit.currentValue).to.equal(tween_unit.endingValue);
+                            expect(tween_unit.tweenProgress).to.equal(1.0);
+                            expect(view.frame.origin.x).to.equal(10);
+                            done();
+                        };
+                        [unit startTween];
+                        
+                    });
                 });
+                
+
+
             });
 
         });

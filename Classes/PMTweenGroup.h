@@ -36,7 +36,7 @@
  *  @warning A NSInternalInconsistencyException will be raised if the provided array contains an object which does not adopt the `PMTweening` protocol.
  *
  */
-- (id)initWithTweens:(NSArray *)tweens options:(PMTweenOptions)options;
+- (instancetype)initWithTweens:(NSArray *)tweens options:(PMTweenOptions)options;
 
 
 ///-------------------------------------

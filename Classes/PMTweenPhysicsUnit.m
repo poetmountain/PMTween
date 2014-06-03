@@ -149,14 +149,19 @@ double static const PMTWEEN_DECAY_LIMIT = 0.1;
             }
             
         } else {
+            // this is a top-level property, so let's see if this property is updatable
             BOOL is_value_supported = NO;
-            if (self.targetObject && [_structValueUpdater replaceObject:self.targetObject newPropertyValue:1 propertyKeyPath:propertyKeyPath]) {
+            id prop_value = [object valueForKeyPath:propertyKeyPath];
+            if (prop_value && [_structValueUpdater replaceObject:prop_value newPropertyValue:1 propertyKeyPath:propertyKeyPath]) {
                 is_value_supported = YES;
             }
-            
-            if (self.targetObject &&  is_value_supported) {
-                _targetProperty = self.targetObject;
+            if (prop_value && is_value_supported) {
+                _targetProperty = prop_value;
+            } else {
+                // target property's value could be nil if it's a NSNumber, so set it to the starting value
+                self.targetProperty = @(_startingValue);
             }
+            
         }
         
         
@@ -209,6 +214,9 @@ double static const PMTWEEN_DECAY_LIMIT = 0.1;
     _velocityDecayLimit = PMTWEEN_DECAY_LIMIT;
     
     self.tempo = [PMTweenCATempo tempo];
+    
+    // set initial value
+    [self updatePropertyValue];
     
 }
 

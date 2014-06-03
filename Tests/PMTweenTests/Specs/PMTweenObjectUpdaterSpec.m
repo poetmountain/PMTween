@@ -20,6 +20,20 @@ describe(@"PMTweenObjectUpdater", ^{
         __block NSObject *old_value;
         __block NSObject *new_value;
         
+        describe(@", with a CGFloat", ^{
+            before(^{
+                PMTweenObjectUpdater *updater = [PMTweenObjectUpdater updater];
+                old_value = @0.0;
+                new_value = [updater replaceObject:old_value newPropertyValue:0.5 propertyKeyPath:@"alpha"];
+            });
+            
+            it(@", should update", ^{
+                CGFloat new_float = (CGFloat)[(NSNumber *)new_value floatValue];
+                expect(new_float).to.equal(0.5);
+            });
+            
+        });
+        
         describe(@", with a CGPoint", ^{
             before(^{
                 PMTweenObjectUpdater *updater = [PMTweenObjectUpdater updater];

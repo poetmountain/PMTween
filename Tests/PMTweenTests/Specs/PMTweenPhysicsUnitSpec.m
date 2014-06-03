@@ -68,22 +68,47 @@ describe(@"PMTweenPhysicsUnit", ^{
             describe(@"using initWithObject:...", ^{
                 __block UIView *view;
                 
-                before(^{
-                    view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
-                    unit = [[PMTweenPhysicsUnit alloc] initWithObject:view propertyKeyPath:@"frame.origin.x" startingValue:0 velocity:1 friction:0.998 options:PMTweenOptionNone];
+                
+                describe(@"single-level property", ^{
+                    before(^{
+                        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+                        unit = [[PMTweenPhysicsUnit alloc] initWithObject:view propertyKeyPath:@"alpha" startingValue:0 velocity:1 friction:0.998 options:PMTweenOptionNone];
+                    });
+                    
+                    it(@"should end on specified ending value", ^AsyncBlock{
+                        unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                            __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                            expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
+                            expect(physics_unit.tweenProgress).to.equal(1.0);
+                            expect(view.alpha).to.equal(physics_unit.currentValue);
+                            done();
+                        };
+                        [unit startTween];
+                        
+                    });
                 });
                 
-                it(@"should end on specified ending value", ^AsyncBlock{
-                    unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                        expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
-                        expect(physics_unit.tweenProgress).to.equal(1.0);
-                        expect(view.frame.origin.x).to.equal(physics_unit.currentValue);
-                        done();
-                    };
-                    [unit startTween];
+                
+                describe(@"nested struct", ^{
+                    before(^{
+                        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+                        unit = [[PMTweenPhysicsUnit alloc] initWithObject:view propertyKeyPath:@"frame.origin.x" startingValue:0 velocity:1 friction:0.998 options:PMTweenOptionNone];
+                    });
                     
+                    it(@"should end on specified ending value", ^AsyncBlock{
+                        unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                            __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                            expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
+                            expect(physics_unit.tweenProgress).to.equal(1.0);
+                            expect(view.frame.origin.x).to.equal(physics_unit.currentValue);
+                            done();
+                        };
+                        [unit startTween];
+                        
+                    });
                 });
+                
+
             });
 
         });

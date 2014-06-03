@@ -45,7 +45,7 @@
  *
  *  @see initWithObject:propertyKeyPath:startingValue:endingValue:duration:options:easingBlock:
  */
-- (id)initWithProperty:(NSValue *)property
+- (instancetype)initWithProperty:(NSValue *)property
          startingValue:(double)startingValue
            endingValue:(double)endingValue
               duration:(NSTimeInterval)duration
@@ -69,7 +69,7 @@
  *
  *  @see initWithProperty:startingValue:endingValue:duration:options:easingBlock:, structValueUpdater
  */
-- (id)initWithObject:(NSObject *)object
+- (instancetype)initWithObject:(NSObject *)object
      propertyKeyPath:(NSString *)propertyKeyPath
        startingValue:(double)startingValue
          endingValue:(double)endingValue

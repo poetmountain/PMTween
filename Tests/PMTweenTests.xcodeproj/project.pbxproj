@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4EE309368C8C419195482A1D /* libPods-PMTweenTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAD88554FF8E4015A15B4FA4 /* libPods-PMTweenTests.a */; };
+		8B74931B193D4EB500358D62 /* TestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B74931A193D4EB500358D62 /* TestObject.m */; };
 		8B8901DF18FE17C4000507D9 /* PMTweenCATempo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8901DE18FE17C4000507D9 /* PMTweenCATempo.m */; };
 		8B9E609618F52A07002B553F /* PMTweenGroupSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E609518F52A07002B553F /* PMTweenGroupSpec.m */; };
 		8B9E609918F52AE8002B553F /* PMTweenGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B9E609818F52AE8002B553F /* PMTweenGroup.m */; };
@@ -44,6 +45,8 @@
 
 /* Begin PBXFileReference section */
 		2D2FBFF7633B42D68F134D3D /* Pods-PMTweenTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMTweenTests.xcconfig"; path = "Pods/Pods-PMTweenTests.xcconfig"; sourceTree = "<group>"; };
+		8B749319193D4EB500358D62 /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestObject.h; path = Classes/TestObject.h; sourceTree = "<group>"; };
+		8B74931A193D4EB500358D62 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestObject.m; path = Classes/TestObject.m; sourceTree = "<group>"; };
 		8B8901DD18FE17C4000507D9 /* PMTweenCATempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenCATempo.h; path = ../../Classes/PMTweenCATempo.h; sourceTree = "<group>"; };
 		8B8901DE18FE17C4000507D9 /* PMTweenCATempo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenCATempo.m; path = ../../Classes/PMTweenCATempo.m; sourceTree = "<group>"; };
 		8B9E609518F52A07002B553F /* PMTweenGroupSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenGroupSpec.m; path = PMTweenTests/Specs/PMTweenGroupSpec.m; sourceTree = "<group>"; };
@@ -166,6 +169,8 @@
 		8BCE194518EE3EAC0062B01A /* PMTweenTests */ = {
 			isa = PBXGroup;
 			children = (
+				8B749319193D4EB500358D62 /* TestObject.h */,
+				8B74931A193D4EB500358D62 /* TestObject.m */,
 				8BCE196818EE42070062B01A /* Classes */,
 				8BCE195118EE3EE40062B01A /* Specs */,
 				8BCE194618EE3EAC0062B01A /* Supporting Files */,
@@ -354,6 +359,7 @@
 				8B8901DF18FE17C4000507D9 /* PMTweenCATempo.m in Sources */,
 				8BCB5EFD190A580A006D50EF /* PMTweenObjectUpdater.m in Sources */,
 				8BF8F7991916FBB50028261E /* PMTweenPhysicsUnit.m in Sources */,
+				8B74931B193D4EB500358D62 /* TestObject.m in Sources */,
 				8BCE196418EE3FCA0062B01A /* PMTweenUnitSpec.m in Sources */,
 				8BF8F7931916FB860028261E /* PMTweenPhysicsUnitSpec.m in Sources */,
 				8BEFDF3018FBCACB004ACD85 /* PMTweenEasingBounce.m in Sources */,

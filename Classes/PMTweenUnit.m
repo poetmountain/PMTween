@@ -147,17 +147,20 @@
             }
             
         } else {
+            // this is a top-level property, so let's see if this property is updatable
             BOOL is_value_supported = NO;
-            if (self.targetObject && [_structValueUpdater replaceObject:self.targetObject newPropertyValue:1 propertyKeyPath:propertyKeyPath]) {
+            id prop_value = [object valueForKeyPath:propertyKeyPath];
+            if (prop_value && [_structValueUpdater replaceObject:prop_value newPropertyValue:1 propertyKeyPath:propertyKeyPath]) {
                 is_value_supported = YES;
             }
-
-            if (self.targetObject &&  is_value_supported) {
-                _targetProperty = self.targetObject;
+            if (prop_value && is_value_supported) {
+                _targetProperty = prop_value;
+            } else {
+                // target property's value could be nil if it's a NSNumber, so set it to the starting value
+                self.targetProperty = @(_startingValue);
             }
+            
         }
-        
-
         
         [self setupTweenForProperty:_targetProperty startingValue:startingValue endingValue:endingValue duration:duration options:options easingBlock:easingBlock];        
         
@@ -213,6 +216,9 @@
     _currentTime = 0;
     
     self.tempo = [PMTweenCATempo tempo];
+    
+    // set initial value
+    [self updatePropertyValue];
         
 }
 
@@ -220,7 +226,7 @@
 #pragma mark - Tween methods
 
 - (void)updatePropertyValue {
-    
+
     if ([_targetProperty isKindOfClass:[NSNumber class]]) {
         self.targetProperty = @(_currentValue);
         

@@ -38,7 +38,7 @@
  *  @warning A NSInternalInconsistencyException will be raised if the provided array contains an object which does not adopt the `PMTweening` protocol.
  *
  */
-- (id)initWithSequenceSteps:(NSArray *)sequenceSteps options:(PMTweenOptions)options;
+- (instancetype)initWithSequenceSteps:(NSArray *)sequenceSteps options:(PMTweenOptions)options;
 
 
 ///-------------------------------------

@@ -32,7 +32,7 @@
  *
  *  @return A new instance of this class
  */
-- (id)initWithTempo:(PMTweenTempo *)tempo;
+- (instancetype)initWithTempo:(PMTweenTempo *)tempo;
 
 
 ///-------------------------------------

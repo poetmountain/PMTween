@@ -133,7 +133,7 @@ PMTweenSequence *sequence = [[PMTweenSequence alloc] initWithSequenceSteps:@[twe
   </tr>
   <tr>
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenPhysicsUnit.html">PMTweenPhysicsUnit</a></td>
-    <td>PMTweenUnit handles a single tween operation on an NSValue, using a physics system to update a value with decaying velocity.</td>
+    <td>PMTweenPhysicsUnit handles a single physics-based tween operation on an NSValue, using a physics system to update a value with decaying velocity.</td>
   </tr>
   <tr>
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenGroup.html">PMTweenGroup</a></td>
