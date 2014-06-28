@@ -63,6 +63,17 @@ describe(@"PMTweenPhysicsUnit", ^{
                     [unit startTween];
                     
                 });
+                
+                it(@"changing startingValue should reset tween to start at that value", ^AsyncBlock {
+                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
+                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                        unit.startingValue = 10;
+                        expect(unit.startingValue).to.equal(10);
+                        expect(unit.tweenProgress).to.equal(0.0);
+                        done();
+                    });
+                    [unit startTween];
+                });
             });
             
             describe(@"using initWithObject:...", ^{

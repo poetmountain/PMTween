@@ -367,6 +367,17 @@
 
 #pragma mark - Getter/setters
 
+- (void)setStartingValue:(double)startingValue {
+    _startingValue = startingValue;
+    
+    self.currentValue = _startingValue;
+
+    _tweenProgress = 0.0;
+    
+    // setting startTime to 0 causes tweenUpdate method to re-init the tween
+    self.startTime = 0;
+}
+
 - (void)setCurrentValue:(double)currentValue {
     _currentValue = currentValue;
 }

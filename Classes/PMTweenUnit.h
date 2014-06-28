@@ -171,13 +171,13 @@
 @property (readonly, nonatomic, assign) PMTweenDirection tweenDirection;
 
 /**
- *  The starting value of the tween operation. (read-only)
+ *  The starting value of the tween operation.
  *
  *  @remarks Note that for non-numeric properties like structs this may affect multiple values, such as the x and y properties of CGPoint.
  *
  *  @see currentValue, endingvalue
  */
-@property (readonly, nonatomic, assign) double startingValue;
+@property (nonatomic, assign) double startingValue;
 
 /**
  *  The current value of the tween operation. (read-only)

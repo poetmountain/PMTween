@@ -145,14 +145,14 @@
     CGFloat slope_x = (point.x - self.tweenView.center.x) / self.view.frame.size.width;
     CGFloat slope_y = (point.y - self.tweenView.center.y) / self.view.frame.size.height;
     
-    [self.group stopTween];
+    //[self.group stopTween];
 
     self.tweenx.startingValue = self.tweenView.center.x;
     self.tweeny.startingValue = self.tweenView.center.y;
     self.tweenx.velocity = 8 * slope_x;
     self.tweeny.velocity = 8 * slope_y;
     
-    [self.group startTween];
+    //[self.group startTween];
     
 }
 
