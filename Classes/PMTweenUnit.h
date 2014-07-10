@@ -109,13 +109,22 @@
 @property (nonatomic, assign) BOOL repeating;
 
 /**
- *  The number of tween cycle operations to repeat. The default value is 0.
+ *  The number of tween cycle operations to repeat.
  *
  *  @remarks This property is only used when `repeating` is set to `YES`. The default value is 0.
  *
  *  @see repeating
  */
 @property (nonatomic, assign) NSUInteger numberOfRepeats;
+
+/**
+ *  A Boolean which determines whether this tween should change its property value additively. Additive animation allows multiple animations to produce a compound effect, instead of overwriting each other as they update. Additive animation is now the default behavior for tweening animations in iOS 8.
+ *
+ *  @remarks The default value is YES.
+ *
+ */
+@property (nonatomic, assign) BOOL useAdditiveTweening;
+
 
 /**
  *  An object conforming to the `PMTweenObjectUpdating` protocol which handles the updating of properties on objects and structs.

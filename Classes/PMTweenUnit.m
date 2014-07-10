@@ -22,6 +22,9 @@
 // The ending time of the tween, which is determined by adding the tween duration to the starting time.
 @property (nonatomic, assign) NSTimeInterval endTime;
 
+// The change in value from the last property value update.
+@property (nonatomic, assign) double valueDelta;
+
 // Key path for property on target. Only used when class is created with initWithTarget.
 @property (nonatomic, copy) NSString *propertyKeyPath;
 
@@ -210,6 +213,10 @@
         _resetObjectStateOnRepeat = YES;
         _startingParentProperty = property;
     }
+
+    _useAdditiveTweening = YES;
+    _structValueUpdater.useAdditiveUpdating = _useAdditiveTweening;
+    
     (easingBlock) ? (_easingBlock = easingBlock) : (_easingBlock = [PMTweenEasingLinear easingNone]);
     
     _startTime = 0;
@@ -460,14 +467,34 @@
 
         if ([_targetProperty isKindOfClass:[NSValue class]]) {
             if (!_replaceParentProperty) {
-                [self.targetObject setValue:_targetProperty forKeyPath:_propertyKeyPath];
+                NSValue *base_prop = [self.targetObject valueForKeyPath:_propertyKeyPath];
+                
+                double new_property_value = _currentValue;
+                if (_useAdditiveTweening) {
+                    new_property_value = _valueDelta;
+                }
+                
+                NSValue *new_parent_value = (NSValue *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:new_property_value propertyKeyPath:_propertyKeyPath];
+                
+                //DLog(@"new value %@", new_parent_value);
+
+                
+                [self.targetObject setValue:new_parent_value forKeyPath:_propertyKeyPath];
                 
             } else {
                 // replace the top-level struct of the property we're trying to alter
                 // e.g.: keyPath is @"frame.origin.x", so we replace "frame" because that's the closest KVC-compliant prop
                 NSValue *base_prop = [self.targetObject valueForKeyPath:_parentKeyPath];
-                NSValue *new_parent_value = (NSValue *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:_currentValue propertyKeyPath:_propertyKeyPath];
                 
+                double new_property_value = _currentValue;
+                if (_useAdditiveTweening) {
+                    new_property_value = _valueDelta;
+                }
+                
+                NSValue *new_parent_value = (NSValue *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:new_property_value propertyKeyPath:_propertyKeyPath];
+                
+                //DLog(@"new value %@", new_parent_value);
+
                 [self.targetObject setValue:new_parent_value forKeyPath:_parentKeyPath];
             }
             
@@ -479,10 +506,15 @@
                 keys = [_parentKeyPath componentsSeparatedByString:@"."];
             }
             
+            double new_property_value = _currentValue;
+            if (_useAdditiveTweening) {
+                new_property_value = _valueDelta;
+            }
+            
             // replace the top-level struct of the property we're trying to alter
             // e.g.: keyPath is @"frame.origin.x", so we replace "frame" because that's the closest KVC-compliant prop
             id base_prop = [self.targetObject valueForKeyPath:_parentKeyPath];
-            UIColor *new_color = (UIColor *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:_currentValue propertyKeyPath:_propertyKeyPath];
+            UIColor *new_color = (UIColor *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:new_property_value propertyKeyPath:_propertyKeyPath];
             
             @try {
                 // letting the runtime know about result and argument types
@@ -575,6 +607,7 @@
     
     if (_tweenState == PMTweenStateTweening) {
 
+
         CGFloat adjusted_duration = _duration;
         if (self.reversing) { adjusted_duration *= 0.5; }
         
@@ -594,6 +627,15 @@
             if (_pauseTimestamp != 0) {
                 self.pauseTimestamp = 0;
             }
+            
+            // temporarily turn off additive mode for the first update so the starting position can be set
+            BOOL temp_use = _useAdditiveTweening;
+            _useAdditiveTweening = NO;
+            _structValueUpdater.useAdditiveUpdating = NO;
+            [self updatePropertyValue];
+            _useAdditiveTweening = temp_use;
+            _structValueUpdater.useAdditiveUpdating = temp_use;
+
         }
         
         
@@ -601,10 +643,11 @@
         
         NSTimeInterval elapsed_time = self.currentTime - self.startTime;
         
-        double new_value;
         CGFloat progress;
-        double value_delta = _endingValue - _startingValue;
+        double new_value;
         
+        double value_delta = _endingValue - _startingValue;
+
         if (_tweenDirection == PMTweenDirectionForward) {
             new_value = self.easingBlock(elapsed_time, _startingValue, value_delta, adjusted_duration);
             progress = fabsf((_currentValue - _startingValue) / value_delta);
@@ -620,8 +663,11 @@
 
         }
 
+
+        self.valueDelta = new_value - _currentValue;
         self.currentValue = new_value;
         self.tweenProgress = progress;
+        
         
         
         // call update block

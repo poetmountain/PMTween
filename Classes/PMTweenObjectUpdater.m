@@ -19,6 +19,17 @@
 }
 
 
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        _useAdditiveUpdating = YES;
+    }
+    
+    return self;
+}
+
+
 - (BOOL)supportsObject:(NSObject *)object {
     
     BOOL is_supported = NO;
@@ -56,24 +67,42 @@
     
     NSMutableArray *keys = [[propertyKeyPath componentsSeparatedByString:@"."] mutableCopy];
     
+    double new_property_value = propertyValue;
+    
     if ([objectToUpdate isKindOfClass:[NSValue class]]) {
         NSValue *valueObject = (NSValue *)objectToUpdate;
         
         // get encoding of base parent's objective-c type
         if ([objectToUpdate isKindOfClass:[NSNumber class]]) {
-            new_parent_value = [NSNumber numberWithDouble:propertyValue];
+
+            if (_useAdditiveUpdating) {
+                new_property_value = [(NSNumber *)objectToUpdate doubleValue] + propertyValue;
+            }
+            
+            new_parent_value = [NSNumber numberWithDouble:new_property_value];
             
         } else if ([PMTween isValue:valueObject objCType:@encode(CGPoint)]) {
             CGPoint point = [valueObject CGPointValue];
             
             if ([[keys lastObject] isEqualToString:@"x"]) {
-                point.x = propertyValue;
+                if (_useAdditiveUpdating) {
+                    new_property_value = point.x + propertyValue;
+                }
+                point.x = new_property_value;
+                
             } else if ([[keys lastObject] isEqualToString:@"y"]) {
-                point.y = propertyValue;
+                if (_useAdditiveUpdating) {
+                    new_property_value = point.y + propertyValue;
+                }
+                point.y = new_property_value;
+                
             } else {
                 // assume the last key is the cgpoint and change both x and y
-                point.x = propertyValue;
-                point.y = propertyValue;
+                if (_useAdditiveUpdating) {
+                    new_property_value = point.x + propertyValue;
+                }
+                point.x = new_property_value;
+                point.y = new_property_value;
             }
             
             new_parent_value = [NSValue valueWithCGPoint:point];
@@ -82,13 +111,24 @@
             CGSize size = [valueObject CGSizeValue];
             
             if ([[keys lastObject] isEqualToString:@"width"]) {
-                size.width = propertyValue;
+                if (_useAdditiveUpdating) {
+                    new_property_value = size.width + propertyValue;
+                }
+                size.width = new_property_value;
+                
             } else if ([[keys lastObject] isEqualToString:@"height"]) {
-                size.height = propertyValue;
+                if (_useAdditiveUpdating) {
+                    new_property_value = size.height + propertyValue;
+                }
+                size.height = new_property_value;
+                
             } else {
                 // assume the last key is the cgsize and change both width and height
-                size.width = propertyValue;
-                size.height = propertyValue;
+                if (_useAdditiveUpdating) {
+                    new_property_value = size.width + propertyValue;
+                }
+                size.width = new_property_value;
+                size.height = new_property_value;
             }
  
             new_parent_value = [NSValue valueWithCGSize:size];
@@ -101,20 +141,31 @@
                 CGPoint point = rect.origin;
                 
                 if ([[keys lastObject] isEqualToString:@"x"]) {
-                    point.x = propertyValue;
+                    if (_useAdditiveUpdating) {
+                        new_property_value = point.x + propertyValue;
+                    }
+                    point.x = new_property_value;
+                    
                 } else if ([[keys lastObject] isEqualToString:@"y"]) {
-                    point.y = propertyValue;
+                    if (_useAdditiveUpdating) {
+                        new_property_value = point.y + propertyValue;
+                    }
+                    point.y = new_property_value;
+                    
                 } else {
-                    point.x = propertyValue;
-                    point.y = propertyValue;
+                    if (_useAdditiveUpdating) {
+                        new_property_value = point.x + propertyValue;
+                    }
+                    point.x = new_property_value;
+                    point.y = new_property_value;
                 }
 
                 rect.origin = point;
             } else if ([[keys lastObject] isEqualToString:@"origin"]) {
                 CGPoint point = rect.origin;
                 
-                point.x = propertyValue;
-                point.y = propertyValue;
+                point.x = new_property_value;
+                point.y = new_property_value;
                 
                 rect.origin = point;
             
@@ -122,21 +173,34 @@
                 CGSize size = rect.size;
                 
                 if ([[keys lastObject] isEqualToString:@"width"]) {
-                    size.width = propertyValue;
+                    if (_useAdditiveUpdating) {
+                        new_property_value = size.width + propertyValue;
+                    }
+                    size.width = new_property_value;
+                    
                 } else if ([[keys lastObject] isEqualToString:@"height"]) {
-                    size.height = propertyValue;
+                    if (_useAdditiveUpdating) {
+                        new_property_value = size.height + propertyValue;
+                    }
+                    size.height = new_property_value;
+                    
                 } else {
-                    size.width = propertyValue;
-                    size.height = propertyValue;
+                    if (_useAdditiveUpdating) {
+                        new_property_value = size.width + propertyValue;
+                    }
+                    size.width = new_property_value;
+                    size.height = new_property_value;
                 }
 
                 rect.size = size;
                                 
             } else if ([[keys lastObject] isEqualToString:@"size"]) {
                 CGSize size = rect.size;
-
-                size.width = propertyValue;
-                size.height = propertyValue;
+                if (_useAdditiveUpdating) {
+                    new_property_value = size.width + propertyValue;
+                }
+                size.width = new_property_value;
+                size.height = new_property_value;
                 
                 rect.size = size;
             }
@@ -147,17 +211,17 @@
             CGAffineTransform transform = [valueObject CGAffineTransformValue];
             
             if ([[keys lastObject] isEqualToString:@"a"]) {
-                transform.a = propertyValue;
+                transform.a = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"b"]) {
-                transform.b = propertyValue;
+                transform.b = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"c"]) {
-                transform.c = propertyValue;
+                transform.c = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"d"]) {
-                transform.d = propertyValue;
+                transform.d = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"tx"]) {
-                transform.tx = propertyValue;
+                transform.tx = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"ty"]) {
-                transform.ty = propertyValue;
+                transform.ty = new_property_value;
             }
             
             new_parent_value = [NSValue valueWithCGAffineTransform:transform];
@@ -166,37 +230,37 @@
             CATransform3D transform = [valueObject CATransform3DValue];
             
             if ([[keys lastObject] isEqualToString:@"m11"]) {
-                transform.m11 = propertyValue;
+                transform.m11 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m12"]) {
-                transform.m12 = propertyValue;
+                transform.m12 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m13"]) {
-                transform.m13 = propertyValue;
+                transform.m13 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m14"]) {
-                transform.m14 = propertyValue;
+                transform.m14 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m21"]) {
-                transform.m21 = propertyValue;
+                transform.m21 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m22"]) {
-                transform.m22 = propertyValue;
+                transform.m22 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m23"]) {
-                transform.m23 = propertyValue;
+                transform.m23 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m24"]) {
-                transform.m24 = propertyValue;
+                transform.m24 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m31"]) {
-                transform.m31 = propertyValue;
+                transform.m31 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m32"]) {
-                transform.m32 = propertyValue;
+                transform.m32 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m33"]) {
-                transform.m33 = propertyValue;
+                transform.m33 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m34"]) {
-                transform.m34 = propertyValue;
+                transform.m34 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m41"]) {
-                transform.m41 = propertyValue;
+                transform.m41 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m42"]) {
-                transform.m42 = propertyValue;
+                transform.m42 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m43"]) {
-                transform.m43 = propertyValue;
+                transform.m43 = new_property_value;
             } else if ([[keys lastObject] isEqualToString:@"m44"]) {
-                transform.m44 = propertyValue;
+                transform.m44 = new_property_value;
             }
             
             new_parent_value = [NSValue valueWithCATransform3D:transform];
@@ -211,37 +275,37 @@
         if ([component_name isEqualToString:@"hue"]) {
             CGFloat hue, saturation, brightness, alpha;
             [old_color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-            new_color = [UIColor colorWithHue:propertyValue saturation:saturation brightness:brightness alpha:alpha];
+            new_color = [UIColor colorWithHue:new_property_value saturation:saturation brightness:brightness alpha:alpha];
             
         } else if ([component_name isEqualToString:@"saturation"]) {
             CGFloat hue, saturation, brightness, alpha;
             [old_color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-            new_color = [UIColor colorWithHue:hue saturation:propertyValue brightness:brightness alpha:alpha];
+            new_color = [UIColor colorWithHue:hue saturation:new_property_value brightness:brightness alpha:alpha];
             
         } else if ([component_name isEqualToString:@"brightness"]) {
             CGFloat hue, saturation, brightness, alpha;
             [old_color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-            new_color = [UIColor colorWithHue:hue saturation:saturation brightness:propertyValue alpha:alpha];
+            new_color = [UIColor colorWithHue:hue saturation:saturation brightness:new_property_value alpha:alpha];
             
         } else if ([component_name isEqualToString:@"alpha"]) {
             CGFloat hue, saturation, brightness, alpha;
             [old_color getHue:&hue saturation:&saturation brightness:&brightness alpha:&alpha];
-            new_color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:propertyValue];
+            new_color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:new_property_value];
             
         } else if ([component_name isEqualToString:@"red"]) {
             CGFloat red, green, blue, alpha;
             [old_color getRed:&red green:&green blue:&blue alpha:&alpha];
-            new_color = [UIColor colorWithRed:propertyValue green:green blue:blue alpha:alpha];
+            new_color = [UIColor colorWithRed:new_property_value green:green blue:blue alpha:alpha];
             
         }  else if ([component_name isEqualToString:@"green"]) {
             CGFloat red, green, blue, alpha;
             [old_color getRed:&red green:&green blue:&blue alpha:&alpha];
-            new_color = [UIColor colorWithRed:red green:propertyValue blue:blue alpha:alpha];
+            new_color = [UIColor colorWithRed:red green:new_property_value blue:blue alpha:alpha];
             
         }  else if ([component_name isEqualToString:@"blue"]) {
             CGFloat red, green, blue, alpha;
             [old_color getRed:&red green:&green blue:&blue alpha:&alpha];
-            new_color = [UIColor colorWithRed:red green:green blue:propertyValue alpha:alpha];
+            new_color = [UIColor colorWithRed:red green:green blue:new_property_value alpha:alpha];
         }
 
         new_parent_value = new_color;
@@ -253,16 +317,16 @@
         CIColor *old_color = (CIColor *)objectToUpdate;
         
         if ([component_name isEqualToString:@"alpha"]) {
-            new_color = [CIColor colorWithRed:old_color.red green:old_color.green blue:old_color.blue alpha:propertyValue];
+            new_color = [CIColor colorWithRed:old_color.red green:old_color.green blue:old_color.blue alpha:new_property_value];
             
         } else if ([component_name isEqualToString:@"red"]) {
-            new_color = [CIColor colorWithRed:propertyValue green:old_color.green blue:old_color.blue alpha:old_color.alpha];
+            new_color = [CIColor colorWithRed:new_property_value green:old_color.green blue:old_color.blue alpha:old_color.alpha];
 
         }  else if ([component_name isEqualToString:@"green"]) {
-            new_color = [CIColor colorWithRed:old_color.red green:propertyValue blue:old_color.blue alpha:old_color.alpha];
+            new_color = [CIColor colorWithRed:old_color.red green:new_property_value blue:old_color.blue alpha:old_color.alpha];
             
         }  else if ([component_name isEqualToString:@"blue"]) {
-            new_color = [CIColor colorWithRed:old_color.red green:old_color.green blue:propertyValue alpha:old_color.alpha];
+            new_color = [CIColor colorWithRed:old_color.red green:old_color.green blue:new_property_value alpha:old_color.alpha];
 
         }
         
@@ -270,6 +334,15 @@
     }
     
     return new_parent_value;
+}
+
+
+- (BOOL)useAdditiveUpdating {
+    return _useAdditiveUpdating;
+}
+
+- (void)setUseAdditiveUpdating:(BOOL)useAdditiveUpdating {
+    _useAdditiveUpdating = useAdditiveUpdating;
 }
 
 @end

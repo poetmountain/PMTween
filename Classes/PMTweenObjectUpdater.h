@@ -33,13 +33,19 @@
  */
 - (BOOL)supportsObject:(NSObject *)object;
 
+@property (nonatomic, assign) BOOL useAdditiveUpdating;
+
+
 @end
 
 
 /**
  *  PMTweenObjectUpdater is the default class used by `PMTweenUnit` to update data structures, either NSValue objects such as NSNumber, CGPoint, CGSize, CGRect, CGAffineTransform, or CATransform3D, and other NSObject types like UIColor.
  */
-@interface PMTweenObjectUpdater : NSObject <PMTweenObjectUpdating>
+@interface PMTweenObjectUpdater : NSObject <PMTweenObjectUpdating> {
+    @protected
+    BOOL _useAdditiveUpdating;
+}
 
 /**
  *  Convenience method that returns a new instance of this class.
@@ -47,5 +53,6 @@
  *  @return A new instance of this class.
  */
 + (instancetype)updater;
+
 
 @end
