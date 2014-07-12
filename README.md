@@ -54,9 +54,9 @@ For more information, see the included [examples](https://github.com/poetmountai
 
 If you use CocoaPods:
 
-#### Podfile
+##### Podfile
 ```ruby
-pod "PMTween", "~> 1.1.0"
+pod "PMTween", "~> 1.2.0"
 ```
 
 Or add the Classes directory to your project.
