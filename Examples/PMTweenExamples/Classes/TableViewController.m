@@ -8,6 +8,7 @@
 
 #import "TableViewController.h"
 #import "BasicTweenVC.h"
+#import "AdditiveVC.h"
 #import "BasicPhysicsTweenVC.h"
 #import "GroupTweenVC.h"
 #import "SequenceTweenVC.h"
@@ -31,12 +32,13 @@
         // Custom initialization
         
         _examples = @[@"Basic Tween",
+                      @"Additive Tween",
                       @"Basic Physics Tween",
                       @"Group (+Reversing)",
                       @"Sequence (Rev. Contiguous)",
                       @"Sequence (Rev. Noncontiguous)",
                       @"CATransform3D Tween",
-                      @"Dynamic Tween",
+                      @"Dynamic Additive Tween",
                       @"250 Random Tweens"
                      ];
         
@@ -97,6 +99,9 @@
     switch (index) {
         case PMTweenExampleBasic:
             vc = [[BasicTweenVC alloc] init];
+            break;
+        case PMTweenExampleAdditive:
+            vc = [[AdditiveVC alloc] init];
             break;
         case PMTweenExampleBasicPhysics:
             vc = [[BasicPhysicsTweenVC alloc] init];

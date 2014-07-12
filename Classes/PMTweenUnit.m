@@ -25,9 +25,6 @@
 // The change in value from the last property value update.
 @property (nonatomic, assign) double valueDelta;
 
-// Key path for property on target. Only used when class is created with initWithTarget.
-@property (nonatomic, copy) NSString *propertyKeyPath;
-
 // Key path for the parent of the target property. Used when class is created with initWithTarget and targetProperty is a numeric value.
 @property (nonatomic, copy) NSString *parentKeyPath;
 
@@ -153,7 +150,16 @@
             // this is a top-level property, so let's see if this property is updatable
             BOOL is_value_supported = NO;
             id prop_value = [object valueForKeyPath:propertyKeyPath];
-            if (prop_value && [_structValueUpdater replaceObject:prop_value newPropertyValue:1 propertyKeyPath:propertyKeyPath]) {
+            if (!prop_value) {
+                @try {
+                    [object setValue:@(startingValue) forKeyPath:propertyKeyPath];
+                }
+                @catch (NSException *exception) {
+                    NSLog(@"Unknown selector! %@", exception);
+                }
+                prop_value = [object valueForKeyPath:propertyKeyPath];
+            }
+            if (prop_value && [_structValueUpdater replaceObject:prop_value newPropertyValue:startingValue propertyKeyPath:propertyKeyPath]) {
                 is_value_supported = YES;
             }
             if (prop_value && is_value_supported) {
@@ -165,7 +171,7 @@
             
         }
         
-        [self setupTweenForProperty:_targetProperty startingValue:startingValue endingValue:endingValue duration:duration options:options easingBlock:easingBlock];        
+        [self setupTweenForProperty:_targetProperty startingValue:startingValue endingValue:endingValue duration:duration options:options easingBlock:easingBlock];
         
     }
     
@@ -185,11 +191,9 @@
 
 - (void)setupTweenForProperty:(NSObject *)property startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock {
     
-    _targetProperty = property;
-
     _tweenState = PMTweenStateStopped;
     _cyclesCompletedCount = 0;
-    
+
     _targetProperty = property;
     _startingTargetProperty = property;
     _startingValue = startingValue;
@@ -214,8 +218,6 @@
         _startingParentProperty = property;
     }
 
-    _useAdditiveTweening = YES;
-    _structValueUpdater.useAdditiveUpdating = _useAdditiveTweening;
     
     (easingBlock) ? (_easingBlock = easingBlock) : (_easingBlock = [PMTweenEasingLinear easingNone]);
     
@@ -248,6 +250,11 @@
     _tweenProgress = 1.0;
     _cycleProgress = 1.0;
     [self updatePropertyValue];
+
+    if (_additive && _targetObject) {
+        _operationID = 0;
+        [PMTween removeTween:self];
+    }
     
     // call update block
     if (_updateBlock) {
@@ -458,6 +465,7 @@
 }
 
 
+
 - (void)setTargetProperty:(NSObject *)targetProperty {
     
 
@@ -467,19 +475,16 @@
 
         if ([_targetProperty isKindOfClass:[NSValue class]]) {
             if (!_replaceParentProperty) {
-                NSValue *base_prop = [self.targetObject valueForKeyPath:_propertyKeyPath];
+                NSValue *base_prop = [_targetObject valueForKey:_propertyKeyPath];
                 
                 double new_property_value = _currentValue;
-                if (_useAdditiveTweening) {
+                if (_additive) {
                     new_property_value = _valueDelta;
                 }
                 
                 NSValue *new_parent_value = (NSValue *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:new_property_value propertyKeyPath:_propertyKeyPath];
                 
-                //DLog(@"new value %@", new_parent_value);
-
-                
-                [self.targetObject setValue:new_parent_value forKeyPath:_propertyKeyPath];
+                [self.targetObject setValue:new_parent_value forKey:_propertyKeyPath];
                 
             } else {
                 // replace the top-level struct of the property we're trying to alter
@@ -487,14 +492,12 @@
                 NSValue *base_prop = [self.targetObject valueForKeyPath:_parentKeyPath];
                 
                 double new_property_value = _currentValue;
-                if (_useAdditiveTweening) {
+                if (_additive) {
                     new_property_value = _valueDelta;
                 }
                 
                 NSValue *new_parent_value = (NSValue *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:new_property_value propertyKeyPath:_propertyKeyPath];
                 
-                //DLog(@"new value %@", new_parent_value);
-
                 [self.targetObject setValue:new_parent_value forKeyPath:_parentKeyPath];
             }
             
@@ -507,7 +510,7 @@
             }
             
             double new_property_value = _currentValue;
-            if (_useAdditiveTweening) {
+            if (_additive) {
                 new_property_value = _valueDelta;
             }
             
@@ -536,6 +539,16 @@
 
 - (void)setTargetObject:(NSObject *)targetObject {
     _targetObject = targetObject;
+}
+
+
+- (void)setPropertyKeyPath:(NSString *)propertyKeyPath {
+    _propertyKeyPath = propertyKeyPath;
+}
+
+
+- (void)setOperationID:(NSUInteger)operationID {
+    _operationID = operationID;
 }
 
 
@@ -590,6 +603,10 @@
     _reversing = reversing;
 }
 
+- (void)setAdditive:(BOOL)additive {
+    _additive = additive;
+    self.structValueUpdater.additiveUpdates = additive;
+}
 
 #pragma mark - PMTweenTempoDelegate methods
 
@@ -629,12 +646,12 @@
             }
             
             // temporarily turn off additive mode for the first update so the starting position can be set
-            BOOL temp_use = _useAdditiveTweening;
-            _useAdditiveTweening = NO;
-            _structValueUpdater.useAdditiveUpdating = NO;
-            [self updatePropertyValue];
-            _useAdditiveTweening = temp_use;
-            _structValueUpdater.useAdditiveUpdating = temp_use;
+            BOOL temp_use = _additive;
+            _additive = NO;
+            _structValueUpdater.additiveUpdates = NO;
+            _additive = temp_use;
+            if (!_additive) { [self updatePropertyValue]; } // sets starting value if not in additive mode
+            _structValueUpdater.additiveUpdates = temp_use;
 
         }
         
@@ -645,6 +662,7 @@
         
         CGFloat progress;
         double new_value;
+        
         
         double value_delta = _endingValue - _startingValue;
 
@@ -662,7 +680,6 @@
             progress = fabsf((_currentValue - _endingValue) / value_delta);
 
         }
-
 
         self.valueDelta = new_value - _currentValue;
         self.currentValue = new_value;
@@ -716,6 +733,10 @@
             self.tweenState = PMTweenStateTweening;
             self.startTime = 0;
             
+            if (_additive && _targetObject) {
+                self.operationID = [PMTween addTween:self];
+            }
+            
             // call start block
             if (_startBlock) {
                 __weak typeof(self) block_self = self;
@@ -734,7 +755,20 @@
     if (_tweenState == PMTweenStateStopped) {
         [self resetTween];
         
+        if (_additive) {
+            // assign the endingValue of the last tween for this obj/keyPath to this tween's starting value
+            NSValue *last_target_value = [PMTween targetValueForObject:self.targetObject keyPath:self.propertyKeyPath];
+            if (last_target_value) {
+                self.startingValue = [(NSNumber *)last_target_value doubleValue];
+            }
+        }
+        
         if (_delay == 0) {
+            
+            if (_additive && _targetObject) {
+                self.operationID = [PMTween addTween:self];
+            }
+            
             self.tweenState = PMTweenStateTweening;
 
             // call start block
@@ -757,6 +791,10 @@
         _startTime = 0;
         _currentTime = 0;
         _tweenProgress = 0;
+        
+        if (_additive && _targetObject) {
+            _operationID = 0;
+        }
         
         // call stop block
         if (_stopBlock) {

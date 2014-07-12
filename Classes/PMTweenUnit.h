@@ -22,6 +22,7 @@
     BOOL _reversing;
     NSObject *_targetProperty;
     NSObject *_targetObject;
+    NSString *_propertyKeyPath;
     PMTweenTempo *_tempo;
 }
 
@@ -118,12 +119,12 @@
 @property (nonatomic, assign) NSUInteger numberOfRepeats;
 
 /**
- *  A Boolean which determines whether this tween should change its property value additively. Additive animation allows multiple animations to produce a compound effect, instead of overwriting each other as they update. Additive animation is now the default behavior for tweening animations in iOS 8.
+ *  A Boolean which determines whether this tween should change its property value additively. Additive animation allows multiple tweens to produce a compound effect, instead of overwriting each other as they update the same property. Additive animation is now the default behavior for tweening animations in iOS 8, and is great for making user interface animations fluid and responsive.
  *
- *  @remarks The default value is YES.
+ *  @remarks The `startingValue` property is ignored for additive animations, and will instead combine with the current value of the property being tweened. Please be aware that because of the composite nature of additive animations, values can temporarily tween past the specified endingValue. This can have unintended consequences if the property you are tweening is clamped to a limited range of values. Also note that additive animations may not work well with complex tweens using sequences, reversing, or repeating, and will not work with other tweens that are not using the additive mode. Because of these caveats, the default value is NO.
  *
  */
-@property (nonatomic, assign) BOOL useAdditiveTweening;
+@property (nonatomic, assign) BOOL additive;
 
 
 /**
@@ -168,6 +169,19 @@
  * The target object whose property should be tweened, applicable if this instance was initiated with the initWithProperty:... method.
  */
 @property (readonly, nonatomic, strong) NSObject *targetObject;
+
+
+/**
+  * Key path for property on target. Only used when class is created with initWithObject.
+  */
+@property (readonly, nonatomic, copy) NSString *propertyKeyPath;
+
+/**
+ *  An operation ID is assigned to a PMTweenUnit when it is tweening an object's property (via initWithObject...) and its tween operation is currently in progress. (read-only)
+ *
+ *  @remarks This value returns 0 if no ID is currently assigned.
+ */
+@property (readonly, nonatomic, assign) NSUInteger operationID;
 
 /**
  *  A `PMTweenState` enum which represents the current state of the tween operation. (read-only)

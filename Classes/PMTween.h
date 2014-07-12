@@ -283,7 +283,24 @@ typedef NS_OPTIONS(NSInteger, PMTweenOptions) {
  *  PMTween is a flexible and modular tweening library for iOS. This base class holds common enums, blocks, and notifications, and defines the `PMTweening` protocol.
  */
 
+@class PMTweenUnit;
+
 @interface PMTween : NSObject
+
+// Holds weak references to all currently-tweening PMTweenUnit instances which are tweening an object's property
++ (NSHashTable *)objectTweens;
+
+// Internal method that adds a PMTweenUnit instance to objectTweens
++ (NSUInteger)addTween:(PMTweenUnit *)tween;
+
+// Internal method that removes a PMTweenUnit instance from objectTweens
++ (void)removeTween:(PMTweenUnit *)tween;
+
+// Internal method that returns an incremented operation id, which are used to sort the objectTweens NSHashTable
++ (NSUInteger)currentTweenOperationID;
+
+// Internal method that returns the ending value of the most recent tween operation for the specified object and keyPath. If none, returns nil.
++ (NSValue *)targetValueForObject:(NSObject *)object keyPath:(NSString *)keyPath;
 
 // Utility method which determines whether the value is of the specified Objective-C type.
 + (BOOL)isValue:(NSValue *)value objCType:(const char *)typeToMatch;

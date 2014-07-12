@@ -12,13 +12,14 @@
 
 typedef NS_ENUM(NSInteger, PMTweenExampleType) {
     PMTweenExampleBasic                     = 0,
-    PMTweenExampleBasicPhysics              = 1,
-    PMTweenExampleGroup                     = 2,
-    PMTweenExampleSequence                  = 3,
-    PMTweenExampleNoncontiguousSequence     = 4,
-    PMTweenExampleTransform3D               = 5,
-    PMTweenExampleDynamic                   = 6,
-    PMTweenExampleMassTweens                = 7
+    PMTweenExampleAdditive                  = 1,
+    PMTweenExampleBasicPhysics              = 2,
+    PMTweenExampleGroup                     = 3,
+    PMTweenExampleSequence                  = 4,
+    PMTweenExampleNoncontiguousSequence     = 5,
+    PMTweenExampleTransform3D               = 6,
+    PMTweenExampleDynamic                   = 7,
+    PMTweenExampleMassTweens                = 8
 };
 
 @end

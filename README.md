@@ -34,6 +34,13 @@ sequence.reversingMode = PMTweenSequenceReversingContiguous;
 ![sequence](http://poetmountain.github.io/PMTween/screenshots/sequence.gif)
 
 
+### New in 1.2.0
+
+New in the 1.2.0 release is support for additive animations in PMTweenUnit. Additive animation allows multiple tweens to produce a compound effect, instead of overwriting each other as they update the same property. Additive animation is now the default behavior for tweening animations in iOS 8, and is great for making user interface animations fluid and responsive. Of course with PMTweenUnit you are not limited to tweening UIView properties, so additive tweening may be applied to any compatible property. Simply set `additive` to YES on any PMTweenUnit instances whose tweening updates you wish to composite. Please see the documentation and updated [Examples project](https://github.com/poetmountain/PMTween/tree/master/Examples) for more information and things you should keep in mind when using this mode. Special thanks to [Andy Matuschak](https://twitter.com/andy_matuschak) and [Kevin Doughty](https://twitter.com/DoughtyKevin) for making the concept clearer.
+
+![additive](http://poetmountain.github.io/PMTween/screenshots/additive.gif)
+
+
 ### New in 1.1.0
 
 New in the 1.1.0 release is PMTweenPhysicsUnit, which provides dynamic, physics-based tweening. (Thanks to [Pop](https://github.com/facebook/pop) lib for the inspiration!) Since it adopts the PMTweening protocol, you can combine it with the other PMTween classes as you see fit.

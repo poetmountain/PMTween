@@ -78,6 +78,7 @@ describe(@"PMTweenUnit", ^{
 
                 });
                 
+                
             });
             
             describe(@"using initWithObject:...", ^{
@@ -152,6 +153,33 @@ describe(@"PMTweenUnit", ^{
                     });
                 });
                 
+                
+                describe(@"additive mode", ^{
+                    __block PMTweenUnit *unit2;
+                    
+                    before(^{
+                        view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
+                        unit = [[PMTweenUnit alloc] initWithObject:view propertyKeyPath:@"frame.origin.x" startingValue:0 endingValue:10 duration:0.5 options:PMTweenOptionNone easingBlock:nil];
+                        unit.additive = YES;
+                        unit2 = [[PMTweenUnit alloc] initWithObject:view propertyKeyPath:@"frame.origin.x" startingValue:0 endingValue:2 duration:0.5 options:PMTweenOptionNone easingBlock:nil];
+                        unit2.delay = 0.2;
+                        unit2.additive = YES;
+                    });
+                    
+                    it(@"should end on specified ending value", ^AsyncBlock{
+                        unit2.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                            __strong PMTweenUnit *tween_unit = (PMTweenUnit *)tween;
+                            expect(tween_unit.currentValue).to.equal(tween_unit.endingValue);
+                            expect(tween_unit.tweenProgress).to.equal(1.0);
+                            expect(view.frame.origin.x).to.beCloseToWithin(2.0, 0.01);
+                            done();
+                        };
+                        [unit startTween];
+                        [unit2 startTween];
+                        
+                    });
+                    
+                });
 
 
             });

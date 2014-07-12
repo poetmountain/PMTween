@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B0DF43E19706CA5002EDD61 /* AdditiveVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DF43D19706CA5002EDD61 /* AdditiveVC.m */; };
 		8B36D6F61907253700771A81 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B36D6F51907253700771A81 /* Foundation.framework */; };
 		8B36D6F81907253700771A81 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B36D6F71907253700771A81 /* CoreGraphics.framework */; };
 		8B36D6FA1907253700771A81 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B36D6F91907253700771A81 /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B0DF43C19706CA5002EDD61 /* AdditiveVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AdditiveVC.h; path = Classes/AdditiveVC.h; sourceTree = "<group>"; };
+		8B0DF43D19706CA5002EDD61 /* AdditiveVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AdditiveVC.m; path = Classes/AdditiveVC.m; sourceTree = "<group>"; };
 		8B36D6F21907253700771A81 /* PMTweenExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PMTweenExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B36D6F51907253700771A81 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		8B36D6F71907253700771A81 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -221,6 +224,8 @@
 				8BF8F79B191809790028261E /* BasicPhysicsTweenVC.m */,
 				8BF8F7A31918441C0028261E /* DynamicTweenVC.h */,
 				8BF8F7A41918441C0028261E /* DynamicTweenVC.m */,
+				8B0DF43C19706CA5002EDD61 /* AdditiveVC.h */,
+				8B0DF43D19706CA5002EDD61 /* AdditiveVC.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -378,6 +383,7 @@
 				8B36D76C190747F500771A81 /* PMTweenEasingSine.m in Sources */,
 				8B36D765190747F500771A81 /* PMTweenEasingCubic.m in Sources */,
 				8B36D77C190765AD00771A81 /* SequenceTweenVC.m in Sources */,
+				8B0DF43E19706CA5002EDD61 /* AdditiveVC.m in Sources */,
 				8B36D769190747F500771A81 /* PMTweenEasingQuadratic.m in Sources */,
 				8BBB27C31907859C0012EF4A /* SequenceNoncontiguousVC.m in Sources */,
 				8BF8F7A21918098B0028261E /* PMTweenPhysicsUnit.m in Sources */,

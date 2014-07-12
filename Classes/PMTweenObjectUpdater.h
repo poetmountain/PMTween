@@ -33,7 +33,13 @@
  */
 - (BOOL)supportsObject:(NSObject *)object;
 
-@property (nonatomic, assign) BOOL useAdditiveUpdating;
+
+/**
+ *  A Boolean which determines whether to update a property value using additive tweening. When the value is YES, values passed in to `replaceObject:newPropertyValue:propertyKeyPath` are added to the existing value, instead of replacing it.
+ *
+ *  @remarks The default value is NO.
+ */
+@property (nonatomic, assign) BOOL additiveUpdates;
 
 
 @end
@@ -44,7 +50,7 @@
  */
 @interface PMTweenObjectUpdater : NSObject <PMTweenObjectUpdating> {
     @protected
-    BOOL _useAdditiveUpdating;
+    BOOL _additiveUpdates;
 }
 
 /**
