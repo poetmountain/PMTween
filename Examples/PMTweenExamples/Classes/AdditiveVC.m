@@ -55,7 +55,7 @@
     if (!self.createdUI) {
         CGFloat content_top = 0;
         if ([self respondsToSelector:@selector(topLayoutGuide)]) {
-            content_top = self.topLayoutGuide.length;
+            content_top = self.topLayoutGuide.length; // This is never used.
         }
         //self.tweenView.frame = CGRectMake(20, content_top+20, 50, 50);
         

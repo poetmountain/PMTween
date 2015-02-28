@@ -34,7 +34,7 @@
             if (!period) {
                 period = duration * 0.3;
             }
-            if (amplitude < abs(valueDelta)) {
+            if (amplitude < fabs(valueDelta)) {
                 amplitude = valueDelta;
                 overshoot = period * 0.25;
             } else {
@@ -75,7 +75,7 @@
             if (!period) {
                 period = duration * 0.3;
             }
-            if (amplitude < abs(valueDelta)) {
+            if (amplitude < fabs(valueDelta)) {
                 amplitude = valueDelta;
                 overshoot = period * 0.25;
             } else {
@@ -114,7 +114,7 @@
             if (!period) {
                 period = duration * (0.3 * 1.5);
             }
-            if (amplitude < abs(valueDelta)) {
+            if (amplitude < fabs(valueDelta)) {
                 amplitude = valueDelta;
                 overshoot = period * 0.25;
             } else {
