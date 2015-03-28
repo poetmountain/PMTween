@@ -92,18 +92,20 @@ describe(@"PMTweenGroup", ^{
                 expect(group.tempo).notTo.beNil;
             });
             
-            it(@"should end tweens on specified ending values", ^AsyncBlock{
-                group.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
-                    PMTweenUnit *unit = tween_group.tweens[0];
-                    PMTweenUnit *unit2 = tween_group.tweens[1];
-                    expect(unit.currentValue).to.equal(unit.endingValue);
-                    expect(unit.tweenProgress).to.equal(1.0);
-                    expect(unit2.currentValue).to.equal(unit2.endingValue);
-                    expect(unit2.tweenProgress).to.equal(1.0);
-                    done();
-                };
-                [group startTween];
+            it(@"should end tweens on specified ending values", ^{
+                waitUntil(^(DoneCallback done) {
+                    group.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
+                        PMTweenUnit *unit = tween_group.tweens[0];
+                        PMTweenUnit *unit2 = tween_group.tweens[1];
+                        expect(unit.currentValue).to.beCloseTo(unit.endingValue);
+                        expect(unit.tweenProgress).to.equal(1.0);
+                        expect(unit2.currentValue).to.beCloseTo(unit2.endingValue);
+                        expect(unit2.tweenProgress).to.equal(1.0);
+                        done();
+                    };
+                    [group startTween];
+                });
                 
             });
         });
@@ -145,29 +147,31 @@ describe(@"PMTweenGroup", ^{
                 group.numberOfRepeats = 2;
             });
             
-            it(@"should call repeat and complete blocks", ^AsyncBlock{
-                group.repeatCycleBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
-                    NSLog(@"--->>> repeat cycle block %i", tween_group.cyclesCompletedCount);
-                    
-                    if (tween_group.cyclesCompletedCount == tween_group.numberOfRepeats - 1) {
-                        expect(tween_group.cyclesCompletedCount).to.equal(tween_group.numberOfRepeats - 1);
-                    }
-                };
-                group.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
-                    NSLog(@"--->>> complete cycle block %i", tween_group.cyclesCompletedCount);
-                    expect(tween_group.cyclesCompletedCount-1).to.equal(tween_group.numberOfRepeats);
+            it(@"should call repeat and complete blocks", ^{
+                waitUntil(^(DoneCallback done) {
+                    group.repeatCycleBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
+                        NSLog(@"--->>> repeat cycle block %lu", (unsigned long)tween_group.cyclesCompletedCount);
+                        
+                        if (tween_group.cyclesCompletedCount == tween_group.numberOfRepeats - 1) {
+                            expect(tween_group.cyclesCompletedCount).to.equal(tween_group.numberOfRepeats - 1);
+                        }
+                    };
+                    group.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
+                        NSLog(@"--->>> complete cycle block %lu", (unsigned long)tween_group.cyclesCompletedCount);
+                        expect(tween_group.cyclesCompletedCount-1).to.equal(tween_group.numberOfRepeats);
 
-                    PMTweenUnit *unit = tween_group.tweens[0];
-                    PMTweenUnit *unit2 = tween_group.tweens[1];
-                    expect(unit.currentValue).to.equal(unit.endingValue);
-                    expect(unit.tweenProgress).to.equal(1.0);
-                    expect(unit2.currentValue).to.equal(unit2.endingValue);
-                    expect(unit2.tweenProgress).to.equal(1.0);
-                    done();
-                };
-                [group startTween];
+                        PMTweenUnit *unit = tween_group.tweens[0];
+                        PMTweenUnit *unit2 = tween_group.tweens[1];
+                        expect(unit.currentValue).to.beCloseTo(unit.endingValue);
+                        expect(unit.tweenProgress).to.equal(1.0);
+                        expect(unit2.currentValue).to.beCloseTo(unit2.endingValue);
+                        expect(unit2.tweenProgress).to.equal(1.0);
+                        done();
+                    };
+                    [group startTween];
+                });
                 
             });
         });
@@ -222,7 +226,8 @@ describe(@"PMTweenGroup", ^{
                 group.numberOfRepeats = 2;
             });
             
-            it(@"should call repeat and complete blocks", ^AsyncBlock {
+            it(@"should call repeat and complete blocks", ^{
+                waitUntil(^(DoneCallback done) {
                 group.repeatCycleBlock = ^void(NSObject<PMTweening> *tween) {
                     __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
                     
@@ -240,6 +245,8 @@ describe(@"PMTweenGroup", ^{
                 };
                 
                 [group startTween];
+                });
+                
             });
         });
         
@@ -300,19 +307,21 @@ describe(@"PMTweenGroup", ^{
 
             });
             
-            it(@"should sync the tweens", ^AsyncBlock {
-                unit.reverseBlock = ^void(NSObject<PMTweening>  *tween) {
-                    __block PMTweenUnit *u1 = (PMTweenUnit *)tween;
+            it(@"should sync the tweens", ^{
+                waitUntil(^(DoneCallback done) {
+                    unit.reverseBlock = ^void(NSObject<PMTweening>  *tween) {
+                        __block PMTweenUnit *u1 = (PMTweenUnit *)tween;
 
-                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                        // the unit with the shorter duration should be paused while the other is still tweening
-                        expect(u1.tweenState).to.equal(PMTweenStatePaused);
-                        expect(unit2.tweenState).to.equal(PMTweenStateTweening);
-                        done();
-                        
-                    });
-                };
+                        dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                        dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                            // the unit with the shorter duration should be paused while the other is still tweening
+                            expect(u1.tweenState).to.equal(PMTweenStatePaused);
+                            expect(unit2.tweenState).to.equal(PMTweenStateTweening);
+                            done();
+                            
+                        });
+                    };
+                });
 
             });
             
@@ -354,6 +363,7 @@ describe(@"PMTweenGroup", ^{
             PMTweenUnit *unit2 = [[PMTweenUnit alloc] initWithProperty:@(0) startingValue:0 endingValue:100 duration:0.2 options:PMTweenOptionNone easingBlock:nil];
             group = [[PMTweenGroup alloc] initWithTweens:@[unit, unit2] options:PMTweenOptionNone];
         });
+ 
         
         describe(@"-startTween", ^{
             
@@ -384,15 +394,17 @@ describe(@"PMTweenGroup", ^{
                 [group startTween];
             });
             
-            it(@"should stop the tween", ^AsyncBlock {
-                dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                    group.stopBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
-                        expect(tween_group.tweenState).to.equal(PMTweenStateStopped);
-                        done();
-                    };
-                    expect(^{ [group stopTween]; }).will.notify(PMTweenDidStopNotification);
+            it(@"should stop the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                        group.stopBlock = ^void(NSObject<PMTweening>  *tween) {
+                            __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
+                            expect(tween_group.tweenState).to.equal(PMTweenStateStopped);
+                            done();
+                        };
+                        expect(^{ [group stopTween]; }).will.notify(PMTweenDidStopNotification);
+                    });
                 });
                 
             });
@@ -404,15 +416,17 @@ describe(@"PMTweenGroup", ^{
                 [group startTween];
             });
             
-            it(@"should pause the tween", ^AsyncBlock {
-                dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                    group.pauseBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
-                        expect(tween_group.tweenState).to.equal(PMTweenStatePaused);
-                        done();
-                    };
-                    expect(^{ [group pauseTween]; }).will.notify(PMTweenDidPauseNotification);
+            it(@"should pause the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                        group.pauseBlock = ^void(NSObject<PMTweening>  *tween) {
+                            __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
+                            expect(tween_group.tweenState).to.equal(PMTweenStatePaused);
+                            done();
+                        };
+                        expect(^{ [group pauseTween]; }).will.notify(PMTweenDidPauseNotification);
+                    });
                 });
             });
             
@@ -435,21 +449,23 @@ describe(@"PMTweenGroup", ^{
                 [group startTween];
             });
             
-            it(@"should resume the tween", ^AsyncBlock {
-                dispatch_time_t pause_time = dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC);
-                dispatch_after(pause_time, dispatch_get_main_queue(), ^{
-                    [group pauseTween];
-                    PMTweenUnit *unit = (PMTweenUnit *)group.tweens.firstObject;
-                    expect(unit.tweenProgress).to.beCloseToWithin(0.5, 0.1);
+            it(@"should resume the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t pause_time = dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC);
+                    dispatch_after(pause_time, dispatch_get_main_queue(), ^{
+                        [group pauseTween];
+                        PMTweenUnit *unit = (PMTweenUnit *)group.tweens.firstObject;
+                        expect(unit.tweenProgress).to.beCloseToWithin(0.5, 0.1);
 
-                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                        group.resumeBlock = ^void(NSObject<PMTweening>  *tween) {
-                            __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
-                            expect(tween_group.tweenState).to.equal(PMTweenStateTweening);
-                            done();
-                        };
-                        expect(^{ [group resumeTween]; }).will.notify(PMTweenDidResumeNotification);
+                        dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                        dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                            group.resumeBlock = ^void(NSObject<PMTweening>  *tween) {
+                                __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
+                                expect(tween_group.tweenState).to.equal(PMTweenStateTweening);
+                                done();
+                            };
+                            expect(^{ [group resumeTween]; }).will.notify(PMTweenDidResumeNotification);
+                        });
                     });
                 });
             });
@@ -467,22 +483,24 @@ describe(@"PMTweenGroup", ^{
         });
         
         
+        
         describe(@"-updateWithTimeInterval", ^{
-
-            describe(@"if tween is running", ^{
-                before(^{
-                    PMTweenUnit *unit = [[PMTweenUnit alloc] initWithProperty:@(0) startingValue:0 endingValue:100 duration:0.5 options:PMTweenOptionNone easingBlock:nil];
-                    group = [[PMTweenGroup alloc] initWithTweens:@[unit] options:PMTweenOptionNone];
+            
+            describe(@"should call update block", ^{
+                it(@", and tweenState should be tweening", ^{
+                    waitUntil(^(DoneCallback done) {
+                        group.updateBlock = ^void(NSObject<PMTweening>  *tween) {
+                            __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
+                            expect(tween_group.tweenState).to.equal(PMTweenStateTweening);
+                            [tween_group stopTween];
+                            done();
+                        };
+                        [group startTween];
+                        
+                    });
+                    
                 });
-                it(@"should call update block", ^AsyncBlock {
-                    group.updateBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenGroup *tween_group = (PMTweenGroup *)tween;
-                        expect(tween_group.tweenState).to.equal(PMTweenStateTweening);
-                        done();
-                    };
-                    [group startTween];
-
-                });
+                
             });
             
             

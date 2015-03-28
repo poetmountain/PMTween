@@ -45,7 +45,7 @@ describe(@"PMTweenObjectUpdater", ^{
                 
                 it(@", should update", ^{
                     CGFloat new_float = (CGFloat)[(NSNumber *)new_value floatValue];
-                    expect(new_float).to.equal(0.3);
+                    expect(new_float).to.beCloseTo(0.3);
                 });
             });
             

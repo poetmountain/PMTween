@@ -668,7 +668,7 @@
 
         if (_tweenDirection == PMTweenDirectionForward) {
             new_value = self.easingBlock(elapsed_time, _startingValue, value_delta, adjusted_duration);
-            progress = fabs((_currentValue - _startingValue) / value_delta);
+            progress = fabsf((_currentValue - _startingValue) / value_delta);
 
         } else {
             

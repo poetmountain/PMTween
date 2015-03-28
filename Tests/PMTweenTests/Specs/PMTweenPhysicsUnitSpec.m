@@ -53,26 +53,29 @@ describe(@"PMTweenPhysicsUnit", ^{
                     unit = [[PMTweenPhysicsUnit alloc] initWithProperty:@(0) startingValue:0 velocity:1 friction:0.8 options:PMTweenOptionNone];
                 });
                 
-                it(@"should end on specified ending value", ^AsyncBlock{
-                    unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                        expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
-                        expect(physics_unit.tweenProgress).to.equal(1.0);
-                        done();
-                    };
-                    [unit startTween];
-                    
+                it(@"should end on specified ending value", ^{
+                    waitUntil(^(DoneCallback done) {
+                        unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                            __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                            expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
+                            expect(physics_unit.tweenProgress).to.equal(1.0);
+                            done();
+                        };
+                        [unit startTween];
+                    });
                 });
                 
-                it(@"changing startingValue should reset tween to start at that value", ^AsyncBlock {
-                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
-                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                        unit.startingValue = 10;
-                        expect(unit.startingValue).to.equal(10);
-                        expect(unit.tweenProgress).to.equal(0.0);
-                        done();
+                it(@"changing startingValue should reset tween to start at that value", ^{
+                    waitUntil(^(DoneCallback done) {
+                        dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);
+                        dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                            unit.startingValue = 10;
+                            expect(unit.startingValue).to.equal(10);
+                            expect(unit.tweenProgress).to.equal(0.0);
+                            done();
+                        });
+                        [unit startTween];
                     });
-                    [unit startTween];
                 });
             });
             
@@ -86,16 +89,17 @@ describe(@"PMTweenPhysicsUnit", ^{
                         unit = [[PMTweenPhysicsUnit alloc] initWithObject:view propertyKeyPath:@"alpha" startingValue:0 velocity:1 friction:0.998 options:PMTweenOptionNone];
                     });
                     
-                    it(@"should end on specified ending value", ^AsyncBlock{
-                        unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                            __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                            expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
-                            expect(physics_unit.tweenProgress).to.equal(1.0);
-                            expect(view.alpha).to.equal(physics_unit.currentValue);
-                            done();
-                        };
-                        [unit startTween];
-                        
+                    it(@"should end on specified ending value", ^{
+                        waitUntil(^(DoneCallback done) {
+                            unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                                __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                                expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
+                                expect(physics_unit.tweenProgress).to.equal(1.0);
+                                expect(view.alpha).to.beCloseTo(physics_unit.currentValue);
+                                done();
+                            };
+                            [unit startTween];
+                        });
                     });
                 });
                 
@@ -106,16 +110,17 @@ describe(@"PMTweenPhysicsUnit", ^{
                         unit = [[PMTweenPhysicsUnit alloc] initWithObject:view propertyKeyPath:@"frame.origin.x" startingValue:0 velocity:1 friction:0.998 options:PMTweenOptionNone];
                     });
                     
-                    it(@"should end on specified ending value", ^AsyncBlock{
-                        unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                            __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                            expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
-                            expect(physics_unit.tweenProgress).to.equal(1.0);
-                            expect(view.frame.origin.x).to.equal(physics_unit.currentValue);
-                            done();
-                        };
-                        [unit startTween];
-                        
+                    it(@"should end on specified ending value", ^{
+                        waitUntil(^(DoneCallback done) {
+                            unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                                __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                                expect(physics_unit.velocity).to.beCloseToWithin(0.0, 0.1);
+                                expect(physics_unit.tweenProgress).to.equal(1.0);
+                                expect(view.frame.origin.x).to.equal(physics_unit.currentValue);
+                                done();
+                            };
+                            [unit startTween];
+                        });
                     });
                 });
                 
@@ -151,28 +156,30 @@ describe(@"PMTweenPhysicsUnit", ^{
                 unit.numberOfRepeats = 2;
             });
             
-            it(@"should call repeat and complete blocks", ^AsyncBlock {
-                unit.repeatCycleBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+            it(@"should call repeat and complete blocks", ^{
+                waitUntil(^(DoneCallback done) {
+                    unit.repeatCycleBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                        
+                        if (physics_unit.cyclesCompletedCount - 1 == physics_unit.numberOfRepeats) {
+                            expect(physics_unit.cyclesCompletedCount - 1).to.equal(physics_unit.numberOfRepeats);
+                        }
+                        expect(physics_unit.cycleProgress).to.equal(0.0);
+                        expect(physics_unit.tweenProgress).to.equal(0.0);
+                    };
+                    unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                        
+                        expect(physics_unit.cyclesCompletedCount-1).to.equal(physics_unit.numberOfRepeats);
+                        expect(physics_unit.cycleProgress).to.equal(1.0);
+                        expect(physics_unit.tweenProgress).to.equal(1.0);
+                        expect(physics_unit.tweenState).to.equal(PMTweenStateStopped);
+                        done();
+                        
+                    };
                     
-                    if (physics_unit.cyclesCompletedCount - 1 == physics_unit.numberOfRepeats) {
-                        expect(physics_unit.cyclesCompletedCount - 1).to.equal(physics_unit.numberOfRepeats);
-                    }
-                    expect(physics_unit.cycleProgress).to.equal(0.0);
-                    expect(physics_unit.tweenProgress).to.equal(0.0);
-                };
-                unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                    
-                    expect(physics_unit.cyclesCompletedCount-1).to.equal(physics_unit.numberOfRepeats);
-                    expect(physics_unit.cycleProgress).to.equal(1.0);
-                    expect(physics_unit.tweenProgress).to.equal(1.0);
-                    expect(physics_unit.tweenState).to.equal(PMTweenStateStopped);
-                    done();
-                    
-                };
-                
-                [unit startTween];
+                    [unit startTween];
+                });
             });
         });
         
@@ -206,23 +213,25 @@ describe(@"PMTweenPhysicsUnit", ^{
                 unit = [[PMTweenPhysicsUnit alloc] initWithProperty:@(0) startingValue:0 velocity:1 friction:0.8 options:PMTweenOptionReverse];
             });
             
-            it(@"should tween forward and back", ^AsyncBlock {
-                unit.reverseBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                    
-                    expect(physics_unit.cycleProgress).to.beCloseToWithin(0.5, 0.05);
-                    expect(physics_unit.tweenProgress).to.equal(0.0);
-                    expect(physics_unit.tweenState).to.equal(PMTweenStateTweening);
-                };
-                unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                    
-                    expect(physics_unit.cycleProgress).to.equal(1.0);
-                    expect(physics_unit.tweenProgress).to.equal(1.0);
-                    expect(physics_unit.tweenState).to.equal(PMTweenStateStopped);
-                    done();
-                };
-                [unit startTween];
+            it(@"should tween forward and back", ^{
+                waitUntil(^(DoneCallback done) {
+                    unit.reverseBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                        
+                        expect(physics_unit.cycleProgress).to.beCloseToWithin(0.5, 0.05);
+                        expect(physics_unit.tweenProgress).to.equal(0.0);
+                        expect(physics_unit.tweenState).to.equal(PMTweenStateTweening);
+                    };
+                    unit.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                        
+                        expect(physics_unit.cycleProgress).to.equal(1.0);
+                        expect(physics_unit.tweenProgress).to.equal(1.0);
+                        expect(physics_unit.tweenState).to.equal(PMTweenStateStopped);
+                        done();
+                    };
+                    [unit startTween];
+                });
             });
         });
         
@@ -256,26 +265,28 @@ describe(@"PMTweenPhysicsUnit", ^{
                 unit.numberOfRepeats = 2;
             });
             
-            it(@"should tween more than once", ^AsyncBlock {
-                unit.repeatCycleBlock = ^void(NSObject<PMTweening>  *tween) {
-                    __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                    
-                    if (physics_unit.cyclesCompletedCount - 1 == physics_unit.numberOfRepeats) {
-                        expect(physics_unit.cyclesCompletedCount - 1).to.equal(physics_unit.numberOfRepeats);
-                    }
-                    expect(physics_unit.cycleProgress).to.equal(0.0);
-                    expect(physics_unit.tweenProgress).to.equal(0.0);
-                };
-                unit.completeBlock = ^void(NSObject<PMTweening>  *tween) {
-                    __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                    
-                    expect(physics_unit.cyclesCompletedCount-1).to.equal(physics_unit.numberOfRepeats);
-                    expect(physics_unit.cycleProgress).to.equal(1.0);
-                    expect(physics_unit.tweenProgress).to.equal(1.0);
-                    expect(physics_unit.tweenState).to.equal(PMTweenStateStopped);
-                    done();
-                };
-                [unit startTween];
+            it(@"should tween more than once", ^{
+                waitUntil(^(DoneCallback done) {
+                    unit.repeatCycleBlock = ^void(NSObject<PMTweening>  *tween) {
+                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                        
+                        if (physics_unit.cyclesCompletedCount - 1 == physics_unit.numberOfRepeats) {
+                            expect(physics_unit.cyclesCompletedCount - 1).to.equal(physics_unit.numberOfRepeats);
+                        }
+                        expect(physics_unit.cycleProgress).to.equal(0.0);
+                        expect(physics_unit.tweenProgress).to.equal(0.0);
+                    };
+                    unit.completeBlock = ^void(NSObject<PMTweening>  *tween) {
+                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                        
+                        expect(physics_unit.cyclesCompletedCount-1).to.equal(physics_unit.numberOfRepeats);
+                        expect(physics_unit.cycleProgress).to.equal(1.0);
+                        expect(physics_unit.tweenProgress).to.equal(1.0);
+                        expect(physics_unit.tweenState).to.equal(PMTweenStateStopped);
+                        done();
+                    };
+                    [unit startTween];
+                });
             });
         });
         
@@ -353,16 +364,18 @@ describe(@"PMTweenPhysicsUnit", ^{
                 [unit startTween];
             });
             
-            it(@"should stop the tween", ^AsyncBlock {
-                dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                    
-                    unit.stopBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                        expect(physics_unit.tweenState).to.equal(PMTweenStateStopped);
-                        done();
-                    };
-                    expect(^{ [unit stopTween]; }).will.notify(PMTweenDidStopNotification);
+            it(@"should stop the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                        
+                        unit.stopBlock = ^void(NSObject<PMTweening>  *tween) {
+                            __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                            expect(physics_unit.tweenState).to.equal(PMTweenStateStopped);
+                            done();
+                        };
+                        expect(^{ [unit stopTween]; }).will.notify(PMTweenDidStopNotification);
+                    });
                 });
                 
             });
@@ -374,15 +387,17 @@ describe(@"PMTweenPhysicsUnit", ^{
                 [unit startTween];
             });
             
-            it(@"should pause the tween", ^AsyncBlock {
-                dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                    unit.pauseBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                        expect(physics_unit.tweenState).to.equal(PMTweenStatePaused);
-                        done();
-                    };
-                    expect(^{ [unit pauseTween]; }).will.notify(PMTweenDidPauseNotification);
+            it(@"should pause the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                        unit.pauseBlock = ^void(NSObject<PMTweening>  *tween) {
+                            __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                            expect(physics_unit.tweenState).to.equal(PMTweenStatePaused);
+                            done();
+                        };
+                        expect(^{ [unit pauseTween]; }).will.notify(PMTweenDidPauseNotification);
+                    });
                 });
             });
             
@@ -404,21 +419,22 @@ describe(@"PMTweenPhysicsUnit", ^{
                 [unit startTween];
             });
             
-            it(@"should resume the tween", ^AsyncBlock {
-                
-                dispatch_time_t pause_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                dispatch_after(pause_time, dispatch_get_main_queue(), ^{
-                    [unit pauseTween];
-                    expect(unit.tweenProgress).to.equal(unit.tweenProgress);
-                    
-                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                        unit.resumeBlock = ^void(NSObject<PMTweening>  *tween) {
-                            __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                            expect(physics_unit.tweenState).to.equal(PMTweenStateTweening);
-                            done();
-                        };
-                        expect(^{ [unit resumeTween]; }).will.notify(PMTweenDidResumeNotification);
+            it(@"should resume the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t pause_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                    dispatch_after(pause_time, dispatch_get_main_queue(), ^{
+                        [unit pauseTween];
+                        expect(unit.tweenProgress).to.equal(unit.tweenProgress);
+                        
+                        dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                        dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                            unit.resumeBlock = ^void(NSObject<PMTweening>  *tween) {
+                                __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                                expect(physics_unit.tweenState).to.equal(PMTweenStateTweening);
+                                done();
+                            };
+                            expect(^{ [unit resumeTween]; }).will.notify(PMTweenDidResumeNotification);
+                        });
                     });
                 });
             });
@@ -439,14 +455,20 @@ describe(@"PMTweenPhysicsUnit", ^{
             
             describe(@"if tween is running", ^{
                 
-                it(@"should call update block", ^AsyncBlock {
-                    unit.updateBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
-                        expect(physics_unit.tweenState).to.equal(PMTweenStateTweening);
-                        done();
-                    };
-                    [unit startTween];
-                    
+                it(@"should call update block", ^{
+                    waitUntil(^(DoneCallback done) {
+                        dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                        dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                            unit.updateBlock = ^void(NSObject<PMTweening>  *tween) {
+                                __strong PMTweenPhysicsUnit *physics_unit = (PMTweenPhysicsUnit *)tween;
+                                expect(physics_unit.tweenState).to.equal(PMTweenStateTweening);
+                                [physics_unit stopTween];
+                                done();
+                            };
+                        });
+                        [unit startTween];
+
+                    });
                 });
             });
             

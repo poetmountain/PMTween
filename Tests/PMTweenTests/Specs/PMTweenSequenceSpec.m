@@ -86,21 +86,23 @@ describe(@"PMTweenSequence", ^{
                 expect(sequence.tempo).notTo.beNil;
             });
             
-            it(@"in proper order", ^AsyncBlock{
-                sequence.startBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
-                    PMTweenUnit *unit = seq.sequenceSteps.firstObject;
-                    expect([seq currentSequenceStep]).to.equal(unit);
-                };
-                sequence.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
-                    PMTweenUnit *unit2 = seq.sequenceSteps.lastObject;
-                    expect([seq currentSequenceStep]).to.equal(unit2);
-                    expect(unit2.currentValue).to.equal(unit2.endingValue);
-                    expect(unit2.tweenProgress).to.equal(1.0);
-                    done();
-                };
-                [sequence startTween];
+            it(@"in proper order", ^{
+                waitUntil(^(DoneCallback done) {
+                    sequence.startBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
+                        PMTweenUnit *unit = seq.sequenceSteps.firstObject;
+                        expect([seq currentSequenceStep]).to.equal(unit);
+                    };
+                    sequence.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
+                        PMTweenUnit *unit2 = seq.sequenceSteps.lastObject;
+                        expect([seq currentSequenceStep]).to.equal(unit2);
+                        expect(unit2.currentValue).to.beCloseTo(unit2.endingValue);
+                        expect(unit2.tweenProgress).to.equal(1.0);
+                        done();
+                    };
+                    [sequence startTween];
+                });
                 
             });
         });
@@ -143,25 +145,27 @@ describe(@"PMTweenSequence", ^{
             });
             
             
-            it(@"in proper order", ^AsyncBlock{
-                sequence.repeatCycleBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
-                    PMTweenUnit *unit = seq.sequenceSteps.firstObject;
-                    expect([seq currentSequenceStep]).to.equal(unit);
-                    
-                    if (seq.cyclesCompletedCount == seq.numberOfRepeats - 1) {
-                        expect(seq.cyclesCompletedCount).to.equal(seq.numberOfRepeats - 1);
-                    }
-                };
-                sequence.completeBlock = ^void(NSObject<PMTweening> *tween) {
-                    __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
-                    PMTweenUnit *unit2 = seq.sequenceSteps.lastObject;
-                    expect([seq currentSequenceStep]).to.equal(unit2);
-                    expect(unit2.currentValue).to.equal(unit2.endingValue);
-                    expect(unit2.tweenProgress).to.equal(1.0);
-                    done();
-                };
-                [sequence startTween];
+            it(@"in proper order", ^{
+                waitUntil(^(DoneCallback done) {
+                    sequence.repeatCycleBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
+                        PMTweenUnit *unit = seq.sequenceSteps.firstObject;
+                        expect([seq currentSequenceStep]).to.equal(unit);
+                        
+                        if (seq.cyclesCompletedCount == seq.numberOfRepeats - 1) {
+                            expect(seq.cyclesCompletedCount).to.equal(seq.numberOfRepeats - 1);
+                        }
+                    };
+                    sequence.completeBlock = ^void(NSObject<PMTweening> *tween) {
+                        __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
+                        PMTweenUnit *unit2 = seq.sequenceSteps.lastObject;
+                        expect([seq currentSequenceStep]).to.equal(unit2);
+                        expect(unit2.currentValue).to.beCloseTo(unit2.endingValue);
+                        expect(unit2.tweenProgress).to.equal(1.0);
+                        done();
+                    };
+                    [sequence startTween];
+                });
                 
             });
         });
@@ -224,14 +228,16 @@ describe(@"PMTweenSequence", ^{
                     
                 });
                 
-                it(@"should have completed second tween while tweening first", ^AsyncBlock {
-                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC);
-                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                        // first unit should be stopped while second unit is tweening during forward tween
-                        expect(unit.tweenState).to.equal(PMTweenStateStopped);
-                        expect(unit2.tweenState).to.equal(PMTweenStateTweening);
-                        done();
-                        
+                it(@"should have completed second tween while tweening first", ^{
+                    waitUntil(^(DoneCallback done) {
+                        dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC);
+                        dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                            // first unit should be stopped while second unit is tweening during forward tween
+                            expect(unit.tweenState).to.equal(PMTweenStateStopped);
+                            expect(unit2.tweenState).to.equal(PMTweenStateTweening);
+                            done();
+                            
+                        });
                     });
                 });
             });
@@ -267,14 +273,16 @@ describe(@"PMTweenSequence", ^{
                     
                 });
                 
-                it(@"should pause first tween while tweening second", ^AsyncBlock {
-                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.22 * NSEC_PER_SEC);
-                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                        // the first unit should be paused while the other is still tweening
-                        expect(unit.tweenState).to.equal(PMTweenStatePaused);
-                        expect(unit2.tweenState).to.equal(PMTweenStateTweening);
-                        done();
-                        
+                it(@"should pause first tween while tweening second", ^{
+                    waitUntil(^(DoneCallback done) {
+                        dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.22 * NSEC_PER_SEC);
+                        dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                            // the first unit should be paused while the other is still tweening
+                            expect(unit.tweenState).to.equal(PMTweenStatePaused);
+                            expect(unit2.tweenState).to.equal(PMTweenStateTweening);
+                            done();
+                            
+                        });
                     });
                 });
                 
@@ -366,15 +374,17 @@ describe(@"PMTweenSequence", ^{
                 [sequence startTween];
             });
             
-            it(@"should stop the tween", ^AsyncBlock {
-                dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                    sequence.stopBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
-                        expect(seq.tweenState).to.equal(PMTweenStateStopped);
-                        done();
-                    };
-                    expect(^{ [sequence stopTween]; }).will.notify(PMTweenDidStopNotification);
+            it(@"should stop the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                        sequence.stopBlock = ^void(NSObject<PMTweening>  *tween) {
+                            __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
+                            expect(seq.tweenState).to.equal(PMTweenStateStopped);
+                            done();
+                        };
+                        expect(^{ [sequence stopTween]; }).will.notify(PMTweenDidStopNotification);
+                    });
                 });
                 
             });
@@ -386,15 +396,17 @@ describe(@"PMTweenSequence", ^{
                 [sequence startTween];
             });
             
-            it(@"should pause the tween", ^AsyncBlock {
-                dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                    sequence.pauseBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
-                        expect(seq.tweenState).to.equal(PMTweenStatePaused);
-                        done();
-                    };
-                    expect(^{ [sequence pauseTween]; }).will.notify(PMTweenDidPauseNotification);
+            it(@"should pause the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                        sequence.pauseBlock = ^void(NSObject<PMTweening>  *tween) {
+                            __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
+                            expect(seq.tweenState).to.equal(PMTweenStatePaused);
+                            done();
+                        };
+                        expect(^{ [sequence pauseTween]; }).will.notify(PMTweenDidPauseNotification);
+                    });
                 });
             });
             
@@ -415,21 +427,23 @@ describe(@"PMTweenSequence", ^{
                 [sequence startTween];
             });
             
-            it(@"should resume the tween", ^AsyncBlock {
-                dispatch_time_t pause_time = dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC);
-                dispatch_after(pause_time, dispatch_get_main_queue(), ^{
-                    [sequence pauseTween];
-                    PMTweenUnit *unit = (PMTweenUnit *)sequence.sequenceSteps.firstObject;
-                    expect(unit.tweenProgress).to.beCloseToWithin(0.5, 0.1);
-                    
-                    dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
-                    dispatch_after(after_time, dispatch_get_main_queue(), ^{
-                        sequence.resumeBlock = ^void(NSObject<PMTweening>  *tween) {
-                            __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
-                            expect(seq.tweenState).to.equal(PMTweenStateTweening);
-                            done();
-                        };
-                        expect(^{ [sequence resumeTween]; }).will.notify(PMTweenDidResumeNotification);
+            it(@"should resume the tween", ^{
+                waitUntil(^(DoneCallback done) {
+                    dispatch_time_t pause_time = dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC);
+                    dispatch_after(pause_time, dispatch_get_main_queue(), ^{
+                        [sequence pauseTween];
+                        PMTweenUnit *unit = (PMTweenUnit *)sequence.sequenceSteps.firstObject;
+                        expect(unit.tweenProgress).to.beCloseToWithin(0.5, 0.1);
+                        
+                        dispatch_time_t after_time = dispatch_time(DISPATCH_TIME_NOW, 0.02 * NSEC_PER_SEC);
+                        dispatch_after(after_time, dispatch_get_main_queue(), ^{
+                            sequence.resumeBlock = ^void(NSObject<PMTweening>  *tween) {
+                                __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
+                                expect(seq.tweenState).to.equal(PMTweenStateTweening);
+                                done();
+                            };
+                            expect(^{ [sequence resumeTween]; }).will.notify(PMTweenDidResumeNotification);
+                        });
                     });
                 });
             });
@@ -450,13 +464,16 @@ describe(@"PMTweenSequence", ^{
         describe(@"-updateWithTimeInterval", ^{
             
             describe(@"if tween is running", ^{
-                it(@"should call update block", ^AsyncBlock {
-                    sequence.updateBlock = ^void(NSObject<PMTweening>  *tween) {
-                        __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
-                        expect(seq.tweenState).to.equal(PMTweenStateTweening);
-                        done();
-                    };
-                    [sequence startTween];
+                it(@"should call update block", ^{
+                    waitUntil(^(DoneCallback done) {
+                        sequence.updateBlock = ^void(NSObject<PMTweening>  *tween) {
+                            __strong PMTweenSequence *seq = (PMTweenSequence *)tween;
+                            expect(seq.tweenState).to.equal(PMTweenStateTweening);
+                            [seq stopTween];
+                            done();
+                        };
+                        [sequence startTween];
+                    });
                     
                 });
             });

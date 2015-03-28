@@ -44,7 +44,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D2FBFF7633B42D68F134D3D /* Pods-PMTweenTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMTweenTests.xcconfig"; path = "Pods/Pods-PMTweenTests.xcconfig"; sourceTree = "<group>"; };
+		058756E79B6119E33914C5D8 /* Pods-PMTweenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMTweenTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PMTweenTests/Pods-PMTweenTests.release.xcconfig"; sourceTree = "<group>"; };
+		0DFAE5A64CEDDBF4BD0C9E6E /* Pods-PMTweenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PMTweenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PMTweenTests/Pods-PMTweenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B749319193D4EB500358D62 /* TestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestObject.h; path = Classes/TestObject.h; sourceTree = "<group>"; };
 		8B74931A193D4EB500358D62 /* TestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestObject.m; path = Classes/TestObject.m; sourceTree = "<group>"; };
 		8B8901DD18FE17C4000507D9 /* PMTweenCATempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenCATempo.h; path = ../../Classes/PMTweenCATempo.h; sourceTree = "<group>"; };
@@ -142,7 +143,7 @@
 				8BCE194518EE3EAC0062B01A /* PMTweenTests */,
 				8BCE193E18EE3EAC0062B01A /* Frameworks */,
 				8BCE193D18EE3EAC0062B01A /* Products */,
-				2D2FBFF7633B42D68F134D3D /* Pods-PMTweenTests.xcconfig */,
+				B958F4EDA763921606342EAF /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -256,6 +257,15 @@
 			name = EasingTypes;
 			sourceTree = "<group>";
 		};
+		B958F4EDA763921606342EAF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0DFAE5A64CEDDBF4BD0C9E6E /* Pods-PMTweenTests.debug.xcconfig */,
+				058756E79B6119E33914C5D8 /* Pods-PMTweenTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -284,7 +294,7 @@
 		8BCE193218EE3E960062B01A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0620;
 			};
 			buildConfigurationList = 8BCE193518EE3E960062B01A /* Build configuration list for PBXProject "PMTweenTests" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -342,7 +352,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-PMTweenTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PMTweenTests/Pods-PMTweenTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -401,6 +411,7 @@
 		8BCE193618EE3E960062B01A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -412,7 +423,7 @@
 		};
 		8BCE194F18EE3EAC0062B01A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D2FBFF7633B42D68F134D3D /* Pods-PMTweenTests.xcconfig */;
+			baseConfigurationReference = 0DFAE5A64CEDDBF4BD0C9E6E /* Pods-PMTweenTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -460,7 +471,7 @@
 		};
 		8BCE195018EE3EAC0062B01A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2D2FBFF7633B42D68F134D3D /* Pods-PMTweenTests.xcconfig */;
+			baseConfigurationReference = 058756E79B6119E33914C5D8 /* Pods-PMTweenTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
