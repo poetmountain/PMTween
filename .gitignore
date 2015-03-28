@@ -1,6 +1,11 @@
 # Mac OS X Finder and whatnot
 .DS_Store
 
+# rvm files
+.ruby-version
+.ruby-gemset
+Gemfile.lock
+
 # Xcode
 build/
 *.pbxuser
