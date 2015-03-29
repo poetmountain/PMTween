@@ -52,9 +52,9 @@ NSString *const PMTweenHalfCompletedNotification = @"com.poetmountain.pmtween.ha
         operationID = @0;
     });
     
-    operationID = @([operationID integerValue] + 1);
+    operationID = @([operationID unsignedIntegerValue] + 1);
     
-    return [operationID integerValue];
+    return [operationID unsignedIntegerValue];
 }
 
 

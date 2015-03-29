@@ -336,7 +336,7 @@
     
     // send out 50% complete notification, used by PMTweenSequence in contiguous mode
     if (_tweenDirection == PMTweenDirectionReverse) {
-        NSUInteger half_complete = lroundf(_numberOfRepeats / 2);
+        NSUInteger half_complete = round(_numberOfRepeats / 2);
         
         if (_cyclesCompletedCount == half_complete) {
             [[NSNotificationCenter defaultCenter] postNotificationName:PMTweenHalfCompletedNotification object:self userInfo:nil];
@@ -668,7 +668,7 @@
 
         if (_tweenDirection == PMTweenDirectionForward) {
             new_value = self.easingBlock(elapsed_time, _startingValue, value_delta, adjusted_duration);
-            progress = fabsf((_currentValue - _startingValue) / value_delta);
+            progress = fabs((_currentValue - _startingValue) / value_delta);
 
         } else {
             

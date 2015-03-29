@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PMTweenTempo.h"
+#include <tgmath.h>
 
 /**
  *  The `PMTweening` protocol declares methods and properties that must be adopted by custom tweening classes in order to participate in PMTween.

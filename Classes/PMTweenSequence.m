@@ -155,7 +155,7 @@ NSString *const PMTweenDidStepNotification = @"com.poetmountain.pmtween.step";
     
     NSObject<PMTweening> *sequence_step = nil;
     if (_currentSequenceIndex < [_sequenceSteps count] && _currentSequenceIndex >= 0) {
-        sequence_step = _sequenceSteps[_currentSequenceIndex];
+        sequence_step = _sequenceSteps[(NSUInteger)_currentSequenceIndex];
     }
     
     return sequence_step;
@@ -268,7 +268,7 @@ NSString *const PMTweenDidStepNotification = @"com.poetmountain.pmtween.step";
     
     // send out 50% complete notification, used by PMTweenSequence in contiguous mode
     if (_tweenDirection == PMTweenDirectionReverse) {
-        NSUInteger half_complete = lroundf(_numberOfRepeats / 2);
+        NSUInteger half_complete = round(_numberOfRepeats / 2);
         
         if (_cyclesCompletedCount == half_complete) {
             [[NSNotificationCenter defaultCenter] postNotificationName:PMTweenHalfCompletedNotification object:self userInfo:nil];
@@ -463,7 +463,7 @@ NSString *const PMTweenDidStepNotification = @"com.poetmountain.pmtween.step";
         
         BOOL should_send_tempo = YES;
         if (_currentSequenceIndex < [_tempoOverrides count]) {
-            should_send_tempo = ![(NSNumber *)_tempoOverrides[_currentSequenceIndex] boolValue];
+            should_send_tempo = ![(NSNumber *)_tempoOverrides[(NSUInteger)_currentSequenceIndex] boolValue];
         }
         if (should_send_tempo) {
             NSObject<PMTweening> *sequence_step = [self currentSequenceStep];

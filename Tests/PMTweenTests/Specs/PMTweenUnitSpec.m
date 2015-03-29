@@ -103,7 +103,7 @@ describe(@"PMTweenUnit", ^{
                                     __strong PMTweenUnit *tween_unit = (PMTweenUnit *)tween;
                                     
                                     if (tween_unit.tweenProgress >= 0.5) {
-                                        expect(view.alpha).to.equal(tween_unit.tweenProgress);
+                                        expect(view.alpha).to.beCloseTo(tween_unit.tweenProgress);
                                         done();
                                     }
                                     

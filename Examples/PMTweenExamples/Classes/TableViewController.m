@@ -66,13 +66,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.examples count];
+    return (NSInteger)[self.examples count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSInteger index = [indexPath row];
+    NSUInteger index = (NSUInteger)[indexPath row];
     static NSString *identifier = @"ExampleCell";
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifier];
     if (cell == nil) {
@@ -93,7 +93,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSInteger index = [indexPath row];
+    NSUInteger index = (NSUInteger)[indexPath row];
 
     UIViewController *vc = nil;
     switch (index) {
