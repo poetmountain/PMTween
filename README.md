@@ -220,7 +220,7 @@ PMTween was created by [Brett Walker](https://twitter.com/petsound) of [Poet & M
 
 ## Compatibility
 
-* Requires iOS 6.0 or later
+* Requires iOS 7.0 or later, tvOS 9.0 or later
 * PMTween uses ARC
 
 ## License
