@@ -2,6 +2,7 @@
 =====
 * Added support for CGVector structs as property tweening targets.
 * Added support for tvOS as a target.
+* Updated init methods to use instancetype.
 * Changed minimum iOS target to 7.0.
 
 1.2.2
