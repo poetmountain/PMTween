@@ -81,6 +81,6 @@
  *
  *  @return A new instance of this class.
  */
-- (id)initWithVelocity:(double)velocity friction:(double)friction;
+- (instancetype)initWithVelocity:(double)velocity friction:(double)friction;
 
 @end

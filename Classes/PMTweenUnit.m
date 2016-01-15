@@ -75,7 +75,7 @@
 
 #pragma mark - Lifecycle methods
 
-- (id)initWithProperty:(NSValue *)property startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock {
+- (instancetype)initWithProperty:(NSValue *)property startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock {
     
     if (self = [super init]) {
         
@@ -88,7 +88,7 @@
 }
 
 
-- (id)initWithObject:(NSObject *)object propertyKeyPath:(NSString *)propertyKeyPath startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock {
+- (instancetype)initWithObject:(NSObject *)object propertyKeyPath:(NSString *)propertyKeyPath startingValue:(double)startingValue endingValue:(double)endingValue duration:(NSTimeInterval)duration options:(PMTweenOptions)options easingBlock:(PMTweenEasingBlock)easingBlock {
     
     if (self = [super init]) {
         

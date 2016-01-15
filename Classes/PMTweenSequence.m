@@ -60,7 +60,7 @@ NSString *const PMTweenDidStepNotification = @"com.poetmountain.pmtween.step";
 
 #pragma mark - Lifecycle methods
 
-- (id)init {
+- (instancetype)init {
     
     if (self = [super init]) {
         _sequenceSteps = [NSMutableArray array];

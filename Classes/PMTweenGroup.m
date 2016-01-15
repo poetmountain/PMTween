@@ -55,7 +55,7 @@
 
 #pragma mark - Lifecycle methods
 
-- (id)init {
+- (instancetype)init {
     
     if (self = [super init]) {
         _tweens = [NSMutableArray array];
@@ -73,7 +73,7 @@
 }
 
 
-- (id)initWithTweens:(NSArray *)tweens options:(PMTweenOptions)options {
+- (instancetype)initWithTweens:(NSArray *)tweens options:(PMTweenOptions)options {
     
     if (self = [self init]) {
         for (id obj in tweens) {

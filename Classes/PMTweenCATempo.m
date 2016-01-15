@@ -27,7 +27,7 @@
 }
 
 
-- (id)init {
+- (instancetype)init {
     if (self = [super init]) {
         _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
         

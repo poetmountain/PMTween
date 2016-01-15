@@ -32,7 +32,7 @@
     return system;
 }
 
-- (id)initWithVelocity:(double)velocity friction:(double)friction {
+- (instancetype)initWithVelocity:(double)velocity friction:(double)friction {
     
     if (self = [super init]) {
         _velocity = velocity;

@@ -77,7 +77,7 @@ double static const PMTWEEN_DECAY_LIMIT = 0.1;
 
 #pragma mark - Lifecycle methods
 
-- (id)initWithProperty:(NSValue *)property startingValue:(double)startingValue velocity:(double)velocity friction:(double)friction options:(PMTweenOptions)options {
+- (instancetype)initWithProperty:(NSValue *)property startingValue:(double)startingValue velocity:(double)velocity friction:(double)friction options:(PMTweenOptions)options {
     
     if (self = [super init]) {
         
@@ -90,7 +90,7 @@ double static const PMTWEEN_DECAY_LIMIT = 0.1;
 }
 
 
-- (id)initWithObject:(NSObject *)object propertyKeyPath:(NSString *)propertyKeyPath startingValue:(double)startingValue velocity:(double)velocity friction:(double)friction options:(PMTweenOptions)options {
+- (instancetype)initWithObject:(NSObject *)object propertyKeyPath:(NSString *)propertyKeyPath startingValue:(double)startingValue velocity:(double)velocity friction:(double)friction options:(PMTweenOptions)options {
     
     if (self = [super init]) {
         

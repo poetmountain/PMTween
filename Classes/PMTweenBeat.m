@@ -19,7 +19,7 @@
 
 @implementation PMTweenBeat
 
-- (id)init {
+- (instancetype)init {
     
     if (self = [super init]) {
         _tweens = [NSMutableArray array];
@@ -33,7 +33,7 @@
 }
 
 
-- (id)initWithTempo:(PMTweenTempo *)tempo {
+- (instancetype)initWithTempo:(PMTweenTempo *)tempo {
     
     if (self = [self init]) {
         _tempo = tempo;
