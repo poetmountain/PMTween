@@ -1,4 +1,4 @@
-PMTween is an elegant and flexible tweening library for iOS. It offers sensible default functionality that abstracts most of the hard work away, allowing you to focus on your animations and other tween tasks. But PMTween also makes it easy to dive in and modify for your own needs, whether that be custom tweening classes, supporting custom object types, or new easing equations.
+PMTween is an elegant and flexible tweening library for Objective-C, currently supporting the iOS and tvOS platforms. It offers sensible default functionality that abstracts most of the hard work away, allowing you to focus on your animations and other tween tasks. But PMTween also makes it easy to dive in and modify for your own needs, whether that be custom tweening classes, supporting custom object types, or new easing equations.
 
 
 ## Overview
