@@ -203,6 +203,44 @@ describe(@"PMTweenObjectUpdater", ^{
         });
         
         
+        describe(@", with a CGVector", ^{
+            
+            describe(@", non-additive", ^{
+                before(^{
+                    PMTweenObjectUpdater *updater = [PMTweenObjectUpdater updater];
+                    old_value = [NSValue valueWithCGVector:CGVectorMake(0, 0)];
+                    new_value = [updater replaceObject:old_value newPropertyValue:50 propertyKeyPath:@"dx"];
+                });
+                
+                it(@", should only update the dx property", ^{
+                    CGVector old_v = (CGVector)[(NSValue *)old_value CGVectorValue];
+                    CGVector new_v = (CGVector)[(NSValue *)new_value CGVectorValue];
+                    expect(new_v.dx).to.equal(50);
+                    expect(new_v.dy).to.equal(old_v.dy);
+                });
+            });
+            
+            describe(@", additive", ^{
+                before(^{
+                    PMTweenObjectUpdater *updater = [PMTweenObjectUpdater updater];
+                    updater.additiveUpdates = YES;
+                    old_value = [NSValue valueWithCGVector:CGVectorMake(20, 0)];
+                    new_value = [updater replaceObject:old_value newPropertyValue:50 propertyKeyPath:@"dx"];
+                });
+                
+                it(@", should only update the dx property", ^{
+                    CGVector old_v = (CGVector)[(NSValue *)old_value CGVectorValue];
+                    CGVector new_v = (CGVector)[(NSValue *)new_value CGVectorValue];
+                    expect(new_v.dx).to.equal(70);
+                    expect(new_v.dy).to.equal(old_v.dy);
+                });
+            });
+            
+            
+        });
+        
+        
+        
         describe(@", with a CGAffineTransform", ^{
             
             describe(@", non-additive", ^{

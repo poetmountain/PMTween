@@ -41,6 +41,7 @@
             || [PMTween isValue:value objCType:@encode(CGPoint)]
             || [PMTween isValue:value objCType:@encode(CGSize)]
             || [PMTween isValue:value objCType:@encode(CGRect)]
+            || [PMTween isValue:value objCType:@encode(CGVector)]
             || [PMTween isValue:value objCType:@encode(CGAffineTransform)]
             || [PMTween isValue:value objCType:@encode(CATransform3D)]
             ) {
@@ -206,6 +207,34 @@
             
             new_parent_value = [NSValue valueWithCGRect:rect];
             
+            
+        } else if ([PMTween isValue:valueObject objCType:@encode(CGVector)]) {
+            CGVector vector = [valueObject CGVectorValue];
+            
+            if ([[keys lastObject] isEqualToString:@"dx"]) {
+                if (_additiveUpdates) {
+                    new_property_value = vector.dx + propertyValue;
+                }
+                vector.dx = new_property_value;
+                
+            } else if ([[keys lastObject] isEqualToString:@"dy"]) {
+                if (_additiveUpdates) {
+                    new_property_value = vector.dy + propertyValue;
+                }
+                vector.dy = new_property_value;
+                
+            } else {
+                // assume the last key is the cgvector and change both dx and dy
+                if (_additiveUpdates) {
+                    new_property_value = vector.dx + propertyValue;
+                }
+                vector.dx = new_property_value;
+                vector.dy = new_property_value;
+            }
+            
+            new_parent_value = [NSValue valueWithCGVector:vector];
+        
+        
         } else if ([PMTween isValue:valueObject objCType:@encode(CGAffineTransform)]) {
             CGAffineTransform transform = [valueObject CGAffineTransformValue];
             
