@@ -56,7 +56,7 @@ If you use CocoaPods:
 
 ##### Podfile
 ```ruby
-pod "PMTween", "~> 1.2.0"
+pod "PMTween", "~> 1.3.0"
 ```
 
 Or add the Classes directory to your project.
