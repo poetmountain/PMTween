@@ -69,7 +69,7 @@ NSString *const PMTweenHalfCompletedNotification = @"com.poetmountain.pmtween.ha
         
     // reverse through the array and find the most recent tween operation that's modifying this object property
     [tweens enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(PMTweenUnit *tween, NSUInteger idx, BOOL *stop) {
-        if (tween.targetObject == object && tween.propertyKeyPath == keyPath) {
+        if (tween.targetObject == object && [tween.propertyKeyPath isEqualToString:keyPath]) {
             target_value = [NSNumber numberWithDouble:tween.endingValue];
             *stop = YES;
         }
