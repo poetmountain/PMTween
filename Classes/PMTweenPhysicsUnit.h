@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PMTween.h"
+#import "PMTweening.h"
 #import "PMTweenTempo.h"
 #import "PMTweenObjectUpdater.h"
 #import "PMTweenPhysicsSystem.h"

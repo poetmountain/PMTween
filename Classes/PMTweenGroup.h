@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PMTweenTempo.h"
-#import "PMTween.h"
+#import "PMTweening.h"
 
 /**
  *  PMTweenGroup handles the tweening of one or more objects which conform to the `PMTweening` protocol, either being instances of `PMTweenUnit` or other custom classes. The PMTweenGroup class is a good solution when you want to easily synchronize the operation of many tweens.

@@ -8,6 +8,7 @@
 
 #import "PMTweenSequence.h"
 #import "PMTweenCATempo.h"
+#import "PMTweenSupport.h"
 
 NSString *const PMTweenDidStepNotification = @"com.poetmountain.pmtween.step";
 

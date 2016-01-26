@@ -1,24 +1,17 @@
 //
-//  PMTween.m
+//  PMTweenUtilities.m
 //  PMTween
 //
-//  Created by Brett Walker on 4/10/14.
-//  Copyright (c) 2014 Poet & Mountain, LLC. All rights reserved.
+//  Created by Brett Walker on 1/25/16.
+//  Copyright © 2016 Poet & Mountain, LLC. All rights reserved.
 //
 
-#import "PMTween.h"
+#import "PMTweenSupport.h"
 #import "PMTweenUnit.h"
 
-NSString *const PMTweenDidStartNotification = @"com.poetmountain.pmtween.start";
-NSString *const PMTweenDidStopNotification = @"com.poetmountain.pmtween.stop";
-NSString *const PMTweenDidReverseNotification = @"com.poetmountain.pmtween.reverse";
-NSString *const PMTweenDidPauseNotification = @"com.poetmountain.pmtween.pause";
-NSString *const PMTweenDidResumeNotification = @"com.poetmountain.pmtween.resume";
-NSString *const PMTweenDidRepeatNotification = @"com.poetmountain.pmtween.repeat";
-NSString *const PMTweenDidCompleteNotification = @"com.poetmountain.pmtween.complete";
-NSString *const PMTweenHalfCompletedNotification = @"com.poetmountain.pmtween.halfcomplete";
+@implementation PMTweenSupport
 
-@implementation PMTween
+#pragma mark - Utility methods
 
 + (NSHashTable *)objectTweens {
     
@@ -31,15 +24,15 @@ NSString *const PMTweenHalfCompletedNotification = @"com.poetmountain.pmtween.ha
     return tweens;
 }
 
-+ (NSUInteger)addTween:(PMTweenUnit *)tween {
-    NSHashTable *tweens = [PMTween objectTweens];
++ (NSUInteger)addTween:(NSObject<PMTweening> *)tween {
+    NSHashTable *tweens = [PMTweenSupport objectTweens];
     [tweens addObject:tween];
     
-    return [PMTween currentTweenOperationID];
+    return [PMTweenSupport currentTweenOperationID];
 }
 
-+ (void)removeTween:(PMTweenUnit *)tween {
-    NSHashTable *tweens = [PMTween objectTweens];
++ (void)removeTween:(NSObject<PMTweening> *)tween {
+    NSHashTable *tweens = [PMTweenSupport objectTweens];
     [tweens removeObject:tween];
 }
 
@@ -63,15 +56,18 @@ NSString *const PMTweenHalfCompletedNotification = @"com.poetmountain.pmtween.ha
     __block NSValue *target_value = nil;
     
     // create an array from the operations NSSet, using the PMTweenUnit's operationID as sort key
-    NSSet *tweens_set = [[PMTween objectTweens] setRepresentation];
+    NSSet *tweens_set = [[PMTweenSupport objectTweens] setRepresentation];
     NSSortDescriptor *sort_desc = [NSSortDescriptor sortDescriptorWithKey:@"operationID" ascending:YES];
     NSArray *tweens = [tweens_set sortedArrayUsingDescriptors:@[sort_desc]];
-        
+    
     // reverse through the array and find the most recent tween operation that's modifying this object property
-    [tweens enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(PMTweenUnit *tween, NSUInteger idx, BOOL *stop) {
-        if (tween.targetObject == object && [tween.propertyKeyPath isEqualToString:keyPath]) {
-            target_value = [NSNumber numberWithDouble:tween.endingValue];
-            *stop = YES;
+    [tweens enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id tween, NSUInteger idx, BOOL *stop) {
+        if ([tween isKindOfClass:[PMTweenUnit class]]) {
+            PMTweenUnit *unit = (PMTweenUnit *)tween;
+            if (unit.targetObject == object && [unit.propertyKeyPath isEqualToString:keyPath]) {
+                target_value = [NSNumber numberWithDouble:unit.endingValue];
+                *stop = YES;
+            }
         }
     }];
     
@@ -79,8 +75,6 @@ NSString *const PMTweenHalfCompletedNotification = @"com.poetmountain.pmtween.ha
     return target_value;
 }
 
-
-#pragma mark - Utility methods
 
 + (BOOL)isValue:(NSValue *)value objCType:(const char *)typeToMatch {
     BOOL is_matching = NO;

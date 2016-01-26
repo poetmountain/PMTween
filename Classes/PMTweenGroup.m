@@ -8,6 +8,7 @@
 
 #import "PMTweenGroup.h"
 #import "PMTweenCATempo.h"
+#import "PMTweenSupport.h"
 
 @interface PMTweenGroup ()
 

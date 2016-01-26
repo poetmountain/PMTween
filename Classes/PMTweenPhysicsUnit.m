@@ -8,6 +8,7 @@
 
 #import "PMTweenPhysicsUnit.h"
 #import "PMTweenCATempo.h"
+#import "PMTweenSupport.h"
 
 double static const PMTWEEN_DECAY_LIMIT = 0.1;
 
@@ -129,8 +130,8 @@ double static const PMTWEEN_DECAY_LIMIT = 0.1;
                         
                         strong_self.replaceParentProperty = YES;
                         strong_self.parentKeyPath = [parent_path copy];
-                        strong_self.propertyGetter = [PMTween getterForPropertyName:[parent_keys lastObject]];
-                        strong_self.propertySetter = [PMTween setterForPropertyName:[parent_keys lastObject]];
+                        strong_self.propertyGetter = [PMTweenSupport getterForPropertyName:[parent_keys lastObject]];
+                        strong_self.propertySetter = [PMTweenSupport setterForPropertyName:[parent_keys lastObject]];
                         
                         *stop = YES;
                     } else if ([parent_keys count] > 1) {
@@ -144,8 +145,8 @@ double static const PMTWEEN_DECAY_LIMIT = 0.1;
                 _targetProperty = parent_value;
                 
             } else {
-                self.propertyGetter = [PMTween getterForPropertyName:[keys lastObject]];
-                self.propertySetter = [PMTween setterForPropertyName:[keys lastObject]];
+                self.propertyGetter = [PMTweenSupport getterForPropertyName:[keys lastObject]];
+                self.propertySetter = [PMTweenSupport setterForPropertyName:[keys lastObject]];
             }
             
         } else {

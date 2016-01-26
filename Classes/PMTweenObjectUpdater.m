@@ -7,7 +7,7 @@
 //
 
 #import "PMTweenObjectUpdater.h"
-#import "PMTween.h"
+#import "PMTweenSupport.h"
 
 @implementation PMTweenObjectUpdater
 
@@ -38,12 +38,12 @@
         NSValue *value = (NSValue *)object;
         if (
             [object isKindOfClass:[NSNumber class]]
-            || [PMTween isValue:value objCType:@encode(CGPoint)]
-            || [PMTween isValue:value objCType:@encode(CGSize)]
-            || [PMTween isValue:value objCType:@encode(CGRect)]
-            || [PMTween isValue:value objCType:@encode(CGVector)]
-            || [PMTween isValue:value objCType:@encode(CGAffineTransform)]
-            || [PMTween isValue:value objCType:@encode(CATransform3D)]
+            || [PMTweenSupport isValue:value objCType:@encode(CGPoint)]
+            || [PMTweenSupport isValue:value objCType:@encode(CGSize)]
+            || [PMTweenSupport isValue:value objCType:@encode(CGRect)]
+            || [PMTweenSupport isValue:value objCType:@encode(CGVector)]
+            || [PMTweenSupport isValue:value objCType:@encode(CGAffineTransform)]
+            || [PMTweenSupport isValue:value objCType:@encode(CATransform3D)]
             ) {
             
             is_supported = YES;
@@ -82,7 +82,7 @@
             
             new_parent_value = [NSNumber numberWithDouble:new_property_value];
             
-        } else if ([PMTween isValue:valueObject objCType:@encode(CGPoint)]) {
+        } else if ([PMTweenSupport isValue:valueObject objCType:@encode(CGPoint)]) {
             CGPoint point = [valueObject CGPointValue];
             
             if ([[keys lastObject] isEqualToString:@"x"]) {
@@ -108,7 +108,7 @@
             
             new_parent_value = [NSValue valueWithCGPoint:point];
             
-        } else if ([PMTween isValue:valueObject objCType:@encode(CGSize)]) {
+        } else if ([PMTweenSupport isValue:valueObject objCType:@encode(CGSize)]) {
             CGSize size = [valueObject CGSizeValue];
             
             if ([[keys lastObject] isEqualToString:@"width"]) {
@@ -134,7 +134,7 @@
  
             new_parent_value = [NSValue valueWithCGSize:size];
             
-        } else if ([PMTween isValue:valueObject objCType:@encode(CGRect)]) {
+        } else if ([PMTweenSupport isValue:valueObject objCType:@encode(CGRect)]) {
             CGRect rect = [valueObject CGRectValue];
             NSUInteger last_index = [keys count] - 1;
             
@@ -208,7 +208,7 @@
             new_parent_value = [NSValue valueWithCGRect:rect];
             
             
-        } else if ([PMTween isValue:valueObject objCType:@encode(CGVector)]) {
+        } else if ([PMTweenSupport isValue:valueObject objCType:@encode(CGVector)]) {
             CGVector vector = [valueObject CGVectorValue];
             
             if ([[keys lastObject] isEqualToString:@"dx"]) {
@@ -235,7 +235,7 @@
             new_parent_value = [NSValue valueWithCGVector:vector];
         
         
-        } else if ([PMTween isValue:valueObject objCType:@encode(CGAffineTransform)]) {
+        } else if ([PMTweenSupport isValue:valueObject objCType:@encode(CGAffineTransform)]) {
             CGAffineTransform transform = [valueObject CGAffineTransformValue];
             
             if ([[keys lastObject] isEqualToString:@"a"]) {
@@ -260,7 +260,7 @@
             
             new_parent_value = [NSValue valueWithCGAffineTransform:transform];
             
-        } else if ([PMTween isValue:valueObject objCType:@encode(CATransform3D)]) {
+        } else if ([PMTweenSupport isValue:valueObject objCType:@encode(CATransform3D)]) {
             CATransform3D transform = [valueObject CATransform3DValue];
             
             if ([[keys lastObject] isEqualToString:@"m11"]) {

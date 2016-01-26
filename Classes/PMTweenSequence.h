@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PMTweenTempo.h"
-#import "PMTween.h"
+#import "PMTweening.h"
 
 /**
  *  PMTweenSequence allows objects which conform to the `PMTweening` protocol to be chained together in a sequential series of tween steps.

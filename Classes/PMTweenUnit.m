@@ -10,6 +10,7 @@
 #import "PMTweenEasingLinear.h"
 #import "PMTweenObjectUpdater.h"
 #import "PMTweenCATempo.h"
+#import "PMTweenSupport.h"
 
 @interface PMTweenUnit ()
 
@@ -127,8 +128,8 @@
                         
                         strong_self.replaceParentProperty = YES;
                         strong_self.parentKeyPath = [parent_path copy];
-                        strong_self.propertyGetter = [PMTween getterForPropertyName:[parent_keys lastObject]];
-                        strong_self.propertySetter = [PMTween setterForPropertyName:[parent_keys lastObject]];
+                        strong_self.propertyGetter = [PMTweenSupport getterForPropertyName:[parent_keys lastObject]];
+                        strong_self.propertySetter = [PMTweenSupport setterForPropertyName:[parent_keys lastObject]];
 
                         *stop = YES;
                     } else if ([parent_keys count] > 1) {
@@ -142,8 +143,8 @@
                 _targetProperty = parent_value;
                 
             } else {
-                self.propertyGetter = [PMTween getterForPropertyName:[keys lastObject]];
-                self.propertySetter = [PMTween setterForPropertyName:[keys lastObject]];
+                self.propertyGetter = [PMTweenSupport getterForPropertyName:[keys lastObject]];
+                self.propertySetter = [PMTweenSupport setterForPropertyName:[keys lastObject]];
             }
             
         } else {
@@ -253,7 +254,7 @@
 
     if (_additive && _targetObject) {
         _operationID = 0;
-        [PMTween removeTween:self];
+        [PMTweenSupport removeTween:self];
     }
     
     // call update block
@@ -734,7 +735,7 @@
             self.startTime = 0;
             
             if (_additive && _targetObject) {
-                self.operationID = [PMTween addTween:self];
+                self.operationID = [PMTweenSupport addTween:self];
             }
             
             // call start block
@@ -757,7 +758,7 @@
         
         if (_additive) {
             // assign the endingValue of the last tween for this obj/keyPath to this tween's starting value
-            NSValue *last_target_value = [PMTween targetValueForObject:self.targetObject keyPath:self.propertyKeyPath];
+            NSValue *last_target_value = [PMTweenSupport targetValueForObject:self.targetObject keyPath:self.propertyKeyPath];
             if (last_target_value) {
                 self.startingValue = [(NSNumber *)last_target_value doubleValue];
             }
@@ -766,7 +767,7 @@
         if (_delay == 0) {
             
             if (_additive && _targetObject) {
-                self.operationID = [PMTween addTween:self];
+                self.operationID = [PMTweenSupport addTween:self];
             }
             
             self.tweenState = PMTweenStateTweening;
