@@ -1,3 +1,9 @@
+1.3.1
+=====
+* Updated project architecture to use single header import
+* Fixed string equality check in PMTweenSupport when comparing keyPaths
+* Miscellaneous project cleanup
+
 1.3.0
 =====
 * Added support for CGVector structs as property tweening targets.
