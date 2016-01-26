@@ -3,7 +3,7 @@
 //  PMTweenTests
 //
 //  Created by Brett Walker on 4/25/14.
-//
+//  Copyright (c) 2014-2016 Poet & Mountain, LLC. All rights reserved.
 //
 
 #import "Specta.h"

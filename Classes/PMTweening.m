@@ -3,7 +3,7 @@
 //  PMTween
 //
 //  Created by Brett Walker on 1/25/16.
-//  Copyright © 2016 Poet & Mountain, LLC. All rights reserved.
+//  Copyright © 2014-2016 Poet & Mountain, LLC. All rights reserved.
 //
 
 #import "PMTweening.h"
