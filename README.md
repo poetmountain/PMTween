@@ -69,6 +69,8 @@ Or add the Classes directory to your project.
 Here's the most basic type of tween, which just tweens an arbitrary data structure directly. PMTweenUnit is the workhorse tweening class in PMTween; it handles all the actual property updating. Note that nil is passed in for the easingBlock, which means it will use the default PMTweenEasingLinear easing type.
 
 ```objc
+#import <PMTween/PMTween.h>
+
 PMTweenUnit *tween = [[PMTweenUnit alloc] initWithProperty:@(0) startingValue:0 endingValue:100 duration:1.0 options:PMTweenOptionNone easingBlock:nil];
 [tween startTween];
 ```
