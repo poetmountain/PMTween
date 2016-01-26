@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TableViewController : UITableViewController
+@interface TableViewController : UIViewController
 
 typedef NS_ENUM(NSInteger, PMTweenExampleType) {
     PMTweenExampleBasic                     = 0,

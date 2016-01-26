@@ -17,34 +17,36 @@
 		8B36D7111907253700771A81 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B36D7101907253700771A81 /* Images.xcassets */; };
 		8B36D73019072EA900771A81 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D72F19072EA900771A81 /* TableViewController.m */; };
 		8B36D73519073AF600771A81 /* BasicTweenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D73419073AF600771A81 /* BasicTweenVC.m */; };
-		8B36D762190747F500771A81 /* PMTweenEasingBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D73F190747F500771A81 /* PMTweenEasingBack.m */; };
-		8B36D763190747F500771A81 /* PMTweenEasingBounce.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D741190747F500771A81 /* PMTweenEasingBounce.m */; };
-		8B36D764190747F500771A81 /* PMTweenEasingCircular.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D743190747F500771A81 /* PMTweenEasingCircular.m */; };
-		8B36D765190747F500771A81 /* PMTweenEasingCubic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D745190747F500771A81 /* PMTweenEasingCubic.m */; };
-		8B36D766190747F500771A81 /* PMTweenEasingElastic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D747190747F500771A81 /* PMTweenEasingElastic.m */; };
-		8B36D767190747F500771A81 /* PMTweenEasingExpo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D749190747F500771A81 /* PMTweenEasingExpo.m */; };
-		8B36D768190747F500771A81 /* PMTweenEasingLinear.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D74B190747F500771A81 /* PMTweenEasingLinear.m */; };
-		8B36D769190747F500771A81 /* PMTweenEasingQuadratic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D74D190747F500771A81 /* PMTweenEasingQuadratic.m */; };
-		8B36D76A190747F500771A81 /* PMTweenEasingQuartic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D74F190747F500771A81 /* PMTweenEasingQuartic.m */; };
-		8B36D76B190747F500771A81 /* PMTweenEasingQuintic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D751190747F500771A81 /* PMTweenEasingQuintic.m */; };
-		8B36D76C190747F500771A81 /* PMTweenEasingSine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D753190747F500771A81 /* PMTweenEasingSine.m */; };
-		8B36D76D190747F500771A81 /* PMTween.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D755190747F500771A81 /* PMTween.m */; };
-		8B36D76E190747F500771A81 /* PMTweenBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D757190747F500771A81 /* PMTweenBeat.m */; };
-		8B36D76F190747F500771A81 /* PMTweenCATempo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D759190747F500771A81 /* PMTweenCATempo.m */; };
-		8B36D770190747F500771A81 /* PMTweenGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D75B190747F500771A81 /* PMTweenGroup.m */; };
-		8B36D771190747F500771A81 /* PMTweenSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D75D190747F500771A81 /* PMTweenSequence.m */; };
-		8B36D772190747F500771A81 /* PMTweenTempo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D75F190747F500771A81 /* PMTweenTempo.m */; };
-		8B36D773190747F500771A81 /* PMTweenUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D761190747F500771A81 /* PMTweenUnit.m */; };
 		8B36D77919075C6300771A81 /* GroupTweenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D77819075C6300771A81 /* GroupTweenVC.m */; };
 		8B36D77C190765AD00771A81 /* SequenceTweenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B36D77B190765AD00771A81 /* SequenceTweenVC.m */; };
 		8B54D694190A360B003C8FF9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B36D77519074D8000771A81 /* QuartzCore.framework */; };
+		8B64C31E1C573C1100009A77 /* PMTweenSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C2EF1C573C1100009A77 /* PMTweenSupport.m */; };
+		8B64C31F1C573C1100009A77 /* PMTweening.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C2F11C573C1100009A77 /* PMTweening.m */; };
+		8B64C3201C573C1100009A77 /* PMTweenBeat.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C2F51C573C1100009A77 /* PMTweenBeat.m */; };
+		8B64C3211C573C1100009A77 /* PMTweenGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C2F71C573C1100009A77 /* PMTweenGroup.m */; };
+		8B64C3221C573C1100009A77 /* PMTweenObjectUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C2F91C573C1100009A77 /* PMTweenObjectUpdater.m */; };
+		8B64C3231C573C1100009A77 /* PMTweenPhysicsUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C2FB1C573C1100009A77 /* PMTweenPhysicsUnit.m */; };
+		8B64C3241C573C1100009A77 /* PMTweenSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C2FD1C573C1100009A77 /* PMTweenSequence.m */; };
+		8B64C3251C573C1100009A77 /* PMTweenUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C2FF1C573C1100009A77 /* PMTweenUnit.m */; };
+		8B64C3261C573C1100009A77 /* PMTweenEasingBack.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C3031C573C1100009A77 /* PMTweenEasingBack.m */; };
+		8B64C3271C573C1100009A77 /* PMTweenEasingBounce.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C3051C573C1100009A77 /* PMTweenEasingBounce.m */; };
+		8B64C3281C573C1100009A77 /* PMTweenEasingCircular.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C3071C573C1100009A77 /* PMTweenEasingCircular.m */; };
+		8B64C3291C573C1100009A77 /* PMTweenEasingCubic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C3091C573C1100009A77 /* PMTweenEasingCubic.m */; };
+		8B64C32A1C573C1100009A77 /* PMTweenEasingElastic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C30B1C573C1100009A77 /* PMTweenEasingElastic.m */; };
+		8B64C32B1C573C1100009A77 /* PMTweenEasingExpo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C30D1C573C1100009A77 /* PMTweenEasingExpo.m */; };
+		8B64C32C1C573C1100009A77 /* PMTweenEasingLinear.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C30F1C573C1100009A77 /* PMTweenEasingLinear.m */; };
+		8B64C32D1C573C1100009A77 /* PMTweenEasingQuadratic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C3111C573C1100009A77 /* PMTweenEasingQuadratic.m */; };
+		8B64C32E1C573C1100009A77 /* PMTweenEasingQuartic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C3131C573C1100009A77 /* PMTweenEasingQuartic.m */; };
+		8B64C32F1C573C1100009A77 /* PMTweenEasingQuintic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C3151C573C1100009A77 /* PMTweenEasingQuintic.m */; };
+		8B64C3301C573C1100009A77 /* PMTweenEasingSine.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C3171C573C1100009A77 /* PMTweenEasingSine.m */; };
+		8B64C3311C573C1100009A77 /* PMTweenPhysicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C31A1C573C1100009A77 /* PMTweenPhysicsSystem.m */; };
+		8B64C3321C573C1100009A77 /* PMTweenCATempo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C31B1C573C1100009A77 /* PMTweenCATempo.m */; };
+		8B64C3331C573C1100009A77 /* PMTweenTempo.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B64C31C1C573C1100009A77 /* PMTweenTempo.m */; };
+		8B64C3361C5748B400009A77 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B64C3351C5748B400009A77 /* Launch Screen.storyboard */; };
 		8B7235F01907A3AD00D40E7D /* Transform3DVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B7235EF1907A3AD00D40E7D /* Transform3DVC.m */; };
 		8B8207BC190890F900D8FD13 /* MassTweensVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B8207BB190890F900D8FD13 /* MassTweensVC.m */; };
 		8BBB27C31907859C0012EF4A /* SequenceNoncontiguousVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BBB27C21907859C0012EF4A /* SequenceNoncontiguousVC.m */; };
-		8BCB5F04190B389C006D50EF /* PMTweenObjectUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BCB5F03190B389C006D50EF /* PMTweenObjectUpdater.m */; };
 		8BF8F79C191809790028261E /* BasicPhysicsTweenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F79B191809790028261E /* BasicPhysicsTweenVC.m */; };
-		8BF8F7A11918098B0028261E /* PMTweenPhysicsSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F79E1918098B0028261E /* PMTweenPhysicsSystem.m */; };
-		8BF8F7A21918098B0028261E /* PMTweenPhysicsUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F7A01918098B0028261E /* PMTweenPhysicsUnit.m */; };
 		8BF8F7A51918441C0028261E /* DynamicTweenVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8F7A41918441C0028261E /* DynamicTweenVC.m */; };
 /* End PBXBuildFile section */
 
@@ -67,62 +69,67 @@
 		8B36D72F19072EA900771A81 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TableViewController.m; path = Classes/TableViewController.m; sourceTree = "<group>"; };
 		8B36D73319073AF600771A81 /* BasicTweenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicTweenVC.h; path = Classes/BasicTweenVC.h; sourceTree = "<group>"; };
 		8B36D73419073AF600771A81 /* BasicTweenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicTweenVC.m; path = Classes/BasicTweenVC.m; sourceTree = "<group>"; };
-		8B36D73D190747F500771A81 /* PMTweenEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasing.h; sourceTree = "<group>"; };
-		8B36D73E190747F500771A81 /* PMTweenEasingBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingBack.h; sourceTree = "<group>"; };
-		8B36D73F190747F500771A81 /* PMTweenEasingBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingBack.m; sourceTree = "<group>"; };
-		8B36D740190747F500771A81 /* PMTweenEasingBounce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingBounce.h; sourceTree = "<group>"; };
-		8B36D741190747F500771A81 /* PMTweenEasingBounce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingBounce.m; sourceTree = "<group>"; };
-		8B36D742190747F500771A81 /* PMTweenEasingCircular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingCircular.h; sourceTree = "<group>"; };
-		8B36D743190747F500771A81 /* PMTweenEasingCircular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingCircular.m; sourceTree = "<group>"; };
-		8B36D744190747F500771A81 /* PMTweenEasingCubic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingCubic.h; sourceTree = "<group>"; };
-		8B36D745190747F500771A81 /* PMTweenEasingCubic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingCubic.m; sourceTree = "<group>"; };
-		8B36D746190747F500771A81 /* PMTweenEasingElastic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingElastic.h; sourceTree = "<group>"; };
-		8B36D747190747F500771A81 /* PMTweenEasingElastic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingElastic.m; sourceTree = "<group>"; };
-		8B36D748190747F500771A81 /* PMTweenEasingExpo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingExpo.h; sourceTree = "<group>"; };
-		8B36D749190747F500771A81 /* PMTweenEasingExpo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingExpo.m; sourceTree = "<group>"; };
-		8B36D74A190747F500771A81 /* PMTweenEasingLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingLinear.h; sourceTree = "<group>"; };
-		8B36D74B190747F500771A81 /* PMTweenEasingLinear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingLinear.m; sourceTree = "<group>"; };
-		8B36D74C190747F500771A81 /* PMTweenEasingQuadratic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingQuadratic.h; sourceTree = "<group>"; };
-		8B36D74D190747F500771A81 /* PMTweenEasingQuadratic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingQuadratic.m; sourceTree = "<group>"; };
-		8B36D74E190747F500771A81 /* PMTweenEasingQuartic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingQuartic.h; sourceTree = "<group>"; };
-		8B36D74F190747F500771A81 /* PMTweenEasingQuartic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingQuartic.m; sourceTree = "<group>"; };
-		8B36D750190747F500771A81 /* PMTweenEasingQuintic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingQuintic.h; sourceTree = "<group>"; };
-		8B36D751190747F500771A81 /* PMTweenEasingQuintic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingQuintic.m; sourceTree = "<group>"; };
-		8B36D752190747F500771A81 /* PMTweenEasingSine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingSine.h; sourceTree = "<group>"; };
-		8B36D753190747F500771A81 /* PMTweenEasingSine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingSine.m; sourceTree = "<group>"; };
-		8B36D754190747F500771A81 /* PMTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTween.h; path = ../../Classes/PMTween.h; sourceTree = "<group>"; };
-		8B36D755190747F500771A81 /* PMTween.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTween.m; path = ../../Classes/PMTween.m; sourceTree = "<group>"; };
-		8B36D756190747F500771A81 /* PMTweenBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenBeat.h; path = ../../Classes/PMTweenBeat.h; sourceTree = "<group>"; };
-		8B36D757190747F500771A81 /* PMTweenBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenBeat.m; path = ../../Classes/PMTweenBeat.m; sourceTree = "<group>"; };
-		8B36D758190747F500771A81 /* PMTweenCATempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenCATempo.h; path = ../../Classes/PMTweenCATempo.h; sourceTree = "<group>"; };
-		8B36D759190747F500771A81 /* PMTweenCATempo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenCATempo.m; path = ../../Classes/PMTweenCATempo.m; sourceTree = "<group>"; };
-		8B36D75A190747F500771A81 /* PMTweenGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenGroup.h; path = ../../Classes/PMTweenGroup.h; sourceTree = "<group>"; };
-		8B36D75B190747F500771A81 /* PMTweenGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenGroup.m; path = ../../Classes/PMTweenGroup.m; sourceTree = "<group>"; };
-		8B36D75C190747F500771A81 /* PMTweenSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenSequence.h; path = ../../Classes/PMTweenSequence.h; sourceTree = "<group>"; };
-		8B36D75D190747F500771A81 /* PMTweenSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenSequence.m; path = ../../Classes/PMTweenSequence.m; sourceTree = "<group>"; };
-		8B36D75E190747F500771A81 /* PMTweenTempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenTempo.h; path = ../../Classes/PMTweenTempo.h; sourceTree = "<group>"; };
-		8B36D75F190747F500771A81 /* PMTweenTempo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenTempo.m; path = ../../Classes/PMTweenTempo.m; sourceTree = "<group>"; };
-		8B36D760190747F500771A81 /* PMTweenUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenUnit.h; path = ../../Classes/PMTweenUnit.h; sourceTree = "<group>"; };
-		8B36D761190747F500771A81 /* PMTweenUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenUnit.m; path = ../../Classes/PMTweenUnit.m; sourceTree = "<group>"; };
 		8B36D77519074D8000771A81 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8B36D77719075C6300771A81 /* GroupTweenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GroupTweenVC.h; path = Classes/GroupTweenVC.h; sourceTree = "<group>"; };
 		8B36D77819075C6300771A81 /* GroupTweenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GroupTweenVC.m; path = Classes/GroupTweenVC.m; sourceTree = "<group>"; };
 		8B36D77A190765AD00771A81 /* SequenceTweenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SequenceTweenVC.h; path = Classes/SequenceTweenVC.h; sourceTree = "<group>"; };
 		8B36D77B190765AD00771A81 /* SequenceTweenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SequenceTweenVC.m; path = Classes/SequenceTweenVC.m; sourceTree = "<group>"; };
+		8B64C2EE1C573C1100009A77 /* PMTweenCATempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenCATempo.h; path = ../../Classes/PMTweenCATempo.h; sourceTree = "<group>"; };
+		8B64C2EF1C573C1100009A77 /* PMTweenSupport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenSupport.m; path = ../../Classes/PMTweenSupport.m; sourceTree = "<group>"; };
+		8B64C2F01C573C1100009A77 /* PMTweenSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenSupport.h; path = ../../Classes/PMTweenSupport.h; sourceTree = "<group>"; };
+		8B64C2F11C573C1100009A77 /* PMTweening.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweening.m; path = ../../Classes/PMTweening.m; sourceTree = "<group>"; };
+		8B64C2F21C573C1100009A77 /* PMTweening.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweening.h; path = ../../Classes/PMTweening.h; sourceTree = "<group>"; };
+		8B64C2F31C573C1100009A77 /* PMTween.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTween.h; path = ../../Classes/PMTween.h; sourceTree = "<group>"; };
+		8B64C2F41C573C1100009A77 /* PMTweenBeat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenBeat.h; path = ../../Classes/PMTweenBeat.h; sourceTree = "<group>"; };
+		8B64C2F51C573C1100009A77 /* PMTweenBeat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenBeat.m; path = ../../Classes/PMTweenBeat.m; sourceTree = "<group>"; };
+		8B64C2F61C573C1100009A77 /* PMTweenGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenGroup.h; path = ../../Classes/PMTweenGroup.h; sourceTree = "<group>"; };
+		8B64C2F71C573C1100009A77 /* PMTweenGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenGroup.m; path = ../../Classes/PMTweenGroup.m; sourceTree = "<group>"; };
+		8B64C2F81C573C1100009A77 /* PMTweenObjectUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenObjectUpdater.h; path = ../../Classes/PMTweenObjectUpdater.h; sourceTree = "<group>"; };
+		8B64C2F91C573C1100009A77 /* PMTweenObjectUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenObjectUpdater.m; path = ../../Classes/PMTweenObjectUpdater.m; sourceTree = "<group>"; };
+		8B64C2FA1C573C1100009A77 /* PMTweenPhysicsUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenPhysicsUnit.h; path = ../../Classes/PMTweenPhysicsUnit.h; sourceTree = "<group>"; };
+		8B64C2FB1C573C1100009A77 /* PMTweenPhysicsUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsUnit.m; path = ../../Classes/PMTweenPhysicsUnit.m; sourceTree = "<group>"; };
+		8B64C2FC1C573C1100009A77 /* PMTweenSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenSequence.h; path = ../../Classes/PMTweenSequence.h; sourceTree = "<group>"; };
+		8B64C2FD1C573C1100009A77 /* PMTweenSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenSequence.m; path = ../../Classes/PMTweenSequence.m; sourceTree = "<group>"; };
+		8B64C2FE1C573C1100009A77 /* PMTweenUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenUnit.h; path = ../../Classes/PMTweenUnit.h; sourceTree = "<group>"; };
+		8B64C2FF1C573C1100009A77 /* PMTweenUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenUnit.m; path = ../../Classes/PMTweenUnit.m; sourceTree = "<group>"; };
+		8B64C3011C573C1100009A77 /* PMTweenEasing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasing.h; sourceTree = "<group>"; };
+		8B64C3021C573C1100009A77 /* PMTweenEasingBack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingBack.h; sourceTree = "<group>"; };
+		8B64C3031C573C1100009A77 /* PMTweenEasingBack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingBack.m; sourceTree = "<group>"; };
+		8B64C3041C573C1100009A77 /* PMTweenEasingBounce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingBounce.h; sourceTree = "<group>"; };
+		8B64C3051C573C1100009A77 /* PMTweenEasingBounce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingBounce.m; sourceTree = "<group>"; };
+		8B64C3061C573C1100009A77 /* PMTweenEasingCircular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingCircular.h; sourceTree = "<group>"; };
+		8B64C3071C573C1100009A77 /* PMTweenEasingCircular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingCircular.m; sourceTree = "<group>"; };
+		8B64C3081C573C1100009A77 /* PMTweenEasingCubic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingCubic.h; sourceTree = "<group>"; };
+		8B64C3091C573C1100009A77 /* PMTweenEasingCubic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingCubic.m; sourceTree = "<group>"; };
+		8B64C30A1C573C1100009A77 /* PMTweenEasingElastic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingElastic.h; sourceTree = "<group>"; };
+		8B64C30B1C573C1100009A77 /* PMTweenEasingElastic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingElastic.m; sourceTree = "<group>"; };
+		8B64C30C1C573C1100009A77 /* PMTweenEasingExpo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingExpo.h; sourceTree = "<group>"; };
+		8B64C30D1C573C1100009A77 /* PMTweenEasingExpo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingExpo.m; sourceTree = "<group>"; };
+		8B64C30E1C573C1100009A77 /* PMTweenEasingLinear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingLinear.h; sourceTree = "<group>"; };
+		8B64C30F1C573C1100009A77 /* PMTweenEasingLinear.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingLinear.m; sourceTree = "<group>"; };
+		8B64C3101C573C1100009A77 /* PMTweenEasingQuadratic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingQuadratic.h; sourceTree = "<group>"; };
+		8B64C3111C573C1100009A77 /* PMTweenEasingQuadratic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingQuadratic.m; sourceTree = "<group>"; };
+		8B64C3121C573C1100009A77 /* PMTweenEasingQuartic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingQuartic.h; sourceTree = "<group>"; };
+		8B64C3131C573C1100009A77 /* PMTweenEasingQuartic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingQuartic.m; sourceTree = "<group>"; };
+		8B64C3141C573C1100009A77 /* PMTweenEasingQuintic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingQuintic.h; sourceTree = "<group>"; };
+		8B64C3151C573C1100009A77 /* PMTweenEasingQuintic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingQuintic.m; sourceTree = "<group>"; };
+		8B64C3161C573C1100009A77 /* PMTweenEasingSine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingSine.h; sourceTree = "<group>"; };
+		8B64C3171C573C1100009A77 /* PMTweenEasingSine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTweenEasingSine.m; sourceTree = "<group>"; };
+		8B64C3181C573C1100009A77 /* PMTweenEasingTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTweenEasingTypes.h; sourceTree = "<group>"; };
+		8B64C3191C573C1100009A77 /* PMTweenPhysicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenPhysicsSystem.h; path = ../../Classes/PMTweenPhysicsSystem.h; sourceTree = "<group>"; };
+		8B64C31A1C573C1100009A77 /* PMTweenPhysicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsSystem.m; path = ../../Classes/PMTweenPhysicsSystem.m; sourceTree = "<group>"; };
+		8B64C31B1C573C1100009A77 /* PMTweenCATempo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenCATempo.m; path = ../../Classes/PMTweenCATempo.m; sourceTree = "<group>"; };
+		8B64C31C1C573C1100009A77 /* PMTweenTempo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenTempo.m; path = ../../Classes/PMTweenTempo.m; sourceTree = "<group>"; };
+		8B64C31D1C573C1100009A77 /* PMTweenTempo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenTempo.h; path = ../../Classes/PMTweenTempo.h; sourceTree = "<group>"; };
+		8B64C3351C5748B400009A77 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		8B7235EE1907A3AD00D40E7D /* Transform3DVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Transform3DVC.h; path = Classes/Transform3DVC.h; sourceTree = "<group>"; };
 		8B7235EF1907A3AD00D40E7D /* Transform3DVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Transform3DVC.m; path = Classes/Transform3DVC.m; sourceTree = "<group>"; };
 		8B8207BA190890F900D8FD13 /* MassTweensVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MassTweensVC.h; path = Classes/MassTweensVC.h; sourceTree = "<group>"; };
 		8B8207BB190890F900D8FD13 /* MassTweensVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MassTweensVC.m; path = Classes/MassTweensVC.m; sourceTree = "<group>"; };
 		8BBB27C11907859C0012EF4A /* SequenceNoncontiguousVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SequenceNoncontiguousVC.h; path = Classes/SequenceNoncontiguousVC.h; sourceTree = "<group>"; };
 		8BBB27C21907859C0012EF4A /* SequenceNoncontiguousVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SequenceNoncontiguousVC.m; path = Classes/SequenceNoncontiguousVC.m; sourceTree = "<group>"; };
-		8BCB5F02190B389C006D50EF /* PMTweenObjectUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenObjectUpdater.h; path = ../../Classes/PMTweenObjectUpdater.h; sourceTree = "<group>"; };
-		8BCB5F03190B389C006D50EF /* PMTweenObjectUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenObjectUpdater.m; path = ../../Classes/PMTweenObjectUpdater.m; sourceTree = "<group>"; };
 		8BF8F79A191809790028261E /* BasicPhysicsTweenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicPhysicsTweenVC.h; path = Classes/BasicPhysicsTweenVC.h; sourceTree = "<group>"; };
 		8BF8F79B191809790028261E /* BasicPhysicsTweenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicPhysicsTweenVC.m; path = Classes/BasicPhysicsTweenVC.m; sourceTree = "<group>"; };
-		8BF8F79D1918098B0028261E /* PMTweenPhysicsSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenPhysicsSystem.h; path = ../../Classes/PMTweenPhysicsSystem.h; sourceTree = "<group>"; };
-		8BF8F79E1918098B0028261E /* PMTweenPhysicsSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsSystem.m; path = ../../Classes/PMTweenPhysicsSystem.m; sourceTree = "<group>"; };
-		8BF8F79F1918098B0028261E /* PMTweenPhysicsUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PMTweenPhysicsUnit.h; path = ../../Classes/PMTweenPhysicsUnit.h; sourceTree = "<group>"; };
-		8BF8F7A01918098B0028261E /* PMTweenPhysicsUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMTweenPhysicsUnit.m; path = ../../Classes/PMTweenPhysicsUnit.m; sourceTree = "<group>"; };
 		8BF8F7A31918441C0028261E /* DynamicTweenVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DynamicTweenVC.h; path = Classes/DynamicTweenVC.h; sourceTree = "<group>"; };
 		8BF8F7A41918441C0028261E /* DynamicTweenVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DynamicTweenVC.m; path = Classes/DynamicTweenVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +184,7 @@
 				8B36D73119072EB000771A81 /* Classes */,
 				8B36D7101907253700771A81 /* Images.xcassets */,
 				8B36D6FC1907253700771A81 /* Supporting Files */,
+				8B64C3351C5748B400009A77 /* Launch Screen.storyboard */,
 			);
 			path = PMTweenExamples;
 			sourceTree = "<group>";
@@ -195,7 +203,7 @@
 		8B36D73119072EB000771A81 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8B36D73B190747DF00771A81 /* PMTween */,
+				8B64C3341C573C3A00009A77 /* PMTween */,
 				8B36D7361907432200771A81 /* ViewControllers */,
 				8B36D7041907253700771A81 /* AppDelegate.h */,
 				8B36D7051907253700771A81 /* AppDelegate.m */,
@@ -230,71 +238,67 @@
 			name = ViewControllers;
 			sourceTree = "<group>";
 		};
-		8B36D73B190747DF00771A81 /* PMTween */ = {
+		8B64C3001C573C1100009A77 /* EasingTypes */ = {
 			isa = PBXGroup;
 			children = (
-				8BF8F79D1918098B0028261E /* PMTweenPhysicsSystem.h */,
-				8BF8F79E1918098B0028261E /* PMTweenPhysicsSystem.m */,
-				8BF8F79F1918098B0028261E /* PMTweenPhysicsUnit.h */,
-				8BF8F7A01918098B0028261E /* PMTweenPhysicsUnit.m */,
-				8B36D73C190747F500771A81 /* EasingTypes */,
-				8B36D754190747F500771A81 /* PMTween.h */,
-				8B36D755190747F500771A81 /* PMTween.m */,
-				8B36D75A190747F500771A81 /* PMTweenGroup.h */,
-				8B36D75B190747F500771A81 /* PMTweenGroup.m */,
-				8BCB5F02190B389C006D50EF /* PMTweenObjectUpdater.h */,
-				8BCB5F03190B389C006D50EF /* PMTweenObjectUpdater.m */,
-				8B36D75C190747F500771A81 /* PMTweenSequence.h */,
-				8B36D75D190747F500771A81 /* PMTweenSequence.m */,
-				8B36D760190747F500771A81 /* PMTweenUnit.h */,
-				8B36D761190747F500771A81 /* PMTweenUnit.m */,
-				8B36D7741907481500771A81 /* Tempo */,
-			);
-			name = PMTween;
-			sourceTree = "<group>";
-		};
-		8B36D73C190747F500771A81 /* EasingTypes */ = {
-			isa = PBXGroup;
-			children = (
-				8B36D73D190747F500771A81 /* PMTweenEasing.h */,
-				8B36D73E190747F500771A81 /* PMTweenEasingBack.h */,
-				8B36D73F190747F500771A81 /* PMTweenEasingBack.m */,
-				8B36D740190747F500771A81 /* PMTweenEasingBounce.h */,
-				8B36D741190747F500771A81 /* PMTweenEasingBounce.m */,
-				8B36D742190747F500771A81 /* PMTweenEasingCircular.h */,
-				8B36D743190747F500771A81 /* PMTweenEasingCircular.m */,
-				8B36D744190747F500771A81 /* PMTweenEasingCubic.h */,
-				8B36D745190747F500771A81 /* PMTweenEasingCubic.m */,
-				8B36D746190747F500771A81 /* PMTweenEasingElastic.h */,
-				8B36D747190747F500771A81 /* PMTweenEasingElastic.m */,
-				8B36D748190747F500771A81 /* PMTweenEasingExpo.h */,
-				8B36D749190747F500771A81 /* PMTweenEasingExpo.m */,
-				8B36D74A190747F500771A81 /* PMTweenEasingLinear.h */,
-				8B36D74B190747F500771A81 /* PMTweenEasingLinear.m */,
-				8B36D74C190747F500771A81 /* PMTweenEasingQuadratic.h */,
-				8B36D74D190747F500771A81 /* PMTweenEasingQuadratic.m */,
-				8B36D74E190747F500771A81 /* PMTweenEasingQuartic.h */,
-				8B36D74F190747F500771A81 /* PMTweenEasingQuartic.m */,
-				8B36D750190747F500771A81 /* PMTweenEasingQuintic.h */,
-				8B36D751190747F500771A81 /* PMTweenEasingQuintic.m */,
-				8B36D752190747F500771A81 /* PMTweenEasingSine.h */,
-				8B36D753190747F500771A81 /* PMTweenEasingSine.m */,
+				8B64C3011C573C1100009A77 /* PMTweenEasing.h */,
+				8B64C3021C573C1100009A77 /* PMTweenEasingBack.h */,
+				8B64C3031C573C1100009A77 /* PMTweenEasingBack.m */,
+				8B64C3041C573C1100009A77 /* PMTweenEasingBounce.h */,
+				8B64C3051C573C1100009A77 /* PMTweenEasingBounce.m */,
+				8B64C3061C573C1100009A77 /* PMTweenEasingCircular.h */,
+				8B64C3071C573C1100009A77 /* PMTweenEasingCircular.m */,
+				8B64C3081C573C1100009A77 /* PMTweenEasingCubic.h */,
+				8B64C3091C573C1100009A77 /* PMTweenEasingCubic.m */,
+				8B64C30A1C573C1100009A77 /* PMTweenEasingElastic.h */,
+				8B64C30B1C573C1100009A77 /* PMTweenEasingElastic.m */,
+				8B64C30C1C573C1100009A77 /* PMTweenEasingExpo.h */,
+				8B64C30D1C573C1100009A77 /* PMTweenEasingExpo.m */,
+				8B64C30E1C573C1100009A77 /* PMTweenEasingLinear.h */,
+				8B64C30F1C573C1100009A77 /* PMTweenEasingLinear.m */,
+				8B64C3101C573C1100009A77 /* PMTweenEasingQuadratic.h */,
+				8B64C3111C573C1100009A77 /* PMTweenEasingQuadratic.m */,
+				8B64C3121C573C1100009A77 /* PMTweenEasingQuartic.h */,
+				8B64C3131C573C1100009A77 /* PMTweenEasingQuartic.m */,
+				8B64C3141C573C1100009A77 /* PMTweenEasingQuintic.h */,
+				8B64C3151C573C1100009A77 /* PMTweenEasingQuintic.m */,
+				8B64C3161C573C1100009A77 /* PMTweenEasingSine.h */,
+				8B64C3171C573C1100009A77 /* PMTweenEasingSine.m */,
+				8B64C3181C573C1100009A77 /* PMTweenEasingTypes.h */,
 			);
 			name = EasingTypes;
 			path = ../../Classes/EasingTypes;
 			sourceTree = "<group>";
 		};
-		8B36D7741907481500771A81 /* Tempo */ = {
+		8B64C3341C573C3A00009A77 /* PMTween */ = {
 			isa = PBXGroup;
 			children = (
-				8B36D75E190747F500771A81 /* PMTweenTempo.h */,
-				8B36D75F190747F500771A81 /* PMTweenTempo.m */,
-				8B36D756190747F500771A81 /* PMTweenBeat.h */,
-				8B36D757190747F500771A81 /* PMTweenBeat.m */,
-				8B36D758190747F500771A81 /* PMTweenCATempo.h */,
-				8B36D759190747F500771A81 /* PMTweenCATempo.m */,
+				8B64C2EE1C573C1100009A77 /* PMTweenCATempo.h */,
+				8B64C2EF1C573C1100009A77 /* PMTweenSupport.m */,
+				8B64C2F01C573C1100009A77 /* PMTweenSupport.h */,
+				8B64C2F11C573C1100009A77 /* PMTweening.m */,
+				8B64C2F21C573C1100009A77 /* PMTweening.h */,
+				8B64C2F31C573C1100009A77 /* PMTween.h */,
+				8B64C2F41C573C1100009A77 /* PMTweenBeat.h */,
+				8B64C2F51C573C1100009A77 /* PMTweenBeat.m */,
+				8B64C2F61C573C1100009A77 /* PMTweenGroup.h */,
+				8B64C2F71C573C1100009A77 /* PMTweenGroup.m */,
+				8B64C2F81C573C1100009A77 /* PMTweenObjectUpdater.h */,
+				8B64C2F91C573C1100009A77 /* PMTweenObjectUpdater.m */,
+				8B64C2FA1C573C1100009A77 /* PMTweenPhysicsUnit.h */,
+				8B64C2FB1C573C1100009A77 /* PMTweenPhysicsUnit.m */,
+				8B64C2FC1C573C1100009A77 /* PMTweenSequence.h */,
+				8B64C2FD1C573C1100009A77 /* PMTweenSequence.m */,
+				8B64C2FE1C573C1100009A77 /* PMTweenUnit.h */,
+				8B64C2FF1C573C1100009A77 /* PMTweenUnit.m */,
+				8B64C3001C573C1100009A77 /* EasingTypes */,
+				8B64C3191C573C1100009A77 /* PMTweenPhysicsSystem.h */,
+				8B64C31A1C573C1100009A77 /* PMTweenPhysicsSystem.m */,
+				8B64C31B1C573C1100009A77 /* PMTweenCATempo.m */,
+				8B64C31C1C573C1100009A77 /* PMTweenTempo.m */,
+				8B64C31D1C573C1100009A77 /* PMTweenTempo.h */,
 			);
-			name = Tempo;
+			name = PMTween;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,8 +327,8 @@
 		8B36D6EA1907253700771A81 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
-				ORGANIZATIONNAME = "Poet & Mountain, LLC";
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Poet and Mountain, LLC";
 			};
 			buildConfigurationList = 8B36D6ED1907253700771A81 /* Build configuration list for PBXProject "PMTweenExamples" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -349,6 +353,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B64C3361C5748B400009A77 /* Launch Screen.storyboard in Resources */,
 				8B36D7111907253700771A81 /* Images.xcassets in Resources */,
 				8B36D7001907253700771A81 /* InfoPlist.strings in Resources */,
 			);
@@ -361,39 +366,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B36D773190747F500771A81 /* PMTweenUnit.m in Sources */,
-				8B36D766190747F500771A81 /* PMTweenEasingElastic.m in Sources */,
-				8B36D76E190747F500771A81 /* PMTweenBeat.m in Sources */,
+				8B64C32E1C573C1100009A77 /* PMTweenEasingQuartic.m in Sources */,
 				8B36D7061907253700771A81 /* AppDelegate.m in Sources */,
+				8B64C31F1C573C1100009A77 /* PMTweening.m in Sources */,
 				8B36D73019072EA900771A81 /* TableViewController.m in Sources */,
 				8B36D77919075C6300771A81 /* GroupTweenVC.m in Sources */,
-				8B36D76B190747F500771A81 /* PMTweenEasingQuintic.m in Sources */,
-				8BF8F7A11918098B0028261E /* PMTweenPhysicsSystem.m in Sources */,
-				8B36D771190747F500771A81 /* PMTweenSequence.m in Sources */,
-				8B36D76D190747F500771A81 /* PMTween.m in Sources */,
+				8B64C3291C573C1100009A77 /* PMTweenEasingCubic.m in Sources */,
+				8B64C32C1C573C1100009A77 /* PMTweenEasingLinear.m in Sources */,
 				8BF8F79C191809790028261E /* BasicPhysicsTweenVC.m in Sources */,
-				8B36D770190747F500771A81 /* PMTweenGroup.m in Sources */,
+				8B64C3261C573C1100009A77 /* PMTweenEasingBack.m in Sources */,
 				8BF8F7A51918441C0028261E /* DynamicTweenVC.m in Sources */,
-				8B36D772190747F500771A81 /* PMTweenTempo.m in Sources */,
-				8B36D764190747F500771A81 /* PMTweenEasingCircular.m in Sources */,
+				8B64C3281C573C1100009A77 /* PMTweenEasingCircular.m in Sources */,
+				8B64C3271C573C1100009A77 /* PMTweenEasingBounce.m in Sources */,
+				8B64C3211C573C1100009A77 /* PMTweenGroup.m in Sources */,
+				8B64C32D1C573C1100009A77 /* PMTweenEasingQuadratic.m in Sources */,
 				8B36D7021907253700771A81 /* main.m in Sources */,
-				8B36D768190747F500771A81 /* PMTweenEasingLinear.m in Sources */,
+				8B64C3201C573C1100009A77 /* PMTweenBeat.m in Sources */,
+				8B64C32B1C573C1100009A77 /* PMTweenEasingExpo.m in Sources */,
 				8B7235F01907A3AD00D40E7D /* Transform3DVC.m in Sources */,
-				8B36D767190747F500771A81 /* PMTweenEasingExpo.m in Sources */,
-				8B36D76C190747F500771A81 /* PMTweenEasingSine.m in Sources */,
-				8B36D765190747F500771A81 /* PMTweenEasingCubic.m in Sources */,
+				8B64C3231C573C1100009A77 /* PMTweenPhysicsUnit.m in Sources */,
+				8B64C3221C573C1100009A77 /* PMTweenObjectUpdater.m in Sources */,
 				8B36D77C190765AD00771A81 /* SequenceTweenVC.m in Sources */,
+				8B64C32F1C573C1100009A77 /* PMTweenEasingQuintic.m in Sources */,
 				8B0DF43E19706CA5002EDD61 /* AdditiveVC.m in Sources */,
-				8B36D769190747F500771A81 /* PMTweenEasingQuadratic.m in Sources */,
 				8BBB27C31907859C0012EF4A /* SequenceNoncontiguousVC.m in Sources */,
-				8BF8F7A21918098B0028261E /* PMTweenPhysicsUnit.m in Sources */,
-				8B36D76A190747F500771A81 /* PMTweenEasingQuartic.m in Sources */,
-				8B36D763190747F500771A81 /* PMTweenEasingBounce.m in Sources */,
+				8B64C3241C573C1100009A77 /* PMTweenSequence.m in Sources */,
+				8B64C3321C573C1100009A77 /* PMTweenCATempo.m in Sources */,
+				8B64C3331C573C1100009A77 /* PMTweenTempo.m in Sources */,
+				8B64C3311C573C1100009A77 /* PMTweenPhysicsSystem.m in Sources */,
+				8B64C3251C573C1100009A77 /* PMTweenUnit.m in Sources */,
 				8B36D73519073AF600771A81 /* BasicTweenVC.m in Sources */,
-				8B36D76F190747F500771A81 /* PMTweenCATempo.m in Sources */,
-				8BCB5F04190B389C006D50EF /* PMTweenObjectUpdater.m in Sources */,
-				8B36D762190747F500771A81 /* PMTweenEasingBack.m in Sources */,
 				8B8207BC190890F900D8FD13 /* MassTweensVC.m in Sources */,
+				8B64C3301C573C1100009A77 /* PMTweenEasingSine.m in Sources */,
+				8B64C32A1C573C1100009A77 /* PMTweenEasingElastic.m in Sources */,
+				8B64C31E1C573C1100009A77 /* PMTweenSupport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -429,6 +435,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -495,6 +502,7 @@
 				INFOPLIST_FILE = "PMTweenExamples/PMTweenExamples-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LLVM_LTO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.poetmountain.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -514,6 +522,7 @@
 				INFOPLIST_FILE = "PMTweenExamples/PMTweenExamples-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LLVM_LTO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.poetmountain.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

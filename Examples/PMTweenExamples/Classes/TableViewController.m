@@ -17,17 +17,20 @@
 #import "DynamicTweenVC.h"
 #import "MassTweensVC.h"
 
-@interface TableViewController ()
+@interface TableViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray *examples;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) BOOL uiCreated;
+
+- (void)setupUI;
 
 @end
 
 @implementation TableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
+- (instancetype)init {
+    self = [super init];
     if (self) {
         // Custom initialization
         
@@ -49,15 +52,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"PMTween Examples";
+    self.title = @"Examples";
     self.view.backgroundColor = [UIColor whiteColor];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    if (!self.uiCreated) {
+        [self setupUI];
+    }
+    
 }
+
+- (void)setupUI {
+    self.tableView = [[UITableView alloc] init];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.clipsToBounds = YES;
+    self.tableView.estimatedRowHeight = 44.0;
+    [self.view addSubview:self.tableView];
+    
+    self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [NSLayoutConstraint constraintWithItem:self.tableView
+                                 attribute:NSLayoutAttributeWidth
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeWidth
+                                multiplier:1.0
+                                  constant:0.0].active = YES;
+    
+    [NSLayoutConstraint constraintWithItem:self.tableView
+                                 attribute:NSLayoutAttributeHeight
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeHeight
+                                multiplier:1.0
+                                  constant:0.0].active = YES;
+    
+    self.uiCreated = YES;
+}
+
 
 #pragma mark - Table view data source
 
@@ -128,6 +164,8 @@
             vc = [[BasicTweenVC alloc] init];
             break;
     }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     vc.title = self.examples[index];
     [self.navigationController pushViewController:vc animated:YES];
