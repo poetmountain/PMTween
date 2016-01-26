@@ -4,6 +4,7 @@
 # rvm files
 .ruby-version
 .ruby-gemset
+Gemfile
 Gemfile.lock
 
 # Xcode
