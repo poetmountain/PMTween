@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PMTweening Protocol Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -138,22 +137,22 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">PMTween.h</td>
+	<td class="specification-value">PMTweening.h</td>
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
 						<ul>
-<li><p>The <code>PMTweening</code> protocol declares methods and properties that must be adopted by custom tweening classes in order to participate in <a href="../Classes/PMTween.html">PMTween</a>.</p>
-
-<p> In addition to adopting the required methods, custom tweening classes must also post the <code>PMTweenDidCompleteNotification</code> notification in order to properly interact with other <a href="../Classes/PMTween.html">PMTween</a> classes.</p></li>
+<li>The <code>PMTweening</code> protocol declares methods and properties that must be adopted by custom tweening classes in order to participate in PMTween.</li>
 </ul>
 
+
+<p>In addition to adopting the required methods, custom tweening classes must also post the <code>PMTweenDidCompleteNotification</code> notification in order to properly interact with other PMTween classes.</p>
 					</div>
 					
 					
@@ -172,42 +171,36 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stopTween">&ndash;&nbsp;stopTween</a></code>
-		<span class="tooltip"><p>Stops a tween that is currently tweening. (required)</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/startTween">&ndash;&nbsp;startTween</a></code>
-		<span class="tooltip"><p>Starts a tween that is currently stopped. (required)</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pauseTween">&ndash;&nbsp;pauseTween</a></code>
-		<span class="tooltip"><p>Pauses a tween that is currently tweening. (required)</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/resumeTween">&ndash;&nbsp;resumeTween</a></code>
-		<span class="tooltip"><p>Resumes a tween that is currently paused. (required)</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/reversing">&nbsp;&nbsp;reversing</a></code>
-		<span class="tooltip"><p>A Boolean which determines whether a tween operation, when it has tweened to the ending value, should tween from the ending value back to the starting value.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/tempo">&nbsp;&nbsp;tempo</a></code>
-		<span class="tooltip"><p>A concrete <a href="../Classes/PMTweenTempo.html"><code>PMTweenTempo</code></a> subclass that provides an update &ldquo;beat&rdquo; while a tween operation occurs.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	<span class="task-item-suffix">required method</span>
@@ -222,7 +215,6 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/updateWithTimeInterval:">&ndash;&nbsp;updateWithTimeInterval:</a></code>
-		<span class="tooltip"><p>This method is called to prompt a tweening class to update its current tween values.</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -274,7 +266,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -315,7 +307,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -366,7 +358,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -407,7 +399,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -448,7 +440,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -489,7 +481,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -535,7 +527,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -544,6 +536,11 @@
 					</div>
 					
 					
+                    
+                    
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -554,9 +551,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Poet &amp; Mountain, LLC. All rights reserved. (Last updated: 2014-07-11)</span><br />
+						<p><span class="copyright">&copy; 2016 Poet &amp; Mountain, LLC. All rights reserved. (Last updated: 2016-01-27)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

@@ -4,10 +4,9 @@
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
 		<title>PMTweenUnit Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
-		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.1 (build 840)" />
+		<meta name="generator" content="appledoc 2.2 (build 963)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -285,8 +284,8 @@
 </tr>
 						</tbody></table></div>
 					
-					
-					
+                    
+                    
 					
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
@@ -310,14 +309,12 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithProperty:startingValue:endingValue:duration:options:easingBlock:">&ndash;&nbsp;initWithProperty:startingValue:endingValue:duration:options:easingBlock:</a></code>
-		<span class="tooltip"><p>Initializes a new PMTweenUnit object, passing in a property and values for the tween operation.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithObject:propertyKeyPath:startingValue:endingValue:duration:options:easingBlock:">&ndash;&nbsp;initWithObject:propertyKeyPath:startingValue:endingValue:duration:options:easingBlock:</a></code>
-		<span class="tooltip"><p>Initalizes a new PMTweenUnit object, passing in a target object, its property, and values for the tween operation.</p></span>
 	</span>
 	
 	
@@ -332,42 +329,36 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/delay">&nbsp;&nbsp;delay</a></code>
-		<span class="tooltip"><p>The delay, in seconds, before a tween operation begins.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/duration">&nbsp;&nbsp;duration</a></code>
-		<span class="tooltip"><p>The duration of a tween operation, in seconds. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/repeating">&nbsp;&nbsp;repeating</a></code>
-		<span class="tooltip"><p>A Boolean which determines whether a tween operation should repeat.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/numberOfRepeats">&nbsp;&nbsp;numberOfRepeats</a></code>
-		<span class="tooltip"><p>The number of tween cycle operations to repeat.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/additive">&nbsp;&nbsp;additive</a></code>
-		<span class="tooltip"><p>A Boolean which determines whether this tween should change its property value additively. Additive animation allows multiple tweens to produce a compound effect, instead of overwriting each other as they update the same property. Additive animation is now the default behavior for tweening animations in iOS 8, and is great for making user interface animations fluid and responsive.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/structValueUpdater">&nbsp;&nbsp;structValueUpdater</a></code>
-		<span class="tooltip"><p>An object conforming to the <a href="../Protocols/PMTweenObjectUpdating.html"><code>PMTweenObjectUpdating</code></a> protocol which handles the updating of properties on objects and structs.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -382,14 +373,12 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/easingBlock">&nbsp;&nbsp;easingBlock</a></code>
-		<span class="tooltip"><p>A <code>PMTweenEasingBlock</code> block which performs easing calculations for the tweening operation.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/reverseEasingBlock">&nbsp;&nbsp;reverseEasingBlock</a></code>
-		<span class="tooltip"><p>An optional <code>PMTweenEasingBlock</code> block which performs easing calculations for the tweening operation while reversing.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -404,84 +393,72 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/targetProperty">&nbsp;&nbsp;targetProperty</a></code>
-		<span class="tooltip"><p>The property to be tweened.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/targetObject">&nbsp;&nbsp;targetObject</a></code>
-		<span class="tooltip"><p>The target object whose property should be tweened, applicable if this instance was initiated with the initWithProperty:&hellip; method.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/propertyKeyPath">&nbsp;&nbsp;propertyKeyPath</a></code>
-		<span class="tooltip"><p>Key path for property on target. Only used when class is created with initWithObject.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/operationID">&nbsp;&nbsp;operationID</a></code>
-		<span class="tooltip"><p>An operation ID is assigned to a PMTweenUnit when it is tweening an object&rsquo;s property (via initWithObject&hellip;) and its tween operation is currently in progress. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/tweenState">&nbsp;&nbsp;tweenState</a></code>
-		<span class="tooltip"><p>A <code>PMTweenState</code> enum which represents the current state of the tween operation. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/tweenDirection">&nbsp;&nbsp;tweenDirection</a></code>
-		<span class="tooltip"><p>A <code>PMTweenDirection</code> enum which represents the current direction of the tween operation. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/startingValue">&nbsp;&nbsp;startingValue</a></code>
-		<span class="tooltip"><p>The starting value of the tween operation.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/currentValue">&nbsp;&nbsp;currentValue</a></code>
-		<span class="tooltip"><p>The current value of the tween operation. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/endingValue">&nbsp;&nbsp;endingValue</a></code>
-		<span class="tooltip"><p>The ending value of the tween operation.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/tweenProgress">&nbsp;&nbsp;tweenProgress</a></code>
-		<span class="tooltip"><p>A float value between 0.0 and 1.0, which represents the current progress of a tween operation between two values. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cycleProgress">&nbsp;&nbsp;cycleProgress</a></code>
-		<span class="tooltip"><p>A float value between 0.0 and 1.0, which represents the current progress of a tween cycle. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/cyclesCompletedCount">&nbsp;&nbsp;cyclesCompletedCount</a></code>
-		<span class="tooltip"><p>The amount of completed tween cycles. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -496,56 +473,48 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/startBlock">&nbsp;&nbsp;startBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when calling the <a href="#//api/name/startTween"><code>startTween</code></a> method on this instance causes a tween operation to start.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stopBlock">&nbsp;&nbsp;stopBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when calling the <a href="#//api/name/stopTween"><code>stopTween</code></a> method on this instance causes a tween operation to stop.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/updateBlock">&nbsp;&nbsp;updateBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when the <code>updateWithTimeInterval:currentTime:</code> method is called on this instance while this instance&rsquo;s <a href="#//api/name/tweenState"><code>tweenState</code></a> is <code>PMTweenStateTweening</code>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/repeatCycleBlock">&nbsp;&nbsp;repeatCycleBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when a tween cycle has repeated.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/reverseBlock">&nbsp;&nbsp;reverseBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when this instance&rsquo;s <a href="#//api/name/tweenDirection"><code>tweenDirection</code></a> property changes to <code>PMTweenDirectionReverse</code>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pauseBlock">&nbsp;&nbsp;pauseBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when calling the <a href="#//api/name/pauseTween"><code>pauseTween</code></a> method on this instance causes a tween operation to pause.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/resumeBlock">&nbsp;&nbsp;resumeBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when calling the <a href="#//api/name/resumeTween"><code>resumeTween</code></a> method on this instance causes a tween operation to resume.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/completeBlock">&nbsp;&nbsp;completeBlock</a></code>
-		<span class="tooltip"><p>This notification block is executed when a tween operation has completed (or when all tween cycles have completed, if <a href="#//api/name/repeating"><code>repeating</code></a> is set to <code>YES</code>).</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -560,70 +529,60 @@
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/tempo">&ndash;&nbsp;tempo</a></code>
-		<span class="tooltip"><p>A concrete <a href="../Classes/PMTweenTempo.html"><code>PMTweenTempo</code></a> subclass that provides an update &ldquo;beat&rdquo; while a tween operation occurs.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setTempo:">&ndash;&nbsp;setTempo:</a></code>
-		<span class="tooltip"><p>A concrete <a href="../Classes/PMTweenTempo.html"><code>PMTweenTempo</code></a> subclass that provides an update &ldquo;beat&rdquo; while a tween operation occurs.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isReversing">&ndash;&nbsp;isReversing</a></code>
-		<span class="tooltip"><p>A Boolean which determines whether a tween operation, when it has tweened to the ending value, should tween from the ending value back to the starting value.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setReversing:">&ndash;&nbsp;setReversing:</a></code>
-		<span class="tooltip"><p>A Boolean which determines whether a tween operation, when it has tweened to the ending value, should tween from the ending value back to the starting value.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/tempoBeatWithTimestamp:">&ndash;&nbsp;tempoBeatWithTimestamp:</a></code>
-		<span class="tooltip"><p>Sends an update beat that should prompt tweening classes to recalculate tween values.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/updateWithTimeInterval:">&ndash;&nbsp;updateWithTimeInterval:</a></code>
-		<span class="tooltip"><p>This method is called to prompt a tweening class to update its current tween values.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/startTween">&ndash;&nbsp;startTween</a></code>
-		<span class="tooltip"><p>Starts a tween that is currently stopped. (required)</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/stopTween">&ndash;&nbsp;stopTween</a></code>
-		<span class="tooltip"><p>Stops a tween that is currently tweening. (required)</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/pauseTween">&ndash;&nbsp;pauseTween</a></code>
-		<span class="tooltip"><p>Pauses a tween that is currently tweening. (required)</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/resumeTween">&ndash;&nbsp;resumeTween</a></code>
-		<span class="tooltip"><p>Resumes a tween that is currently paused. (required)</p></span>
 	</span>
 	
 	
@@ -938,7 +897,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A <code>PMTweenEasingBlock</code> block which performs easing calculations for the tweening operation.</p>
+		<p>A <a href="../Blocks/PMTweenEasingBlock.html"><code>PMTweenEasingBlock</code></a> block which performs easing calculations for the tweening operation.</p>
 	</div>		
 	
     
@@ -1138,7 +1097,7 @@
 		<h4 class="method-subtitle">See Also</h4>
 		<ul>
 			
-			<li><code><p><a href="#//api/name/pauseTween">&ndash; pauseTween</a></p></code></li>
+			<li><code><p><a href="#//api/name/pauseTween">- pauseTween</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -1314,7 +1273,7 @@
 		<h4 class="method-subtitle">See Also</h4>
 		<ul>
 			
-			<li><code><p><a href="#//api/name/resumeTween">&ndash; resumeTween</a></p></code></li>
+			<li><code><p><a href="#//api/name/resumeTween">- resumeTween</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -1381,7 +1340,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>An optional <code>PMTweenEasingBlock</code> block which performs easing calculations for the tweening operation while reversing.</p>
+		<p>An optional <a href="../Blocks/PMTweenEasingBlock.html"><code>PMTweenEasingBlock</code></a> block which performs easing calculations for the tweening operation while reversing.</p>
 	</div>		
 	
     
@@ -1454,7 +1413,7 @@
 		<h4 class="method-subtitle">See Also</h4>
 		<ul>
 			
-			<li><code><p><a href="#//api/name/startTween">&ndash; startTween</a></p></code></li>
+			<li><code><p><a href="#//api/name/startTween">- startTween</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -1549,7 +1508,7 @@
 		<h4 class="method-subtitle">See Also</h4>
 		<ul>
 			
-			<li><code><p><a href="#//api/name/stopTween">&ndash; stopTween</a></p></code></li>
+			<li><code><p><a href="#//api/name/stopTween">- stopTween</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -1684,7 +1643,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A <code>PMTweenDirection</code> enum which represents the current direction of the tween operation. (read-only)</p>
+		<p>A <a href="../Constants/PMTweenDirection.html"><code>PMTweenDirection</code></a> enum which represents the current direction of the tween operation. (read-only)</p>
 	</div>		
 	
     
@@ -1756,7 +1715,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>A <code>PMTweenState</code> enum which represents the current state of the tween operation. (read-only)</p>
+		<p>A <a href="../Constants/PMTweenState.html"><code>PMTweenState</code></a> enum which represents the current state of the tween operation. (read-only)</p>
 	</div>		
 	
     
@@ -1877,12 +1836,12 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>options</em></dt>
-			<dd><p>A bitmask of <code>PMTweenOptions</code> configuration values. Defaults to <code>PMTweenOptionNone</code>.</p></dd>
+			<dd><p>A bitmask of <a href="../Constants/PMTweenOptions.html"><code>PMTweenOptions</code></a> configuration values. Defaults to <code>PMTweenOptionNone</code>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>easingBlock</em></dt>
-			<dd><p>An optional <code>PMTweenEasingBlock</code> block which performs easing calculations.</p></dd>
+			<dd><p>An optional <a href="../Blocks/PMTweenEasingBlock.html"><code>PMTweenEasingBlock</code></a> block which performs easing calculations.</p></dd>
 		</dl>
 		
 	</div>
@@ -1908,7 +1867,7 @@
 		<h4 class="method-subtitle">See Also</h4>
 		<ul>
 			
-			<li><code><p><a href="#//api/name/initWithProperty:startingValue:endingValue:duration:options:easingBlock:">&ndash; initWithProperty:startingValue:endingValue:duration:options:easingBlock:</a>, <a href="#//api/name/structValueUpdater">@property structValueUpdater</a></p></code></li>
+			<li><code><p><a href="#//api/name/initWithProperty:startingValue:endingValue:duration:options:easingBlock:">- initWithProperty:startingValue:endingValue:duration:options:easingBlock:</a>, <a href="#//api/name/structValueUpdater">@property structValueUpdater</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -1964,12 +1923,12 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>options</em></dt>
-			<dd><p>A bitmask of <code>PMTweenOptions</code> configuration values. Defaults to <code>PMTweenOptionNone</code>.</p></dd>
+			<dd><p>A bitmask of <a href="../Constants/PMTweenOptions.html"><code>PMTweenOptions</code></a> configuration values. Defaults to <code>PMTweenOptionNone</code>.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>easingBlock</em></dt>
-			<dd><p>An optional <code>PMTweenEasingBlock</code> block which performs easing calculations.</p></dd>
+			<dd><p>An optional <a href="../Blocks/PMTweenEasingBlock.html"><code>PMTweenEasingBlock</code></a> block which performs easing calculations.</p></dd>
 		</dl>
 		
 	</div>
@@ -1995,7 +1954,7 @@
 		<h4 class="method-subtitle">See Also</h4>
 		<ul>
 			
-			<li><code><p><a href="#//api/name/initWithObject:propertyKeyPath:startingValue:endingValue:duration:options:easingBlock:">&ndash; initWithObject:propertyKeyPath:startingValue:endingValue:duration:options:easingBlock:</a></p></code></li>
+			<li><code><p><a href="#//api/name/initWithObject:propertyKeyPath:startingValue:endingValue:duration:options:easingBlock:">- initWithObject:propertyKeyPath:startingValue:endingValue:duration:options:easingBlock:</a></p></code></li>
 			
 		</ul>
 	</div>
@@ -2045,7 +2004,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2086,7 +2045,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2127,7 +2086,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2168,7 +2127,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2209,7 +2168,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2250,7 +2209,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2291,7 +2250,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2332,7 +2291,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2424,7 +2383,7 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTween.h</code><br />
+		<code class="declared-in-ref">PMTweening.h</code><br />
 	</div>				
 	
 	
@@ -2433,6 +2392,11 @@
 					</div>
 					
 					
+                    
+                    
+                    
+                    
+
 				</div>
 				<div class="main-navigation navigation-bottom">
 					<ul>
@@ -2443,9 +2407,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2014 Poet &amp; Mountain, LLC. All rights reserved. (Last updated: 2014-07-11)</span><br />
+						<p><span class="copyright">&copy; 2016 Poet &amp; Mountain, LLC. All rights reserved. (Last updated: 2016-01-27)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2 (build 963)</a>.</span></p>
 						
 					</div>
 				</div>

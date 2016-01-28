@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>PMTweenEasingLinear Class Reference</title>
+		<title>PMTweenDidStepBlock Block Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
@@ -16,7 +16,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">PMTweenEasingLinear Class Reference</h1>
+				<h1 class="hideInXcode">PMTweenDidStepBlock Block Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -25,23 +25,6 @@
 				<li id="jumpto_button" role="navigation">
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
-	
-	<option value="overview">Overview</option>
-	
-	
-	
-	
-	<option value="tasks">Tasks</option>
-	
-	
-	
-	
-	
-	
-	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/easingNone">&nbsp;&nbsp;&nbsp;&nbsp;+ easingNone</option>
 	
 	
 	
@@ -54,26 +37,6 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
-<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
-
-
-
-
-<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
-	
-</ul></li>
-
-
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/easingNone">easingNone</a></span></li>
-	
-</ul></li>
 
 
 
@@ -82,7 +45,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="PMTweenEasingLinear Class Reference" name="top"></a>
+				<a title="PMTweenDidStepBlock Block Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -91,113 +54,57 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">PMTweenEasingLinear Class Reference</h1>
+						<h1 class="title title-header">PMTweenDidStepBlock Block Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
 					
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
-	<td class="specification-title">Inherits from</td>
-	<td class="specification-value">NSObject</td>
-</tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">PMTweenEasingLinear.h<br />PMTweenEasingLinear.m</td>
+	<td class="specification-value">PMTweenSequence.h</td>
 </tr>
 						</tbody></table></div>
 					
                     
                     
 					
-					<div class="section section-overview">
-						<a title="Overview" name="overview"></a>
-						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>PMTweenEasingLinear provides a linear easing equation.</p>
-					</div>
 					
 					
 					
-					
-					
-					<div class="section section-tasks">
-						<a title="Tasks" name="tasks"></a>
-						<h2 class="subtitle subtitle-tasks">Tasks</h2>
-						
-						
-						
-						
+                    
+                    
+                    
+                    
+                    <a title="Block Definition" name="instance_methods"></a>
+                    <h2 class="subtitle subtitle-methods">Block Definition</h2>
+                    <h3 class="subsubtitle method-title">PMTweenDidStepBlock</h3>
 
-						<ul class="task-list">
-							<li>
-	<span class="tooltip">
-		<code><a href="#//api/name/easingNone">+&nbsp;easingNone</a></code>
-	</span>
-	
-	
-</li>
-						</ul>
-						
-					</div>
-					
-					
-					
-					
-					
-					
-					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/easingNone" title="easingNone"></a>
-	<h3 class="subsubtitle method-title">easingNone</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>Linear easing type.</p>
-	</div>		
-	
-    
 
-	<div class="method-subsection method-declaration"><code>+ (PMTweenEasingBlock)easingNone</code></div>
-
-    
-	
-	
-	
-	<div class="method-subsection return">
-		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>A <a href="../Blocks/PMTweenEasingBlock.html"><code>PMTweenEasingBlock</code></a> block.</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">PMTweenEasingLinear.h</code><br />
-	</div>				
-	
-	
+<div class="method-subsection brief-description">
+    <p>This notification block is executed when playback has advanced to the next sequence step.</p>
 </div>
-						
-					</div>
-					
-					
-					
-					
-                    
-                    
-                    
+
+
+
+<code>typedef void (^PMTweenDidStepBlock) (NSObject <, PMTweening >, * tween)</code>
+
+
+
+
+
+
+
+
+
+
+
+<div class="method-subsection declared-in-section">
+    <h4 class="method-subtitle">Declared In</h4>
+    <code class="declared-in-ref">PMTweenSequence.h</code><br />
+</div>
+
+
                     
 
 				</div>
