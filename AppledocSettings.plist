@@ -18,7 +18,7 @@
 	<key>--company-id</key>
 	<string>com.poetmountain</string>
 	<key>--create-docset</key>
-	<true/>
+	<false/>
 	<key>--install-docset</key>
 	<false/>
 	<key>--repeat-first-par</key>
