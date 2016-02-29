@@ -1,3 +1,10 @@
+1.3.2
+=====
+* PMTweenPhysicsUnit now updates its physics system independently of property updates, at a frequency of 120 fps by default (to provide double the resolution of a normal 60fps app). This can be changed by PMTweenPhysicsUnit's new property physicsTimerInterval.
+* PMTweenPhysicsSystem now handles friction values with less accumulated error.
+* PMTweenPhysicsUnit's velocity is now expressed in units per second. Prior to this the velocity acted as units per frame, which obviously caused inconsistent simulations.
+* Minor updates to the Examples project.
+
 1.3.1
 =====
 * Updated project architecture to use single header import
