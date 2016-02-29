@@ -34,7 +34,7 @@
  *
  *  @param property      An NSValue property to be tweened. Supported properties include several NSValue-encoded structs such as NSNumber, CGPoint, CGSize, CGRect, CGAffineTransform, and CATransform3D.
  *  @param startingValue The property's starting value for the tween operation.
- *  @param velocity      The velocity value to use in the physics calculations.
+ *  @param velocity      The velocity value to use in the physics calculations, measured in units per second.
  *  @param friction      The friction value between 0 and 1 to use in the physics calculations, with 1 representing very high friction and 0 representing almost no friction.
  *  @param options       A bitmask of `PMTweenOptions` configuration values. Defaults to `PMTweenOptionNone`.
  *
@@ -56,7 +56,7 @@
  *  @param object           An object whose property should be tweened.
  *  @param propertyKeyPath  A string keyPath that points to a NSValue property of the target object to be tweened. Supported properties include several NSValue-encoded structs such as NSNumber, CGPoint, CGSize, CGRect, CGAffineTransform, and CATransform3D.
  *  @param startingValue    The property's starting value for the tween operation.
- *  @param velocity         The velocity value to use in the physics calculations. Values from 0-10 are good for updating x/y positions.
+ *  @param velocity         The velocity value to use in the physics calculations, measured in units per second.
  *  @param friction         The friction value between 0 and 1 to use in the physics calculations, with 1 representing very high friction and 0 representing almost no friction.
  *  @param options          A bitmask of `PMTweenOptions` configuration values. Defaults to `PMTweenOptionNone`.
  *
@@ -118,7 +118,7 @@
 @property (nonatomic, strong) NSObject <PMTweenPhysicsSolving> *physicsSystem;
 
 /**
- *  The current velocity used by the physics system to calculate tween values.
+ *  The current velocity used by the physics system to calculate tween values, measured in units per second.
  *
  *  @remarks If you wish to change the velocity after initially setting it via one of the init methods, use this setter. If you change the velocity directly on the `physicsSystem` object, the `tweenProgress` property won't be accurate.
  */
@@ -127,16 +127,21 @@
 /**
  *  The current friction coefficient used by the physics system.
  *
- *  @remarks The usable value range is between 0 and 1, with 1 representing very high friction and 0 representing almost no friction. Setting this property to 0.0 will actually set it a bit fractionally higher than 0 to avoid divide-by-zero errors during calculations.
+ *  @remarks A value range between 0 and 1, with 1 representing very high friction and 0 representing almost no friction. Setting this property to 0.0 will actually set it a bit fractionally higher than 0 to avoid divide-by-zero errors during calculations.
  */
 @property (nonatomic, assign) double friction;
 
 /**
  *  This float value is used to determine whether the object modeled by the physics system has come to rest due to deceleration.
  *
- *  @remarks The way PMTweenPhysicsSystem applies friction means that as velocity approaches 0, it will be assigned smaller and smaller fractional numbers, so we need a reasonable cutoff that approximates the velocity coming to rest. The default value is the internal constant PMTWEEN_DECAY_LIMIT, which is fine for display properties, but you may prefer other values for your purposes.
+ *  @remarks The way PMTweenPhysicsSystem applies friction means that as velocity approaches 0, it will be assigned smaller and smaller fractional numbers, so we need a reasonable cutoff that approximates the velocity coming to rest. The default value is the internal constant PMTWEEN_DECAY_LIMIT (set to 1.0), which is fine for display properties, but you may prefer other values.
  */
 @property (nonatomic, assign) CGFloat velocityDecayLimit;
+
+/** 
+ *  Specifies a time step for the physics solver, which is updated independently of tween value updates. The default value calls the physics system 120 times a second, which provides double the precision if your app is rendering at 60 fps.
+ */
+@property (nonatomic, assign) NSTimeInterval physicsTimerInterval;
 
 
 ///-------------------------------------

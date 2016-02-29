@@ -35,8 +35,8 @@
 - (instancetype)initWithVelocity:(double)velocity friction:(double)friction {
     
     if (self = [super init]) {
-        _velocity = velocity;
-        _friction = friction;
+        self.velocity = velocity;
+        self.friction = friction;
         _initialVelocity = _velocity;
     }
     
@@ -48,21 +48,28 @@
 #pragma mark - PMTweenPhysicsSolving protocol methods
 
 - (double)solveForPosition:(double)position currentTime:(NSTimeInterval)elapsedTime {
+    //NSLog(@"======================================================");
+    //NSLog(@"last %f -- elapsed %f", _lastTimestamp, elapsedTime);
     
-    double new_position = 0.0;
+    double new_position = position;
     
-    if (!_paused) {
-        if (_lastTimestamp == 0) { self.lastTimestamp = elapsedTime; }
-        
-        NSTimeInterval time = (elapsedTime - _lastTimestamp);
-        time = MAX(0, time);
+    if (!_paused) {        
+        if (_lastTimestamp > 0) {
+            NSTimeInterval time_delta = elapsedTime - _lastTimestamp;
+            time_delta = MAX(0.0, time_delta);
+            //NSLog(@"time ∆ %f", time_delta);
+            
+            // use pow here to compensate for floating point errors over time
+            double friction_multiplier = pow(1-_friction, time_delta);
+            
+            _velocity *= friction_multiplier;
+            
+            // add just the portion of current velocity that occurred during this time delta
+            new_position += (_velocity * time_delta);
+            
+        }
         _lastTimestamp = elapsedTime;
-        
-        double vdelta = _velocity * (1 - powf(1-_friction, time)) / _friction;
-        //NSLog(@"pos %f vdelta %f", position, vdelta);
-        _velocity -= vdelta;
-        
-        new_position = position + _velocity;
+
     }
     
     return new_position;

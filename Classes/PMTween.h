@@ -13,3 +13,4 @@
 #import "PMTweenPhysicsUnit.h"
 #import "PMTweenEasingTypes.h"
 #import "PMTweenBeat.h"
+#import "PMTweenCATempo.h"
