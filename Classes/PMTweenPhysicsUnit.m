@@ -10,7 +10,7 @@
 #import "PMTweenCATempo.h"
 #import "PMTweenSupport.h"
 
-double static const PMTWEEN_DECAY_LIMIT = 1.0;
+double static const PMTWEEN_DECAY_LIMIT = 0.96;
 
 @interface PMTweenPhysicsUnit ()
 
@@ -76,6 +76,7 @@ double static const PMTWEEN_DECAY_LIMIT = 1.0;
 - (void)resetTween;
 
 - (void)setupPhysicsTimer;
+- (void)removePhysicsTimer;
 
 // Updates the physics system
 - (void)updatePhysicsSystem;
@@ -242,7 +243,11 @@ double static const PMTWEEN_DECAY_LIMIT = 1.0;
 
 - (void)setupPhysicsTimer {
     
-    self.physicsTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0));
+    if (self.physicsTimer) {
+        [self removePhysicsTimer];
+    }
+    
+    self.physicsTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0));
     dispatch_source_set_timer(self.physicsTimer, DISPATCH_TIME_NOW, self.physicsTimerInterval * NSEC_PER_SEC, 0.001 * NSEC_PER_SEC);
     __weak typeof(self) weak_self = self;
     dispatch_source_set_event_handler(self.physicsTimer, ^{
@@ -250,18 +255,21 @@ double static const PMTWEEN_DECAY_LIMIT = 1.0;
         
         [strong_self updatePhysicsSystem];
     });
-    dispatch_source_set_cancel_handler(self.physicsTimer, ^{
-        __strong typeof(self) strong_self = weak_self;
-        strong_self.physicsTimer = nil;
-    });
+}
+
+
+- (void)removePhysicsTimer {
+    if (self.physicsTimer) {
+        dispatch_cancel(self.physicsTimer);
+        self.physicsTimer = nil;
+    }
 }
 
 
 - (void)updatePhysicsSystem {
     
-    // update physics system
-    NSTimeInterval current_time = CACurrentMediaTime();
-    self.currentValue = [self.physicsSystem solveForPosition:_currentValue currentTime:current_time];
+    // use the last timestamp recorded during updateWithTimeInterval for the physics solver
+    self.currentValue = [self.physicsSystem solveForPosition:self.currentValue currentTime:self.currentTime];
     
     self.tweenProgress = (_initialVelocity - fabs(self.physicsSystem.velocity)) / _initialVelocity;
     
@@ -638,6 +646,8 @@ double static const PMTWEEN_DECAY_LIMIT = 1.0;
 
 - (void)updateWithTimeInterval:(NSTimeInterval)currentTime {
     
+    _currentTime = currentTime;
+
     if (_tweenState == PMTweenStateTweening) {
         
         // call update block
@@ -673,7 +683,6 @@ double static const PMTWEEN_DECAY_LIMIT = 1.0;
         
     } else if (_tweenState == PMTweenStateDelayed) {
         
-        _currentTime = currentTime;
         
         if (_startTime == 0) {
             // a start time of 0 means we need to initialize the tween times
@@ -726,7 +735,7 @@ double static const PMTWEEN_DECAY_LIMIT = 1.0;
 - (void)stopTween {
     if (_tweenState == PMTweenStateTweening || _tweenState == PMTweenStatePaused || _tweenState == PMTweenStateDelayed) {
         self.tweenState = PMTweenStateStopped;
-        dispatch_cancel(self.physicsTimer);
+        [self removePhysicsTimer];
         _startTime = 0;
         _currentTime = 0;
         _tweenProgress = 0;

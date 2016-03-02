@@ -107,7 +107,8 @@
 
 - (void)setupEasing {
     
-    self.tween = [[PMTweenPhysicsUnit alloc] initWithObject:self.tweenView propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x velocity:60 friction:0.25 options:PMTweenOptionNone];
+    self.tween = [[PMTweenPhysicsUnit alloc] initWithObject:self.tweenView propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x velocity:100 friction:0.4 options:PMTweenOptionNone];
+
     __weak typeof(self) weak_self = self;
     self.tween.updateBlock = ^void(NSObject<PMTweening> *tween) {
         //DLog(@"TWEEN 1 COMPLETE!");
