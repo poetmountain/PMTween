@@ -1,3 +1,8 @@
+1.3.3
+=====
+* PMTweenPhysicsSystem (used internally by PMTweenPhysicsUnit) now uses a fixed timestep, which though rudimentary, helps smooth out tween value jittering
+* Fixed bug with physics timer not properly removed
+
 1.3.2
 =====
 * PMTweenPhysicsUnit now updates its physics system independently of property updates, at a frequency of 120 fps by default (to provide double the resolution of a normal 60fps app). This can be changed by PMTweenPhysicsUnit's new property physicsTimerInterval.
