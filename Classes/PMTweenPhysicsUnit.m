@@ -187,7 +187,9 @@ double static const PMTWEEN_DECAY_LIMIT = 0.96;
 
 
 - (void)dealloc {
-    dispatch_cancel(self.physicsTimer);
+    if (_physicsTimer) {
+        dispatch_cancel(_physicsTimer);
+    }
 }
 
 
@@ -758,7 +760,9 @@ double static const PMTWEEN_DECAY_LIMIT = 0.96;
         self.pauseTimestamp = _currentTime;
         
         [self.physicsSystem pauseSystem];
-        dispatch_suspend(self.physicsTimer);
+        if (self.physicsTimer) {
+            dispatch_suspend(self.physicsTimer);
+        }
         
         // call pause block
         if (_pauseBlock) {
@@ -777,7 +781,9 @@ double static const PMTWEEN_DECAY_LIMIT = 0.96;
         self.tweenState = PMTweenStateTweening;
         
         [self.physicsSystem resumeSystem];
-        dispatch_resume(self.physicsTimer);
+        if (self.physicsTimer) {
+            dispatch_resume(self.physicsTimer);
+        }
         
         // call resume block
         if (_resumeBlock) {
