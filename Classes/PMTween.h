@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PMTweening.h"
 #import "PMTweenUnit.h"
 #import "PMTweenGroup.h"
 #import "PMTweenSequence.h"

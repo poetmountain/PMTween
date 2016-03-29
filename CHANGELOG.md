@@ -1,3 +1,8 @@
+1.3.4
+=====
+* PMTween header import now properly includes the constants from PMTweening
+* Improved dispatch timer dealloc checks in PMTweenPhysicsUnit
+
 1.3.3
 =====
 * PMTweenPhysicsSystem (used internally by PMTweenPhysicsUnit) now uses a fixed timestep, which though rudimentary, helps smooth out tween value jittering
