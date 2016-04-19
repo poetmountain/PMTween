@@ -58,7 +58,16 @@
 
 - (instancetype)init {
     
-    if (self = [super init]) {
+    return [self initWithTweens:nil options:PMTweenOptionNone];
+    
+}
+
+
+- (instancetype)initWithTweens:(NSArray *)tweens options:(PMTweenOptions)options {
+    
+    self = [super init];
+    
+    if (self) {
         _tweens = [NSMutableArray array];
         _tempoOverrides = [NSMutableArray array];
         _tweenState = PMTweenStateStopped;
@@ -66,18 +75,8 @@
         _syncTweensWhenReversing = YES;
         
         self.tempo = [PMTweenCATempo tempo];
-
-    }
-    
-    return self;
-    
-}
-
-
-- (instancetype)initWithTweens:(NSArray *)tweens options:(PMTweenOptions)options {
-    
-    if (self = [self init]) {
-        for (id obj in tweens) {
+        
+        for (NSObject<PMTweening> *obj in tweens) {
             [self addTween:obj useTweenTempo:NO];
         }
         
@@ -139,7 +138,7 @@
 
 - (void)addTweens:(NSArray *)tweens {
     
-    for (id obj in tweens) {
+    for (NSObject<PMTweening> *obj in tweens) {
         [self addTween:obj useTweenTempo:NO];
     }
 }

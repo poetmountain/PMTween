@@ -63,7 +63,14 @@ NSString *const PMTweenDidStepNotification = @"com.poetmountain.pmtween.step";
 
 - (instancetype)init {
     
-    if (self = [super init]) {
+    return [self initWithSequenceSteps:nil options:PMTweenOptionNone];
+}
+
+- (instancetype)initWithSequenceSteps:(NSArray *)sequenceSteps options:(PMTweenOptions)options {
+    
+    self = [super init];
+    
+    if (self) {
         _sequenceSteps = [NSMutableArray array];
         _tempoOverrides = [NSMutableArray array];
         _currentSequenceIndex = 0;
@@ -72,14 +79,7 @@ NSString *const PMTweenDidStepNotification = @"com.poetmountain.pmtween.step";
         _reversingMode = PMTweenSequenceReversingNoncontiguous;
         
         _tempo = [PMTweenCATempo tempo];
-    }
-    
-    return self;
-}
-
-- (id)initWithSequenceSteps:(NSArray *)sequenceSteps options:(PMTweenOptions)options {
-    
-    if (self = [self init]) {
+        
         for (NSObject<PMTweening> *step in sequenceSteps) {
             [self addSequenceStep:step useTweenTempo:NO];
         }
