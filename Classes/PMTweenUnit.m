@@ -115,7 +115,7 @@
                 if ([parent_keys count] > 0) {
                     NSString *parent_path = [parent_keys componentsJoinedByString:@"."];
                     __strong typeof(self) strong_self = weak_self;
-                    
+                    NSLog(@"obj %@, parent path %@", object, parent_path);
                     parent_value = [object valueForKeyPath:parent_path];
                     
                     BOOL is_value_supported = NO;
@@ -686,18 +686,16 @@
         self.currentValue = new_value;
         self.tweenProgress = progress;
         
-        
-        
-        // call update block
-        if (_updateBlock) {
-            __weak typeof(self) block_self = self;
-            self.updateBlock(block_self);
-        }
-        
 
         if (_currentTime < _endTime) {
             [self updatePropertyValue];
 
+            // call update block
+            if (_updateBlock) {
+                __weak typeof(self) block_self = self;
+                self.updateBlock(block_self);
+            }
+            
         } else {
             // tween has completed
             
