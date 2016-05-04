@@ -19,7 +19,7 @@
         double overshoot = 1.70158; // defaults to 10% overshoot past the end value
         double time = elapsedTime / duration;
         
-        double tween_value = valueDelta * time*time*((overshoot + 1)*time - overshoot) + startValue;
+        double tween_value = valueDelta * time*time*((overshoot + 1.0)*time - overshoot) + startValue;
         
         return tween_value;
     };
@@ -33,9 +33,9 @@
     PMTweenEasingBlock easing = ^double (NSTimeInterval elapsedTime, double startValue, double valueDelta, NSTimeInterval duration) {
         
         double overshoot = 1.70158; // defaults to 10% overshoot past the end value
-        double time = elapsedTime / duration;
+        double time = elapsedTime / duration - 1;
         
-        double tween_value = valueDelta * ((time - 1)*time * ((overshoot + 1)*time + overshoot) + 1) + startValue;
+        double tween_value = valueDelta * (time*time * ((overshoot + 1.0)*time + overshoot) + 1.0) + startValue;
         
         return tween_value;
     };
@@ -54,10 +54,10 @@
         
         double tween_value = 0;
         if (time < 1) {
-            tween_value = (valueDelta * 0.5) * (time*time*((overshoot + 1)*time - overshoot)) + startValue;
+            tween_value = (valueDelta * 0.5) * (time*time*((overshoot + 1.0)*time - overshoot)) + startValue;
         } else {
-            time -= 2;
-            tween_value = (valueDelta * 0.5) * (time*time*((overshoot + 1)*time + overshoot) + 2) + startValue;
+            time -= 2.0;
+            tween_value = (valueDelta * 0.5) * (time*time*((overshoot + 1.0)*time + overshoot) + 2.0) + startValue;
         }
         
         return tween_value;
