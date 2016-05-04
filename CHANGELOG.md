@@ -1,3 +1,8 @@
+1.3.5
+=====
+* Fixed bug in the Back easingOut easing equation
+* Moved the call of PMTweenUnit's updateBlock to after the property update
+
 1.3.4
 =====
 * PMTween header import now properly includes the constants from PMTweening
