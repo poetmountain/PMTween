@@ -271,7 +271,7 @@ double static const PMTWEEN_DECAY_LIMIT = 0.96;
 - (void)updatePhysicsSystem {
     
     // use the last timestamp recorded during updateWithTimeInterval for the physics solver
-    self.currentValue = [self.physicsSystem solveForPosition:self.currentValue currentTime:self.currentTime];
+    self.currentValue = [self.physicsSystem solveForPosition:self.currentValue currentTime:CFAbsoluteTimeGetCurrent()];
     
     self.tweenProgress = (_initialVelocity - fabs(self.physicsSystem.velocity)) / _initialVelocity;
     

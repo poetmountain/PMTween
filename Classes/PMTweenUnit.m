@@ -482,7 +482,6 @@
                 if (_additive) {
                     new_property_value = _valueDelta;
                 }
-                
                 NSValue *new_parent_value = (NSValue *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:new_property_value propertyKeyPath:_propertyKeyPath];
                 
                 [self.targetObject setValue:new_parent_value forKey:_propertyKeyPath];
@@ -496,7 +495,8 @@
                 if (_additive) {
                     new_property_value = _valueDelta;
                 }
-                
+                NSLog(@"current %f delta %f", _currentValue, _valueDelta);
+
                 NSValue *new_parent_value = (NSValue *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:new_property_value propertyKeyPath:_propertyKeyPath];
                 
                 [self.targetObject setValue:new_parent_value forKeyPath:_parentKeyPath];

@@ -59,7 +59,6 @@ double static const PMTWEEN_TIMESTEP = 0.0001;
     NSTimeInterval time_delta = elapsedTime - _lastTimestamp;
     time_delta = MAX(0.0, time_delta);
     if (time_delta > 0.2) { time_delta = 0.2; }
-    //NSLog(@"time ∆ %f", time_delta);
     
     if (!_paused && time_delta > 0.0) {
         if (_lastTimestamp > 0.0) {
