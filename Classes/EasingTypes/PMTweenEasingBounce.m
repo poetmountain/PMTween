@@ -17,7 +17,7 @@
     PMTweenEasingBlock easing = ^double (NSTimeInterval elapsedTime, double startValue, double valueDelta, NSTimeInterval duration) {
         
         PMTweenEasingBlock easingBlock = [PMTweenEasingBounce easingOut];
-        double tween_value = easingBlock(duration-elapsedTime, 0, valueDelta, duration) + startValue;
+        double tween_value = valueDelta - easingBlock(duration-elapsedTime, 0, valueDelta, duration) + startValue;
         
         return tween_value;
     };
