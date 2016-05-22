@@ -1,3 +1,8 @@
+1.3.6
+=====
+* Fixed bug with Bounce easingIn type
+* PMTweenPhysicsUnit now uses a higher-resolution timestamp
+
 1.3.5
 =====
 * Fixed bug in the Back easingOut easing equation
