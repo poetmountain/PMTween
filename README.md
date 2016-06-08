@@ -1,5 +1,6 @@
 PMTween is an elegant and flexible tweening library for Objective-C, currently supporting the iOS and tvOS platforms. It offers sensible default functionality that abstracts most of the hard work away, allowing you to focus on your animations and other tween tasks. But PMTween also makes it easy to dive in and modify for your own needs, whether that be custom tweening classes, supporting custom object types, or new easing equations.
 
+If you're coding in Swift, try [MotionMachine](https://github.com/poetmountain/MotionMachine), which is based on PMTween, but with many improvements and an API tailored to that langauge.
 
 ## Overview
 
@@ -110,7 +111,7 @@ Notice in this example that a tempo object is being set on the PMTweenGroup. It 
 PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
 PMTweenUnit *tween = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.size.width" startingValue:self.tweenView.frame.size.width endingValue:200 duration:1.0 options:PMTweenOptionNone easingBlock:easing];
 PMTweenUnit *tween2 = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.size.height" startingValue:self.tweenView.frame.size.height endingValue:300 duration:2.0 options:PMTweenOptionNone easingBlock:easing];
-    
+
 PMTweenGroup *group = [[PMTweenGroup alloc] initWithTweens:@[tween, tween2] options:PMTweenOptionReverse];
 [group setTempo:[PMTweenCATempo tempo]];
 [group startTween];
@@ -126,7 +127,7 @@ When a PMTweenSequence is set to reverse, by default it will play as discrete el
 PMTweenEasingBlock easing = [PMTweenEasingCubic easingInOut];
 PMTweenUnit *tween = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.origin.x" startingValue:self.tweenView.frame.origin.x endingValue:200 duration:1.0 options:PMTweenOptionNone easingBlock:easing];
 PMTweenUnit *tween2 = [[PMTweenUnit alloc] initWithObject:self.tweenView  propertyKeyPath:@"frame.size.height" startingValue:self.tweenView.frame.size.height endingValue:300 duration:2.0 options:PMTweenOptionNone easingBlock:easing];
-    
+
 PMTweenSequence *sequence = [[PMTweenSequence alloc] initWithSequenceSteps:@[tween1, tween2] options:PMTweenOptionReverse];
 [sequence startTween];
 ```
@@ -152,7 +153,7 @@ PMTweenSequence *sequence = [[PMTweenSequence alloc] initWithSequenceSteps:@[twe
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenSequence.html">PMTweenSequence</a></td>
     <td>PMTweenSequence allows objects which conform to the PMTweening protocol to be chained together in a sequential series of tween steps.</td>
   </tr>
-  
+
   <tr><th colspan="2" style="text-align:center;">Tempo Classes</th></tr>
   <tr>
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenCATempo.html">PMTweenCATempo</a></td>
@@ -162,7 +163,7 @@ PMTweenSequence *sequence = [[PMTweenSequence alloc] initWithSequenceSteps:@[twe
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenBeat.html">PMTweenBeat</a></td>
     <td>PMTweenBeat broadcasts updates from a PMTweenTempo object to multiple objects which adopt the PMTweening protocol. This allows you to use a single tempo object for all tween objects, avoiding a performance impact when tweening many objects.</td>
   </tr>
-	
+
   <tr><th colspan="2" style="text-align:center;">Easing Types</th></tr>
   <tr>
     <td><a href="https://poetmountain.github.io/PMTween/Classes/PMTweenEasingLinear.html">PMTweenEasingLinear</a></td>
@@ -215,7 +216,7 @@ PMTweenSequence *sequence = [[PMTweenSequence alloc] initWithSequenceSteps:@[twe
 ## Tests
 
 PMTween is tested using [Specta](https://github.com/specta/specta)/[Expecta](https://github.com/specta/expecta/). You can install the test dependencies using CocoaPods by running 'pod install' from within the Tests directory.
-		
+
 ## Credits
 
 PMTween was created by [Brett Walker](https://twitter.com/petsound) of [Poet & Mountain](http://poetmountain.com).
