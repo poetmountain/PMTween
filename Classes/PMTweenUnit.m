@@ -115,7 +115,6 @@
                 if ([parent_keys count] > 0) {
                     NSString *parent_path = [parent_keys componentsJoinedByString:@"."];
                     __strong typeof(self) strong_self = weak_self;
-                    NSLog(@"obj %@, parent path %@", object, parent_path);
                     parent_value = [object valueForKeyPath:parent_path];
                     
                     BOOL is_value_supported = NO;
@@ -495,7 +494,6 @@
                 if (_additive) {
                     new_property_value = _valueDelta;
                 }
-                NSLog(@"current %f delta %f", _currentValue, _valueDelta);
 
                 NSValue *new_parent_value = (NSValue *)[self.structValueUpdater replaceObject:base_prop newPropertyValue:new_property_value propertyKeyPath:_propertyKeyPath];
                 
