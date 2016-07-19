@@ -31,7 +31,7 @@
     if (self = [super init]) {
         _displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(update)];
         
-        [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+        [_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
         
     }
     
