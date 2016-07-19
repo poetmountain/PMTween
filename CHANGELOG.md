@@ -1,3 +1,7 @@
+1.3.7
+=====
+* PMTweenCATempo now uses NSRunLoopCommonModes
+
 1.3.6
 =====
 * Fixed bug with Bounce easingIn type
